@@ -28,7 +28,7 @@ module.exports = {
   output: {
     filename: '[name].[hash].js',
     chunkFilename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'www')
+    path: path.resolve(__dirname, 'docs')
   },
   module: {
     rules: [
@@ -63,7 +63,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['www']),
+    new CleanWebpackPlugin(['docs']),
     new ExtractTextPlugin("styles.css"),
     new stylusLoader.OptionsPlugin({
       default: {
