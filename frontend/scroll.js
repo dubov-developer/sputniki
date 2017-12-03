@@ -70,7 +70,7 @@ function onCustomScroll(status) {
 
         
 
-        scrollbar.scrollTo(0, y, 500, { easing: easeOutBack, callback: () => { stopScroll = false; } });
+        scrollbar.scrollTo(0, y, 1000, { easing: easeOutBack, callback: () => { stopScroll = false; } });
       }
 
     }, 50);    
