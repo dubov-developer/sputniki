@@ -1,0 +1,59 @@
+@import './fonts/style.css';
+
+html {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: #000;
+  margin: 0;
+}
+
+.logo {
+  font-size: 100px;
+  color: #fff;
+  position: fixed;
+  top: 50%;
+  margin-top: -57.5px;
+  left: 0;
+}
+
+#barba-wrapper {
+  height: 100%;
+}
+
+.hello {
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: red;
+  background-image: url('./images/cream.png')
+}
+
+.hello img {
+  display: block;
+}
+
+.barba-container {
+  margin-top: 1000px;
+  height: 5000px;
+  width: 50%;
+  margin-left: 50%;
+}
+
+
+.barba-container h1 {
+  color: #fff;
+}
+
+.barba-container p {
+  color: #fff;
+}
+
+.barba-container .block + .block {
+  margin-top: 500px;
+}
