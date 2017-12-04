@@ -9,6 +9,7 @@ html {
 }
 
 body {
+  font-family: 'Graphik LCG';
   height: 100%;
   background-color: #000;
   margin: 0;
@@ -28,7 +29,6 @@ body {
 }
 
 .hello {
-  font-family: 'Roboto';
   font-size: 20px;
   color: red;
   background-image: url('./images/cream.png')

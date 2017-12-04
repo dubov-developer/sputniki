@@ -1,16 +1,15 @@
 @font-face {
-  font-family: 'Roboto';
-  src: url('./roboto-regular-webfont-webfont.woff2') format('woff2'),
-       url('./roboto-regular-webfont-webfont.woff') format('woff');
-  font-weight: 400;
+  font-family: 'Graphik LCG';
+  src: url('subset-GraphikLCG-Regular.woff2') format('woff2'),
+      url('subset-GraphikLCG-Regular.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./roboto-bold-webfont-webfont.woff2') format('woff2'),
-       url('./roboto-bold-webfont-webfont.woff') format('woff');
-  font-weight: 700;
+  font-family: 'Graphik LCG';
+  src: url('subset-GraphikLCG-Bold.woff2') format('woff2'),
+       url('subset-GraphikLCG-Bold.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
 }
