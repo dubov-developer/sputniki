@@ -1,9 +1,27 @@
-html
+html(data-dom-module="base-layout")
   head
   body
-  h1.logo Logo
-  #barba-wrapper
-    .barba-container
-      block content
+    .fixed-container
+      nav.menu
+        ul.menu__list
+          li.menu__item
+            a(href="/about.html").menu__link О нас
+          li.menu__item
+            a(href="/cases.html").menu__link Кейсы
+          li.menu__item
+            a(href="/cases.html").menu__link Услуги
+          li.menu__item
+            a(href="/cases.html").menu__link Контакты
+      a.logo(href="/" data-dom-module="logo")
+      ul.social-list
+        li.social-list__item
+          a.social-list__link.social-list__link_fb(href="#", data-dom-module="social-icon", data-social-icon="fb")
+        li.social-list__item
+          a.social-list__link.social-list__link_instagram(href="#", data-dom-module="social-icon", data-social-icon="instagram")
+        li.social-list__item
+          a.social-list__link.social-list__link_youtube(href="#", data-dom-module="social-icon", data-social-icon="youtube")
+    #barba-wrapper
+      .barba-container
+        block content
       
     

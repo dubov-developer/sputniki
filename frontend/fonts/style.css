@@ -13,3 +13,27 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Graphik LCG';
+  src: url('GraphikLCG-Light.woff2') format('woff2'),
+      url('GraphikLCG-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik LCG';
+  src: url('GraphikLCG-Extralight.woff2') format('woff2'),
+      url('GraphikLCG-Extralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik LCG';
+  src: url('GraphikLCG-Medium.woff2') format('woff2'),
+      url('GraphikLCG-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}

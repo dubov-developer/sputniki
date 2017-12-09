@@ -1,9 +1,15 @@
-import './style.css';
+import './style.styl';
 import imageSrc from './images/cream.png'
 import printMe from './print.js';
 import Barba from 'barba.js';
 import { initScroll } from './scroll.js';
+
+import './blocks/menu/index.js';
+import './blocks/logo/index.js';
+import './blocks/social-icon/index.js';
+
 import './pages/home/index';
+import { initDomModules } from './js/common.js';
 
 function component() {
   var element = document.createElement('div');
@@ -35,6 +41,6 @@ function getAsyncComponent() {
 }
 document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
-
+  initDomModules();
   initScroll();
 })

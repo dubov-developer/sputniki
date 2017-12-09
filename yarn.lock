@@ -102,6 +102,12 @@ anymatch@^1.3.0:
     micromatch "^2.1.5"
     normalize-path "^2.0.0"
 
+apply-loader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/apply-loader/-/apply-loader-2.0.0.tgz#9cedf84f12ad89399dc9e7b91f4bb183ecea05b9"
+  dependencies:
+    loader-utils "^1.1.0"
+
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
@@ -320,6 +326,10 @@ body-parser@1.18.2:
     qs "6.5.1"
     raw-body "2.3.2"
     type-is "~1.6.15"
+
+bodymovin@^4.13.0:
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/bodymovin/-/bodymovin-4.13.0.tgz#06d97c0130e2334dccb33bea638136f88a74540b"
 
 bonjour@^3.5.0:
   version "3.5.0"
@@ -3488,6 +3498,10 @@ raw-body@2.3.2:
     http-errors "1.6.2"
     iconv-lite "0.4.19"
     unpipe "1.0.0"
+
+raw-loader@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
 
 rc@^1.1.7:
   version "1.2.2"
