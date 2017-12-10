@@ -80,5 +80,10 @@ module.exports = {
       title: 'About',
       filename: 'about.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/contacts/tpl.pug',
+      title: 'Contacts',
+      filename: 'contacts.html'
+    }),
   ],
 };

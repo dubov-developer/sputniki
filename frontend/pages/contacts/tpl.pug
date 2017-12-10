@@ -1,0 +1,32 @@
+extends ../layout.pug
+
+block content
+  .barba-container(data-namespace="contactspage")
+    .page-container
+      .section.section_contacts(data-scroll-target)
+        .section__content
+          h1 Москва
+          .address
+            .address__icon
+            .address__text ул. Малая Дмитровка, 25, стр 1 офис 28
+          .contacts-info-links
+            a.contacts-info-links__item(href="tel:+74956697801") +7 (495) 669-78-01
+            span.contacts-info-links__separator
+            a.contacts-info-links__item(href="mailto:office@sputniki.com") office@sputniki.com         
+      .section.section_contacts(data-scroll-target)
+        .section__content
+          h1 Екатеринбург
+          .address
+            .address__icon
+            .address__text Проспект Ленина, 50д офис 307, 304
+          .contacts-info-links
+            a.contacts-info-links__item(href="tel:+73432536992") +7 (343) 253-69-92
+            span.contacts-info-links__separator
+            a.contacts-info-links__item(href="mailto:office@sputniki.com") office@sputniki.com
+      .section.section_contacts.section_contacts-hello(data-scroll-target)
+        .section__content
+          h1 Привет!
+          a.telegram(href="#")
+            .telegram__text Напишите нам в Telegram
+            .telegram__icon
+        p.copyright © Sputniki_  2018
