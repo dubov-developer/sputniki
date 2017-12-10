@@ -3,19 +3,19 @@ import $ from 'jquery';
 import getViewport from 'getviewport';
 
 let stopScroll = false;
-let scrollbar;
+export let scrollbar;
 let timeoutFn;
 const scrollBarOptions = { damping: 0.06, renderByPixels: false };
 let targetsArray = null;
 
 export function initScroll() {
-  scrollbar = Scrollbar.init(document.querySelector('#barba-wrapper'), scrollBarOptions);
+  scrollbar = Scrollbar.init(document.querySelector('.custom-scroll'), scrollBarOptions);
 
   initListeners();
 }
 
 function initListeners() {
-  document.querySelector('#barba-wrapper').addEventListener('wheel', onMouseWheel);
+  document.querySelector('.custom-scroll').addEventListener('wheel', onMouseWheel);
   
   scrollbar.addListener(onCustomScroll);
 

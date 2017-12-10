@@ -1,8 +1,9 @@
+import { scrollbar } from './scroll';
 import './style.styl';
 import imageSrc from './images/cream.png'
 import printMe from './print.js';
 import Barba from 'barba.js';
-import { initScroll } from './scroll.js';
+import { initScroll, scrollbar } from './scroll.js';
 
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
@@ -46,7 +47,15 @@ document.addEventListener("DOMContentLoaded", function() {
   initDomModules();
   initScroll();
 })
+Barba.Dispatcher.on('transitionCompleted', function() {
+  console.log('transitionCompleted');
 
+  if (scrollbar) {
+    setTimeout(() => {
+      scrollbar.setPosition(0, 0);
+    }, 0);
+  }
+});
 // Barba.Pjax.getTransition = function() {
 //   console.log('GET')
 // };
