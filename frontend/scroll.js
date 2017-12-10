@@ -62,11 +62,9 @@ function onCustomScroll(status) {
         }
       });
 
-      console.log('$$', targetFinded);
-
       if (targetFinded !== false) {
         stopScroll = true;
-        const y = targetsArray[targetFinded].offset - halfScreenHeigh;
+        const y = targetsArray[targetFinded].offset ;
 
         
 

@@ -3,5 +3,21 @@ extends ../layout.pug
 block content
   .barba-container(data-namespace="homepage")
     .page-container
-      .promo
+      .promo(data-scroll-target)
         .promo__item
+      section.section-home.section-home_description(data-scroll-target)
+        .section-home__content
+          p. 
+            <span>Это</span> коммуникации <br> на стыке <span>Digital</span>, <br> <span>BTL</span> и <span>Content</span>
+      section.section-home.section-home_cases(data-scroll-target)
+        .section-home__image
+          .section-home__content
+            p. 
+              <span>Это</span> всегда <br> успешные <span>кейсы</span>
+      section.section-home.section-home_hello(data-scroll-target)
+        .section-home__content
+          h2 Привет!
+          p
+            a(href="mailto:office@sputniki.com") office@sputniki.com
+          p
+            a(href="tel:+74956697801") +7 (495) 669-78-01
