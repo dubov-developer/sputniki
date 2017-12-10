@@ -6,9 +6,10 @@ import { initScroll } from './scroll.js';
 
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
-import './blocks/social-icon/index.js';
+import './blocks/social-icon-list/index.js';
 
 import './pages/home/index';
+import './pages/about/index';
 import { initDomModules } from './js/common.js';
 
 function component() {
@@ -44,3 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
   initDomModules();
   initScroll();
 })
+
+// Barba.Pjax.getTransition = function() {
+//   console.log('GET')
+// };

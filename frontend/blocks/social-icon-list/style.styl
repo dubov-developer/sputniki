@@ -1,0 +1,25 @@
+.social-list
+  position absolute
+  bottom rem(40, 17)
+  left rem(100, 17)
+  list-style-type none
+  margin 0
+  padding 0
+  white-space nowrap
+
+  &__item
+    display inline-block
+  
+  &__item + &__item
+    margin-left rem(40, 17)
+
+  &__link
+    display block
+
+    &_fb, &_instagram
+      width rem(30, 17)
+      height rem(30, 17)
+
+    &_youtube
+      width rem(41, 17)
+      height rem(30, 17)

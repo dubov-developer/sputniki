@@ -9,6 +9,6 @@ export function initDomModules() {
       throw `Data dom module ${moduleName} doesn't exist!`;
     }
 
-    domModules[moduleName]().init(el);
+    domModules[moduleName].init(el);
   });
 }

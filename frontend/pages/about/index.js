@@ -1,13 +1,10 @@
-require('./style.styl');
 import Barba from 'barba.js';
-import { HomeEnterAnimation } from './animation';
 
 var Homepage = Barba.BaseView.extend({
-  namespace: 'homepage',
+  namespace: 'aboutpage',
   onEnter: function() {
       // The new Container is ready and attached to the DOM.
-      console.log('onEnter');
-      HomeEnterAnimation();
+      console.log('onEnter About');
   },
   onEnterCompleted: function() {
       // The Transition has just finished.
