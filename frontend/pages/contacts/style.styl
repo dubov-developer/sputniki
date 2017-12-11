@@ -1,8 +1,14 @@
 .section_contacts
+  position relative
   h1
     font-size rem(60, 17)
     font-weight 500
     margin-bottom rem(80, 17)
+
+  .section
+    &__content
+      position absolute
+      top 50%
 
 .section_contacts-hello
   position relative
@@ -14,7 +20,6 @@
     &__content
       display flex
       align-items center
-
 
 .copyright
   font-size rem(12, 17)
