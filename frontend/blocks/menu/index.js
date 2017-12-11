@@ -15,11 +15,17 @@ window.domModules['menu'] = {
     Barba.Dispatcher.on('newPageReady', this.onPageChange.bind(this));
     this.onPageChange({
       url: window.location.href
-    })
+    });
+    console.log('?', window.location.href);
   },
 
   onPageChange: function(currentStatus) {
-    const link = currentStatus.url.split(window.location.origin)[1].substring(1);
+    let link = currentStatus.url.split(window.location.origin)[1].substring(1);
+
+    if (process.env.NODE_ENV === 'production') {
+      link = '/' + link.split('/').slice(1).join('/');
+    }
+
     const navigationLinks = this.el.find('.menu__link');
     const navigationLinkIsActive = this.el.find(`[href="${link}"]`);
     navigationLinks.removeClass('active');
