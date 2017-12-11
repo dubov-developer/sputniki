@@ -22,8 +22,11 @@ window.domModules['menu'] = {
   onPageChange: function(currentStatus) {
     let link = currentStatus.url.split(window.location.origin)[1].substring(1);
 
+    console.log('INIT', link);
+
     if (process.env.NODE_ENV === 'production') {
       link = link.split('/').slice(1).join('/');
+      console.log('HERE', link);
     }
 
     const navigationLinks = this.el.find('.menu__link');
