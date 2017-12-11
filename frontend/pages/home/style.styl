@@ -9,14 +9,6 @@
   &__item
     imgboxrem('./assets/case-1.png', 17)
 
-.section-home
-  height 100vh
-  display flex
-  align-items center
-
-  &__content
-    margin-left rem(75, 17)
-
 .section_home-description
   p
     font-size rem(60, 17)
@@ -48,10 +40,14 @@
       display flex
       flex-direction column
       justify-content center
+      position absolute
+      top 50%
+      margin-top rem(-75, 17)
 
 
     &__content
       position relative
+      top auto
       left 5%
 
 .show-cases
