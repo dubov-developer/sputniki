@@ -23,7 +23,7 @@ window.domModules['menu'] = {
     let link = currentStatus.url.split(window.location.origin)[1].substring(1);
 
     if (process.env.NODE_ENV === 'production') {
-      link = '/' + link.split('/').slice(1).join('/');
+      link = link.split('/').slice(1).join('/');
     }
 
     const navigationLinks = this.el.find('.menu__link');
