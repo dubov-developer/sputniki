@@ -4,7 +4,7 @@ import imageSrc from './images/cream.png'
 import printMe from './print.js';
 import Barba from 'barba.js';
 import { initScroll, scrollbar } from './scroll.js';
-
+import { scrollmagic } from './js/scrollmagic.js';
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
 import './blocks/social-icon-list/index.js';
@@ -46,7 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
   initDomModules();
   initScroll();
-})
+  scrollmagic.init(scrollbar);
+});
+
 Barba.Dispatcher.on('transitionCompleted', function() {
   console.log('transitionCompleted');
 
@@ -56,6 +58,3 @@ Barba.Dispatcher.on('transitionCompleted', function() {
     }, 0);
   }
 });
-// Barba.Pjax.getTransition = function() {
-//   console.log('GET')
-// };
