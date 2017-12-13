@@ -30,6 +30,28 @@ module.exports = {
     chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'docs')
   },
+  resolve: {
+    modules: [
+      './node_modules/',
+      './frontend/common/',
+    ],
+    extensions: ['.js', '.css'],
+
+    alias: {
+      TweenMax: 'gsap/src/uncompressed/TweenMax.js',
+      TweenLite: 'gsap/src/uncompressed/TweenLite.js',
+      TimelineLite: 'gsap/src/uncompressed/TimelineLite.js',
+      TimelineMax: 'gsap/src/uncompressed/TimelineMax.js',
+      CSSPlugin: 'gsap/src/uncompressed/plugins/CSSPlugin.js',
+      CSSRulePlugin: 'gsap/src/uncompressed/plugins/CSSRulePlugin.js',
+      ScrambleTextPlugin: 'gsap/src/uncompressed/plugins/ScrambleTextPlugin.js',
+      EasePack: 'gsap/src/uncompressed/easing/EasePack.js',
+      ScrollToPlugin: 'gsap/src/uncompressed/plugins/ScrollToPlugin.js',
+      ScrollMagic: 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
+      'animation.gsap': 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js',
+      'debug.addIndicators': 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
+    },
+  },
   module: {
     rules: [
       {

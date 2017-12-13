@@ -3768,6 +3768,10 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
+scrollmagic@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/scrollmagic/-/scrollmagic-2.0.5.tgz#ad7597341c76fb1f4a5bec12968a09223bd08dd9"
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"

@@ -42,6 +42,7 @@
     "jquery": "^3.2.1",
     "lodash": "4.17.4",
     "raw-loader": "^0.5.1",
+    "scrollmagic": "^2.0.5",
     "smooth-scrollbar": "^8.2.4"
   }
 }
