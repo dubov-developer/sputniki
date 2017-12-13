@@ -8,6 +8,8 @@ const stylusLoader = require('stylus-loader');
 
 const NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
+console.log('!', NODE_ENV);
+
 const postCssOptions = {
   options: {
     config: {
