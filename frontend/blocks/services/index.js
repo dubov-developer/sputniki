@@ -18,14 +18,14 @@ window.domModules['services'] = {
       tl = currentService.data('timeline-click');
 
       if (active.length != 0) {
-        active.data('timeline-click').timeScale(10).reverse();
+        active.data('timeline-click').reverse();
       }
 
       if (!tl) currentService.data('timeline-click', tl = moduleObject.initTimeline(currentService))
       if (currentService.hasClass('active')) {
-        tl.timeScale(1).reverse();
+        tl.reverse();
       } else{
-        tl.timeScale(1).play();
+        tl.play();
       }
     });
   },
