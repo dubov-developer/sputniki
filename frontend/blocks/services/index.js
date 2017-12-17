@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { TimelineMax, Power2 } from 'gsap';
-
+import getViewport from 'getviewport';
 import { scrollbar } from '../../scroll.js';
 
 if (!window.domModules) {
@@ -46,11 +46,14 @@ window.domModules['services'] = {
         content.css('height', 'auto');
         service.addClass('active');
         setTimeout(() => {
-          scrollbar.scrollTo(0, scrollbar.offset.y + service.offset().top, 500);
+          const offset = (getViewport().height - service.outerHeight()) / 2;
+          scrollbar.update();
+          scrollbar.scrollTo(0, scrollbar.offset.y + service.offset().top - offset, 500);
         }, 0);
       },
       onReverseComplete() {
         service.removeClass('active');
+        scrollbar.update();
       }
     })
 
@@ -60,8 +63,6 @@ window.domModules['services'] = {
     content.children().each(function() {
       height += $(this).outerHeight(true);
     });
-
-    console.log('?', service.css('paddingTop'));
 
     tl.to(background, 0.5, { transformOrigin: `50% ${yTransformOrigin}px`, scaleY: 1, ease: Power2.easeInOut }, 0)
     tl.to(content, 0.5, {  startAt: { height: 0 }, height: height, ease: Power2.easeInOut }, 0);
