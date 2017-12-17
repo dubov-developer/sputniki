@@ -54,7 +54,7 @@ function onCustomScroll(status) {
     // const halfScreenHeigh = (getViewport().height / 2);
 
     targetsArray.forEach((target, index) => {
-      if (( Math.abs(target.offset - status.offset.y) < getViewport().height / 2) 
+      if (( Math.abs(target.offset - status.offset.y) < getViewport().height / 1.7) 
           && targetFinded == null) {
             targetFinded = index;
       }
@@ -65,7 +65,7 @@ function onCustomScroll(status) {
       const y = targetsArray[targetFinded].offset;
       lastStackIndex = targetFinded;
 
-      scrollbar.scrollTo(0, y, 800, { callback: () => { stopScroll = false; } });
+      scrollbar.scrollTo(0, y, 700, { callback: () => { stopScroll = false; } });
     }  
   }
 }

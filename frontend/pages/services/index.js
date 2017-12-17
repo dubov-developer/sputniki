@@ -1,9 +1,11 @@
 import './style.styl';
 import Barba from 'barba.js';
+import { ServicesEnterAnimation } from './animation';
 
 var Servicespage = Barba.BaseView.extend({
-  namespace: 'contactspage',
+  namespace: 'servicespage',
   onEnter: function() {
+    ServicesEnterAnimation();
   },
   onEnterCompleted: function() {
   },

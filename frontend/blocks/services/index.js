@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { TimelineMax, Power2 } from 'gsap';
 
+import { scrollbar } from '../../scroll.js';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -44,6 +45,9 @@ window.domModules['services'] = {
       onComplete() {
         content.css('height', 'auto');
         service.addClass('active');
+        setTimeout(() => {
+          scrollbar.scrollTo(0, scrollbar.offset.y + service.offset().top, 500);
+        }, 0);
       },
       onReverseComplete() {
         service.removeClass('active');
