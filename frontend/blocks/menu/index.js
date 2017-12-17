@@ -16,7 +16,6 @@ window.domModules['menu'] = {
     this.onPageChange({
       url: window.location.href
     });
-    console.log('?', window.location.href);
   },
 
   onPageChange: function(currentStatus) {

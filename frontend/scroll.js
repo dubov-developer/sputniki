@@ -37,17 +37,19 @@ export function initTargets() {
   const targets = $('[data-scroll-target]');
   targetsArray = [];
 
-  targets.each((index, el) => {
-    const element = $(el);
-    targetsArray.push({
-      el: element,
-      offset: element.offset().top
-    })
-  });
+  if (targets) {
+    targets.each((index, el) => {
+      const element = $(el);
+      targetsArray.push({
+        el: element,
+        offset: element.offset().top
+      })
+    });
+  }
 }
 
 function onCustomScroll(status) {
-  if (!stopScroll) {
+  if (!stopScroll && targetsArray && targetsArray.length) {
     let targetFinded = null;
     // const halfScreenHeigh = (getViewport().height / 2);
 
@@ -63,7 +65,7 @@ function onCustomScroll(status) {
       const y = targetsArray[targetFinded].offset;
       lastStackIndex = targetFinded;
 
-      scrollbar.scrollTo(0, y, 800, { callback: () => { stopScroll = false; console.log('COMPLETE'); } });
+      scrollbar.scrollTo(0, y, 800, { callback: () => { stopScroll = false; } });
     }  
   }
 }

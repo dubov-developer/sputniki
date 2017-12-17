@@ -9,6 +9,7 @@ import { initScroll, initTargets, scrollbar } from './scroll.js';
 import { scrollmagic } from './js/scrollmagic.js';
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
+import './blocks/services/index.js';
 import './blocks/social-icon-list/index.js';
 
 import './pages/home/index';
@@ -54,11 +55,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 Barba.Dispatcher.on('transitionCompleted', function() {
   console.log('transitionCompleted');
-
+  initDomModules();
   if (scrollbar) {
     setTimeout(() => {
       scrollbar.setPosition(0, 0);
       // Из за анимации, потом поправить
+      
       setTimeout(() => {
         initTargets();
       }, 1000);

@@ -3,5 +3,55 @@ extends ../layout.pug
 block content
   .barba-container(data-namespace="servicespage")
     .page-container
-      .services
-        .service(data-scroll-target)
+      .services(data-dom-module="services")
+        .service
+          .service__background
+          .service__wrapper
+            .service__head
+              .service__header
+                .service__title.
+                  Advertising <br> Campaigns
+                .service__index 01
+              .service__options
+                .service__options-text Опции
+                .service__options-line
+                .service__options-button
+                  .service__options-button-line.service__options-button-line_h
+                  .service__options-button-line.service__options-button-line_v
+            .service__content
+              p.service__content-description Разработка и реализация краткосрочных и долгосрочных рекламных кампаний.
+              .service__list-group
+                ul.service__list
+                  li Коммуникационная платформа
+                  li Селебрити
+                  li Видео
+                  li Сайт
+                  li Медийная поддержка
+                ul.service__list
+                  li Вовлекающая активация
+                  li Стимулирующая акция
+                  li Призовоий фонд
+                  li Офлайн-поддержка
+        .service
+          .service__background
+          .service__wrapper
+            .service__head
+              .service__header
+                .service__title.
+                  BTL & Trade
+                .service__index 02
+              .service__options
+                .service__options-text Опции
+                .service__options-line
+                .service__options-button
+                  .service__options-button-line.service__options-button-line_h
+                  .service__options-button-line.service__options-button-line_v
+            .service__content
+              p.service__content-description Разработка и реализация треийд-маркетинговых программ и программ лояльности.
+              .service__list-group
+                ul.service__list
+                  li Стимулирующая акция
+                  li Мероприятия с участием специализированного промоперсонала
+                  li Мотивация сотрудников точек
+                  li Обучающие программы для сотрудников точек
+                  li  Аудит & POSm
