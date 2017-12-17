@@ -13,6 +13,7 @@ import './blocks/social-icon-list/index.js';
 
 import './pages/home/index';
 import './pages/about/index';
+import './pages/services/index';
 import './pages/contacts/index';
 import { initDomModules } from './js/common.js';
 

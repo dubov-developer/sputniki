@@ -103,6 +103,11 @@ module.exports = {
       filename: 'about.html'
     }),
     new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/services/tpl.pug',
+      title: 'Services',
+      filename: 'services.html'
+    }),
+    new HtmlWebpackPlugin({
       template: '!!pug-loader!frontend/pages/contacts/tpl.pug',
       title: 'Contacts',
       filename: 'contacts.html'
