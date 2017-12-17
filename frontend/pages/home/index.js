@@ -104,6 +104,36 @@ var Homepage = Barba.BaseView.extend({
       }, tl6);
 
       scenes.push(scene6);
+
+
+
+      const tl7 = new TimelineLite();
+      const tlWch7 = willChange(tl7);
+      const content7 = document.querySelector('.section_home-slogan .section__content');
+  
+      tlWch7.from(content7, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
+  
+      let scene7 = scrollmagic.scene({
+        triggerElement: '.section_home-slogan',
+        triggerHook: 0.5,
+        offset: '15%',
+        duration: '35%',
+      }, tl7);
+
+      scenes.push(scene7);
+
+      const tl8 = new TimelineLite();
+      const tlWch8 = willChange(tl8);
+      tlWch8.to(content7, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
+  
+      let scene8 = scrollmagic.scene({
+        triggerElement: '.section_home-slogan',
+        triggerHook: 0,
+        offset: '35%',
+        duration: '35%',
+      }, tl8);
+
+      scenes.push(scene8);
     })
   },
   onLeave: function() {
