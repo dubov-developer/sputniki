@@ -53,17 +53,18 @@ document.addEventListener("DOMContentLoaded", function() {
   scrollmagic.init(scrollbar);
 });
 
+Barba.Dispatcher.on('newPageReady', function() {
+  //your listener
+  if (scrollbar) {
+    scrollbar.setPosition(0, 0);
+  }
+});
+
 Barba.Dispatcher.on('transitionCompleted', function() {
   console.log('transitionCompleted');
   initDomModules();
-  if (scrollbar) {
-    setTimeout(() => {
-      scrollbar.setPosition(0, 0);
-      // Из за анимации, потом поправить
-      
-      setTimeout(() => {
-        initTargets();
-      }, 1000);
-    }, 0);
-  }
+  setTimeout(() => {
+    // из за входной анимации, исправить это
+    initTargets();
+  }, 1000);
 });
