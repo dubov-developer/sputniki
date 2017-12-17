@@ -1,9 +1,11 @@
+import $ from 'jquery';
+window.$ = $;
 import { scrollbar } from './scroll';
 import './style.styl';
 import imageSrc from './images/cream.png'
 import printMe from './print.js';
 import Barba from 'barba.js';
-import { initScroll, scrollbar } from './scroll.js';
+import { initScroll, initTargets, scrollbar } from './scroll.js';
 import { scrollmagic } from './js/scrollmagic.js';
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
@@ -55,6 +57,10 @@ Barba.Dispatcher.on('transitionCompleted', function() {
   if (scrollbar) {
     setTimeout(() => {
       scrollbar.setPosition(0, 0);
+      // Из за анимации, потом поправить
+      setTimeout(() => {
+        initTargets();
+      }, 1000);
     }, 0);
   }
 });

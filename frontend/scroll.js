@@ -3,9 +3,10 @@ import $ from 'jquery';
 import getViewport from 'getviewport';
 
 let stopScroll = false;
+let lastStackIndex = 0;
 export let scrollbar;
 let timeoutFn;
-const scrollBarOptions = { damping: 0.06, renderByPixels: false };
+const scrollBarOptions = { damping: 0.1, renderByPixels: true };
 let targetsArray = null;
 
 export function initScroll() {
@@ -19,7 +20,9 @@ function initListeners() {
   
   scrollbar.addListener(onCustomScroll);
 
-  initTargets();
+  setTimeout(() => {
+    initTargets();
+  }, 1000);
 }
 
 function onMouseWheel(e) {
@@ -29,7 +32,8 @@ function onMouseWheel(e) {
   }
 }
 
-function initTargets() {
+export function initTargets() {
+  lastStackIndex = 0;
   const targets = $('[data-scroll-target]');
   targetsArray = [];
 
@@ -43,35 +47,28 @@ function initTargets() {
 }
 
 function onCustomScroll(status) {
-  
-  if (timeoutFn) {
-    clearTimeout(timeoutFn);
-  }
-
   if (!stopScroll) {
-    timeoutFn = setTimeout(() => {
-      let targetFinded = false;
-      const halfScreenHeigh = (getViewport().height / 2);
+    let targetFinded = null;
+    // const halfScreenHeigh = (getViewport().height / 2);
 
-      targetsArray.forEach((target, index) => {
-        if (( Math.abs((target.offset - halfScreenHeigh - status.offset.y)) < 400 || 
-            ((status.offset.y - target.offset + halfScreenHeigh) > 400 && 
-            (status.offset.y - target.offset + halfScreenHeigh) < 400)) 
-            && !targetFinded) {
-              targetFinded = index;
-        }
-      });
-
-      if (targetFinded !== false) {
-        stopScroll = true;
-        const y = targetsArray[targetFinded].offset ;
-
-        
-
-        scrollbar.scrollTo(0, y, 1000, { easing: easeOutBack, callback: () => { stopScroll = false; } });
+    targetsArray.forEach((target, index) => {
+      console.log(index, target.offset, status.offset.y);
+      if (( Math.abs(target.offset - status.offset.y) < 500) 
+          && targetFinded == null) {
+            console.log('FIND', index);
+            targetFinded = index;
       }
+    });
 
-    }, 50);    
+    if (targetFinded !== null && lastStackIndex !== targetFinded) {
+      stopScroll = true;
+      const y = targetsArray[targetFinded].offset;
+      lastStackIndex = targetFinded;
+
+      console.log('START');
+
+      scrollbar.scrollTo(0, y, 1000, { callback: () => { stopScroll = false; console.log('COMPLETE'); } });
+    }  
   }
 }
 
@@ -94,4 +91,17 @@ function easeInOutBack(pos) {
   var s = 1.70158;
   if((pos/=0.5) < 1) return 0.5*(pos*pos*(((s*=(1.525))+1)*pos -s));
   return 0.5*((pos-=2)*pos*(((s*=(1.525))+1)*pos +s) +2);
+}
+
+function easeInCubic(pos) {
+  return Math.pow(pos, 3);
+}
+
+function easeInOutSine(pos) {
+  return (-0.5 * (Math.cos(Math.PI*pos) -1));
+}
+
+function easeInOutQuart(pos) {
+  if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,4);
+  return -0.5 * ((pos-=2)*Math.pow(pos,3) - 2);
 }
