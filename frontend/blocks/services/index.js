@@ -55,12 +55,15 @@ window.domModules['services'] = {
     })
 
     let height = 0;
+    let yTransformOrigin = optionsLine.position().top + parseInt(service.css('paddingTop'), 10);
 
     content.children().each(function() {
       height += $(this).outerHeight(true);
     });
 
-    tl.to(background, 0.5, { scale: 1, ease: Power2.easeInOut }, 0)
+    console.log('?', service.css('paddingTop'));
+
+    tl.to(background, 0.5, { transformOrigin: `50% ${yTransformOrigin}px`, scaleY: 1, ease: Power2.easeInOut }, 0)
     tl.to(content, 0.5, {  startAt: { height: 0 }, height: height, ease: Power2.easeInOut }, 0);
     tl.to(index, 0.5, { color: '#fff', ease: Power2.easeInOut }, 0);
     tl.to(optionsLine, 0.5, { backgroundColor: '#fff', ease: Power2.easeInOut }, 0);

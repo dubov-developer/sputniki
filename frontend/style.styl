@@ -48,6 +48,7 @@ h1, h2
   height 100%
 
 .page-container
+  position relative
   width 59.6%
   margin-left 41.4%
   
@@ -58,9 +59,18 @@ h1, h2
   align-items center
 
   &__content
+    margin-top rem(-18, 17)
     margin-left rem(75, 17)
     position absolute
     top 50%
 
 .section + .section
   margin-top 0vh
+
+.copyright
+  font-size rem(12, 17)
+  font-weight 300
+  color rgba(255, 255, 255, .3)
+  position absolute
+  right rem(100, 17)
+  bottom rem(62, 17)
