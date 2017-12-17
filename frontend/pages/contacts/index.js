@@ -14,7 +14,6 @@ var Contactpage = Barba.BaseView.extend({
   namespace: 'contactspage',
   onEnter: function() {
       // The new Container is ready and attached to the DOM.
-      console.log('onEnter');
       ContactEnterAnimation();
   },
   onEnterCompleted: function() {
