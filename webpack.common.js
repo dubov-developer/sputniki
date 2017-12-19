@@ -112,5 +112,10 @@ module.exports = {
       title: 'Contacts',
       filename: 'contacts.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/cases/tpl.pug',
+      title: 'Cases',
+      filename: 'cases.html'
+    }),
   ],
 };

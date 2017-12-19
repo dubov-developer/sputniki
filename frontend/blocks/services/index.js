@@ -36,9 +36,9 @@ window.domModules['services'] = {
     const contentDescription = service.find('.service__content-description');
     const contentListGroup = service.find('.service__list-group');
     const index = service.find('.service__index');
-    const optionsLine = service.find('.service__options-line');
-    const optionsButton = service.find('.service__options-button');
-    const optionsButtonLineV = service.find('.service__options-button-line_v');
+    const optionsLine = service.find('.action-line__options-line');
+    const optionsButton = service.find('.action-line__options-button');
+    const optionsButtonLineV = service.find('.action-line__options-button-line_v');
 
     const tl = new TimelineMax({
       paused: true,
