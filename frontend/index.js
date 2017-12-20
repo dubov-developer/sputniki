@@ -10,6 +10,7 @@ import { scrollmagic } from './js/scrollmagic.js';
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
 import './blocks/services/index.js';
+import './blocks/case-select/index.js';
 import './blocks/social-icon-list/index.js';
 
 import './pages/home/index';

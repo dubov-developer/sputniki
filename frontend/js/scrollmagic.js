@@ -80,7 +80,5 @@ export const scrollmagic = {
   },
   createController(opts) {
     this.controller = new ScrollMagic.Controller(opts);
-
-    console.log('>', this.controller);
   }
 }
