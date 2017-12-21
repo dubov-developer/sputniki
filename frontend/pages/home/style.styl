@@ -4,10 +4,41 @@
   height 100vh
   display flex
   align-items center
-  justify-content center
-
+  justify-content flex-start
+  
+  &__items
+    position relative
+    width rem(325, 17)
+    height rem(325, 17)
+    margin-left rem(50, 17)
+   
   &__item
-    imgboxrem('./assets/case-1.png', 17)
+    position absolute
+    left 0
+    top 0
+    opacity 0
+
+    &_1
+      opacity 1
+      imgboxrem('./assets/case-1.png', 17)
+
+    &_2
+      imgboxrem('./assets/case-2.png', 17)
+
+    &_3
+      imgboxrem('./assets/case-3.png', 17)
+
+    &_4
+      imgboxrem('./assets/case-4.png', 17)
+
+    &_5
+      imgboxrem('./assets/case-5.png', 17)
+
+    &_6
+      imgboxrem('./assets/case-6.png', 17)
+
+    &_7
+      imgboxrem('./assets/case-7.png', 17)
 
 .section_home-description, .section_home-slogan
   p

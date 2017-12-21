@@ -3,8 +3,15 @@ extends ../layout.pug
 block content
   .barba-container(data-namespace="homepage")
     .page-container
-      .promo(data-scroll-target)
-        .promo__item
+      .promo(data-dom-module="promo" data-scroll-target)
+        .promo__items
+          .promo__item.promo__item_1
+          .promo__item.promo__item_2
+          .promo__item.promo__item_3
+          .promo__item.promo__item_4
+          .promo__item.promo__item_5
+          .promo__item.promo__item_6
+          .promo__item.promo__item_7
       section.section.section_home-description(data-scroll-target)
         .section__content
           p. 
