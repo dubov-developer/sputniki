@@ -13,6 +13,21 @@ window.domModules['promo'] = {
     this.itemsLength = this.items.length;
     this.currentIndex = 0;
 
+    this.startInterval();
+
+    this.items.on('mouseenter', () => {
+      clearInterval(this.invervalId);
+    });
+
+    this.items.on('mouseleave', () => {
+      this.startInterval();
+    });
+
+    Barba.Dispatcher.on('newPageReady', () => {
+      clearInterval(this.invervalId);
+    });
+  },
+  startInterval() {
     this.invervalId = setInterval(() => {
       TweenMax.set(this.items[this.currentIndex], { autoAlpha: 0 });
       this.currentIndex++;
@@ -25,10 +40,5 @@ window.domModules['promo'] = {
       TweenMax.set(this.items[this.currentIndex], { autoAlpha: 1 });
       
     }, 1000);
-
-    Barba.Dispatcher.on('newPageReady', () => {
-      console.log('CLEAR');
-      clearInterval(this.invervalId);
-    });
-  },
+  }
 };

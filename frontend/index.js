@@ -65,7 +65,6 @@ Barba.Dispatcher.on('newPageReady', function() {
 });
 
 Barba.Dispatcher.on('transitionCompleted', function() {
-  console.log('transitionCompleted');
   initDomModules();
   setTimeout(() => {
     // из за входной анимации, исправить это
