@@ -16,6 +16,24 @@ var Casespage = Barba.BaseView.extend({
     CasesEnterAnimation();
   },
   onEnterCompleted: function() {
+
+    setTimeout(() => {
+      const cases = $('.preview-case');
+
+      cases.each((index, elem) => {
+        const tl = new TimelineLite();
+        const tlWch = willChange(tl);
+        const animation = $(elem).find('.preview-case__animation');
+        tlWch.to(animation, 0.5, { xPercent: 100, ease: Power2.easeOut }, 0);
+    
+        let scene = scrollmagic.scene({
+          triggerElement: elem,
+          triggerHook: 0.9,
+        }, tl);
+    
+        scenes.push(scene);
+      });
+    });
   },
   onLeave: function() {
   },
