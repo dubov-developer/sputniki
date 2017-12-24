@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { TimelineMax, Power2, Power4 } from 'gsap';
+import { TimelineMax, Power1, Power2, Power4 } from 'gsap';
 
 export function ContactEnterAnimation() {
   return new Promise((resolve, reject) => {
@@ -10,8 +10,8 @@ export function ContactEnterAnimation() {
     const address = section.find('.address');
     const contactsInfoLinks = section.find('.contacts-info-links');
 
-    tl.from(h1, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power4.easeOut }, 0.3);
-    tl.from(address, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power4.easeOut }, 0.7);
-    tl.from(contactsInfoLinks, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power4.easeOut }, 1);
+    tl.from(h1, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.3);
+    tl.from(address, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.7);
+    tl.from(contactsInfoLinks, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 1);
   })
 }
