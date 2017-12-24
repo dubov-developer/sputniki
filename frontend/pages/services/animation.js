@@ -5,8 +5,11 @@ export function ServicesEnterAnimation() {
   return new Promise((resolve, reject) => {
     const tl = new TimelineMax();
 
-    const services = $('.services');
+    const service = $('.service').eq(0);
+    const header = service.find('.service__header');
+    const actionLine = service.find('.action-line');
 
-    tl.from(services, 1, { autoAlpha: 0, yPercent: '10%', ease: Power2.easeOut }, 0);
+    tl.from(header, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.3);
+    tl.from(actionLine, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.7);
   })
 }
