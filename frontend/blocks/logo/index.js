@@ -13,6 +13,7 @@ window.domModules['logo'] = {
   isLoadAnimationEnd: false,
   init: function(el) {
     this.el = el;
+
     this.animation = bodymovin.loadAnimation({
       container: this.el[0],
       renderer: 'svg',
@@ -38,6 +39,10 @@ window.domModules['logo'] = {
       loop: false,
       autoplay: false,
       animationData: dataHover,
+    });
+
+    this.animation.addEventListener('complete', () => {
+      this.animation.goToAndStop(0)
     });
   },
   play: function(loop = false) {
