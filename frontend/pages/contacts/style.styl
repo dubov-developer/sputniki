@@ -1,12 +1,13 @@
 .section_contacts
   position relative
   h1
+    position relative
+    overflow hidden
     font-size rem(60, 17)
     font-weight 500
     margin-bottom rem(47, 17)
     span
-      position relative
-      overflow hidden
+      display block
 
   .section
     &__content
@@ -27,7 +28,9 @@
 
 .address
   position relative
+  overflow hidden
   margin-bottom rem(60, 17)
+  
   &__icon
     imgboxrem('./assets/pin.png', 17)
     display inline-block

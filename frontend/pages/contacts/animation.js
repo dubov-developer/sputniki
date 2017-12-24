@@ -1,18 +1,18 @@
 import $ from 'jquery';
-import { TimelineMax, Power2 } from 'gsap';
+import { TimelineMax, Power2, Power4 } from 'gsap';
 
 export function ContactEnterAnimation() {
   return new Promise((resolve, reject) => {
     const tl = new TimelineMax();
 
     const section = $('.section_contacts_1');
+    const h1span = section.find('h1 span');
     const h1Background = section.find('h1 .animation-common-block');
-    const addressBackground = section.find('.address .animation-common-block');
-    const contactsInfoLinksBackground = section.find('.contacts-info-links .animation-common-block');
+    const addressWrapper = section.find('.address__wrapper');
+    const contactsInfoLinksWrapper = section.find('.contacts-info-links__wrapper');
 
-    tl.to(h1Background, 0.8, { xPercent: 100, ease: Power2.easeOut }, 0.2);
-    tl.to(addressBackground, 1.2, { xPercent: 100, ease: Power2.easeOut }, 0.8);
-    tl.to(contactsInfoLinksBackground, 1.2, { xPercent: 100, ease: Power2.easeOut }, 1.4);
-
+    tl.from(h1span, 0.7, { yPercent: 100, ease: Power4.easeOut }, 0.3);
+    tl.from(addressWrapper, 0.7, { yPercent: 100, ease: Power4.easeOut }, 0.5);
+    tl.from(contactsInfoLinksWrapper, 0.7, { yPercent: 100, ease: Power4.easeOut }, 0.9);
   })
 }
