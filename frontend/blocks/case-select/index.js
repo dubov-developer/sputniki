@@ -2,6 +2,7 @@ import $ from 'jquery';
 import { TimelineMax, Power2 } from 'gsap';
 import getViewport from 'getviewport';
 import { scrollbar } from '../../scroll.js';
+import { hover } from '../../js/hover.js';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -25,6 +26,13 @@ window.domModules['case-select'] = {
       this.onScroll = this.onScroll.bind(this);
       scrollbar.addListener(this.onScroll);
 
+      this.actionLine.on('mouseenter', () => {
+        hover.enter();
+      });
+
+      this.actionLine.on('mouseleave', () => {
+        hover.leave();
+      });
 
       this.items = this.el.find('.case-select-dropdown__item span');
 

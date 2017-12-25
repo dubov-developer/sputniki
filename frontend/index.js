@@ -7,6 +7,8 @@ import printMe from './print.js';
 import Barba from 'barba.js';
 import { initScroll, initTargets, scrollbar } from './scroll.js';
 import { scrollmagic } from './js/scrollmagic.js';
+import { hover } from './js/hover.js';
+
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
 import './blocks/services/index.js';
@@ -54,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
   initDomModules();
   initScroll();
+  hover.init();
   scrollmagic.init(scrollbar);
 });
 

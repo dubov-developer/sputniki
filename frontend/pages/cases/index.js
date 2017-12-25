@@ -1,7 +1,7 @@
 import './style.styl';
 import Barba from 'barba.js';
 import { CasesEnterAnimation } from './animation';
-
+import { hover } from '../../js/hover.js';
 import { scrollbar } from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
@@ -19,6 +19,14 @@ var Casespage = Barba.BaseView.extend({
 
     setTimeout(() => {
       const cases = $('.preview-case');
+
+      cases.on('mouseenter', () => {
+        hover.enter();
+      });
+
+      cases.on('mouseleave', () => {
+        hover.leave();
+      });
 
       cases.each((index, elem) => {
         const tl = new TimelineLite();
