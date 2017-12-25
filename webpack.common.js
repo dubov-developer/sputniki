@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const stylusLoader = require('stylus-loader');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
@@ -87,6 +88,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['docs']),
     new ExtractTextPlugin("styles.css"),
+    new CopyWebpackPlugin([
+      'frontend/images/favicon.ico',
+      'frontend/images/favicon@2x.ico',
+    ]),
     new stylusLoader.OptionsPlugin({
       default: {
         import: ['~stylus-mixins/index.styl'],
