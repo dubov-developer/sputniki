@@ -14,8 +14,6 @@ let scrolldown;
 var Homepage = Barba.BaseView.extend({
   namespace: 'homepage',
   onEnter: function() {
-    // The new Container is ready and attached to the DOM.
-    
     scrolldown = $('.scroll-down');
     
     HomeEnterAnimation();
@@ -54,15 +52,15 @@ var Homepage = Barba.BaseView.extend({
 
       const tl2 = new TimelineLite();
       const tlWch2 = willChange(tl2);
-      const content2 = document.querySelector('.section_home-description .section__content');
+      const content2 = $('.section_home-description .section__content');
+      const rows = $('.section_home-description p span');
   
-      tlWch2.from(content2, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
-  
+      tlWch2.staggerFrom(rows, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.6, 0);
+
       let scene2 = scrollmagic.scene({
         triggerElement: '.section_home-description',
         triggerHook: 0.5,
         offset: '15%',
-        duration: '35%',
       }, tl2);
 
       scenes.push(scene2);
@@ -83,15 +81,18 @@ var Homepage = Barba.BaseView.extend({
 
       const tl4 = new TimelineLite();
       const tlWch4 = willChange(tl4);
-      const content4 = document.querySelector('.section_home-cases .section__home-cases-image');
-  
-      tlWch4.from(content4, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
-  
+      const content4 = $('.section_home-cases .section__home-cases-image');
+      const rows4 = $('.section_home-cases p span');
+      const showCases = $('.section_home-cases .show-cases');
+
+      tlWch4.from(content4, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0);
+      tlWch4.staggerFrom(rows4, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.6, 0.8);
+      tlWch4.from(showCases, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 1.6);
+
       let scene4 = scrollmagic.scene({
         triggerElement: '.section_home-cases',
         triggerHook: 0.5,
         offset: '15%',
-        duration: '35%',
       }, tl4);
 
       scenes.push(scene4);
@@ -109,34 +110,16 @@ var Homepage = Barba.BaseView.extend({
 
       scenes.push(scene5);
 
-      const tl6 = new TimelineLite();
-      const tlWch6 = willChange(tl6);
-      const content6 = document.querySelector('.section_home-hello .section__content');
-  
-      tlWch6.from(content6, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
-  
-      let scene6 = scrollmagic.scene({
-        triggerElement: '.section_home-hello',
-        triggerHook: 0.5,
-        offset: '15%',
-        duration: '35%',
-      }, tl6);
-
-      scenes.push(scene6);
-
-
-
       const tl7 = new TimelineLite();
       const tlWch7 = willChange(tl7);
-      const content7 = document.querySelector('.section_home-slogan .section__content');
-  
-      tlWch7.from(content7, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
+      const content7 = $('.section_home-slogan .section__content');
+      const rows7 = $('.section_home-slogan p span');
+      tlWch7.staggerFrom(rows7, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.6, 0);
   
       let scene7 = scrollmagic.scene({
         triggerElement: '.section_home-slogan',
         triggerHook: 0.5,
         offset: '15%',
-        duration: '35%',
       }, tl7);
 
       scenes.push(scene7);
@@ -153,6 +136,30 @@ var Homepage = Barba.BaseView.extend({
       }, tl8);
 
       scenes.push(scene8);
+
+      const tl6 = new TimelineLite();
+      const tlWch6 = willChange(tl6);
+      const h26 = $('.section_home-hello h2');
+      const contactsInfoLinks6 = $('.section_home-hello .contacts-info-links');
+      const button = $('.section_home-hello .telegram');
+      const buttonBackground = $('.section_home-hello .telegram__background');
+      const buttonBorderRight = $('.section_home-hello .telegram__border_right');
+      const buttonText = $('.section_home-hello .telegram__text');
+      const buttonIcon = $('.section_home-hello .telegram__icon');
+      tlWch6.from(h26, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0);
+      tl6.set(button, { autoAlpha: 1 }, 0.8);
+      tlWch6.from(buttonBackground, 0.7, { scaleX: 0, ease: Power1.easeOut }, 0.8);
+      tlWch6.from(buttonBorderRight, 0.7, { xPercent: -400, ease: Power1.easeOut }, 0.8);
+      tlWch6.from([buttonText, buttonIcon], 0.5, { autoAlpha: 0, ease: Power1.easeOut }, 1.6);
+
+      tlWch6.from(contactsInfoLinks6, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 2);
+      let scene6 = scrollmagic.scene({
+        triggerElement: '.section_home-hello',
+        triggerHook: 0.5,
+        offset: '15%',
+      }, tl6);
+
+      scenes.push(scene6);
 
       const tlcopy = new TimelineLite();
       const tlcopyWch = willChange(tlcopy);
