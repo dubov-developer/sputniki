@@ -122,10 +122,10 @@
   &__background
     background-color #514845
     position absolute
-    top rem(-55, 17)
-    bottom rem(-55, 17)
-    left rem(-90, 17)
-    right rem(-80, 17)
+    top rem(-54, 17)
+    bottom rem(-40, 17)
+    left rem(-70, 17)
+    right rem(-65, 17)
     transform scaleY(0)
 
   &__items
@@ -134,6 +134,15 @@
     display block
     opacity 0
     visibility hidden
+    clearfix()
+
+  &__group
+    float left
+    width rem(265, 17)
+    margin-top rem(42, 17)
+
+  &__group + &__group
+    width auto
   
   &__item
     font-size rem(16, 17)
@@ -165,5 +174,5 @@
           transform scaleX(1)
   
   &__item + &__item
-    margin-top rem(32, 17)
+    margin-top rem(42, 17)
 

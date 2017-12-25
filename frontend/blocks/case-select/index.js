@@ -15,8 +15,6 @@ window.domModules['case-select'] = {
       this.el = el;
       this.fixedContainer = $('.fixed-container');
 
-      console.log('?', this.fixedContainer);
-
       this.wrapperOffset = this.el.parent().offset();
       this.menu = $('.menu')
       this.actionLine = this.el.find('.action-line');
@@ -113,6 +111,7 @@ window.domModules['case-select'] = {
     tl.to(background, 0.5, { transformOrigin: `50% ${yTransformOrigin}px`, scaleY: 1, ease: Power2.easeInOut }, 0)
     tl.to(items, 0.5, { autoAlpha: 1, ease: Power2.easeInOut }, 0.2)
     tl.to(optionsButton, 0.5, { borderColor: '#fff', ease: Power2.easeInOut }, 0);
+    tl.to(optionsLine, 0.5, { backgroundColor: '#fff', ease: Power2.easeInOut }, 0);
     tl.to(optionsButtonLineV, 0.5, { scaleY: 0, ease: Power2.easeInOut }, 0);
 
     return tl
