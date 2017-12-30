@@ -52,6 +52,7 @@ function getAsyncComponent() {
     return element;
   });
 }
+
 document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
   initDomModules();
@@ -65,6 +66,7 @@ Barba.Dispatcher.on('newPageReady', function() {
   if (scrollbar) {
     scrollbar.setPosition(0, 0);
   }
+  console.log('PAGE READY');
 });
 
 Barba.Dispatcher.on('transitionCompleted', function() {
@@ -73,4 +75,13 @@ Barba.Dispatcher.on('transitionCompleted', function() {
     // из за входной анимации, исправить это
     initTargets();
   }, 1000);
+
+  console.log('COMPLETED');
+});
+
+let prevState = null;
+
+Barba.Dispatcher.on('linkClicked', function(el) {
+  let splited = el.href.split('/');
+  prevState = splited[splited.length - 1].split('.')[0];
 });

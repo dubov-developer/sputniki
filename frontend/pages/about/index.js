@@ -1,6 +1,8 @@
 import Barba from 'barba.js';
 
-var Homepage = Barba.BaseView.extend({
+import './style.styl';
+
+var Aboutpage = Barba.BaseView.extend({
   namespace: 'aboutpage',
   onEnter: function() {
       // The new Container is ready and attached to the DOM.
@@ -18,5 +20,5 @@ var Homepage = Barba.BaseView.extend({
 });
 
 // Don't forget to init the view!
-Homepage.init();
+Aboutpage.init();
 

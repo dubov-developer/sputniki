@@ -11,14 +11,13 @@ import { TimelineLite, Power2 } from 'gsap';
 let scenes = [];
 
 var Servicespage = Barba.BaseView.extend({
-  namespace: 'servicespage',
+  namespace: 'services',
   onEnter: function() {
     ServicesEnterAnimation();
 
     setTimeout(() => {
 
       $('.service').each((index, el) => {
-        console.log('!', el);
         const tl = new TimelineLite();
         const tlWch = willChange(tl);
 

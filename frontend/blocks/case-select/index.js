@@ -63,7 +63,7 @@ window.domModules['case-select'] = {
           this.isOpened = true;
         }
       });
-    }, 1000)
+    });
   },
   onScroll(event) {
     if (!this.isStucked) {

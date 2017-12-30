@@ -2,7 +2,7 @@ import './style.styl';
 import Barba from 'barba.js';
 import { CasesEnterAnimation } from './animation';
 import { hover } from '../../js/hover.js';
-import { scrollbar } from '../../scroll';
+import { scrollbar, disableScroll, enableScroll } from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
 
@@ -13,7 +13,10 @@ let scenes = [];
 var Casespage = Barba.BaseView.extend({
   namespace: 'casespage',
   onEnter: function() {
-    CasesEnterAnimation();
+    disableScroll();
+    CasesEnterAnimation().then(() => {
+      enableScroll();
+    });
   },
   onEnterCompleted: function() {
 

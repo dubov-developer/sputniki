@@ -32,6 +32,14 @@ function onMouseWheel(e) {
   }
 }
 
+export function disableScroll() {
+  stopScroll = true;
+};
+
+export function enableScroll() {
+  stopScroll = false;
+};
+
 export function initTargets() {
   lastStackIndex = 0;
   const targets = $('[data-scroll-target]');

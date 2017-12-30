@@ -4,7 +4,9 @@ html(data-dom-module="base-layout")
     script.
       window.retina = window.devicePixelRatio > 1 ? true : false;
       if (window.retina && document.getElementById('favicon')) {
-        document.getElementById('favicon').getAttribute('href').replace('.ico', '@2x.ico')
+        var favicon = document.getElementById('favicon');
+        var faviconHref = favicon.getAttribute('href').replace('.ico', '@2x.ico');
+        favicon.setAttribute('href', faviconHref);
       }
   body
     .fixed-container

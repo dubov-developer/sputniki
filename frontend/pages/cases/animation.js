@@ -4,7 +4,9 @@ import getViewport from 'getviewport';
 
 export function CasesEnterAnimation() {
   return new Promise((resolve, reject) => {
-    const tl = new TimelineMax();
+    const tl = new TimelineMax({
+      onComplete: resolve,
+    });
 
     const cases = $('.cases');
     const title = cases.find('.cases__title');
