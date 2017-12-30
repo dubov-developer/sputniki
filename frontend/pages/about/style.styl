@@ -1,3 +1,75 @@
-.number
-  font-size 400px
-  font-weight 900
+.facts
+  margin-top rem(60, 17)
+
+.fact
+  position relative
+  padding-top rem(100, 17)
+  padding-bottom rem(130, 17)
+
+  &__line
+    top 0
+    left 0
+    width rem(536, 17)
+    height 1px
+    background-color #514845
+    position absolute
+
+.fact_year
+  padding-bottom rem(180, 17)
+  .description
+    position absolute
+    bottom rem(120, 17)
+    left rem(120, 17)
+
+  .fact
+    &__number
+      imgboxrem('./assets/year.png', 17.5)
+
+.fact_offices
+  padding-bottom rem(155, 17)
+  .description
+    position absolute
+    bottom rem(130, 17)
+    left rem(295, 17)
+
+  .fact
+    &__number
+      imgboxrem('./assets/offices.png', 17.5)
+
+.fact_employees
+  padding-bottom rem(240, 17)
+  .description
+    position absolute
+    bottom rem(130, 17)
+    left 0
+
+  .fact
+    &__number
+      imgboxrem('./assets/employees.png', 17.5)
+
+.fact_talents
+  .description
+    position absolute
+    bottom rem(50, 17)
+    left rem(230, 17)
+
+  .fact
+    &__number
+      imgboxrem('./assets/talents.png', 18)
+
+.fact:first-child
+  .fact__line
+    display none
+
+.ratings
+  margin-top rem(100, 17)
+  margin-bottom rem(150, 17)
+
+  &__title
+    font-size rem(40, 17)
+    line-height rem(48, 17)
+    letter-spacing rem(1.2, 17)
+    margin-bottom rem(45, 17)
+
+  &__block
+    imgboxrem('./assets/ratings.png', 17)

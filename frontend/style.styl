@@ -24,7 +24,6 @@ h1, h2
 .custom-scroll
   height 100%
 
-
 .scrollbar-track
   background transparent !important
 
@@ -231,3 +230,24 @@ h1, h2
   cursor none
   pointer-events none
 
+
+// Общие стили
+.title
+  font-size rem(60, 17)
+  font-weight 500
+
+.description
+  font-size rem(30, 17)
+  line-height rem(42, 17)
+  font-weight 300
+  letter-spacing rem(1.5, 17)
+
+.page
+  margin-top 50vh
+
+  .title + .description
+    margin-top rem(50, 17)
+
+  &__content
+    margin-left rem(75, 17)
+    margin-top rem(-10, 17)
