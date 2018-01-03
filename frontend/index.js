@@ -63,11 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 Barba.Dispatcher.on('newPageReady', function() {
-  //your listener
-  if (scrollbar) {
-    scrollbar.setPosition(0, 0);
-  }
-  console.log('PAGE READY');
 });
 
 Barba.Dispatcher.on('transitionCompleted', function() {

@@ -75,15 +75,20 @@ var Contactpage = Barba.BaseView.extend({
       const button = section4.find('.telegram');
       const buttonBackground = section4.find('.telegram__background');
       const buttonBorderRight = section4.find('.telegram__border_right');
+      const buttonBorderLeft = section4.find('.telegram__border_left');
       const buttonText = section4.find('.telegram__text');
       const buttonIcon = section4.find('.telegram__icon');
-      
+      const buttonCircle = section4.find('.telegram__circle');
+  
       tlWch4.from(section4h1, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0);
-      tl4.set(button, { autoAlpha: 1 }, 0.8);
-      tlWch4.from(buttonBackground, 0.7, { scaleX: 0, ease: Power1.easeOut }, 0.8);
-      tlWch4.from(buttonBorderRight, 0.7, { xPercent: -400, ease: Power1.easeOut }, 0.8);
-      tlWch4.from([buttonText, buttonIcon], 0.5, { autoAlpha: 0, ease: Power1.easeOut }, 1.6);
-    
+
+      tlWch4.from([buttonBorderLeft, buttonBorderRight], 0.5, { autoAlpha: 0, ease: Power2.easeInOut }, 0.8);
+      tlWch4.from(buttonBackground, 0.7, { scaleX: 0, ease: Power2.easeInOut }, 1);
+      tlWch4.from(buttonBorderRight, 0.7, { xPercent: -425, ease: Power2.easeInOut }, 1);
+      tlWch4.from(buttonCircle, 0.5, { scale: 0, ease: Power2.easeInOut }, 2);
+      tlWch4.from(buttonText, 0.5, { autoAlpha: 0, y: 10, ease: Power2.easeInOut }, 2.5);
+      tlWch4.from(buttonIcon, 0.5, { y: 50, x: -50, ease: Power2.easeInOut }, 2.6);
+
       let scene4 = scrollmagic.scene({
         triggerElement: '.section_contacts-hello',
         triggerHook: 0.5,

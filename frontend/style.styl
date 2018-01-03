@@ -115,8 +115,6 @@ h1, h2
     margin 0 rem(42, 17)
 
 .telegram
-  opacity 0
-  visibility hidden
   display block
   position relative
   height rem(50, 17)
@@ -159,11 +157,22 @@ h1, h2
     font-weight 300
     margin-left rem(25, 17)
 
-  &__icon
+  &__circle
     position relative
-    imgboxrem('./images/telegram.png', 17)
+    width rem(37, 17)
+    height rem(37, 17)
+    background-color #fff
     margin-right rem(6, 17)
+    border-radius 50%
+    overflow hidden
 
+  &__icon
+    position absolute
+    top 50%
+    left 50%
+    margin-top rem(-8.5, 17)
+    margin-left rem(-12, 17)
+    imgboxrem('./images/plane.png', 17)
 
 .action-line
   display flex

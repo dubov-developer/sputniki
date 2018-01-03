@@ -144,15 +144,20 @@ var Homepage = Barba.BaseView.extend({
       const button = $('.section_home-hello .telegram');
       const buttonBackground = $('.section_home-hello .telegram__background');
       const buttonBorderRight = $('.section_home-hello .telegram__border_right');
+      const buttonBorderLeft = $('.section_home-hello .telegram__border_left');
       const buttonText = $('.section_home-hello .telegram__text');
       const buttonIcon = $('.section_home-hello .telegram__icon');
+      const buttonCircle = $('.section_home-hello .telegram__circle');
       tlWch6.from(h26, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0);
-      tl6.set(button, { autoAlpha: 1 }, 0.8);
-      tlWch6.from(buttonBackground, 0.7, { scaleX: 0, ease: Power1.easeOut }, 0.8);
-      tlWch6.from(buttonBorderRight, 0.7, { xPercent: -400, ease: Power1.easeOut }, 0.8);
-      tlWch6.from([buttonText, buttonIcon], 0.5, { autoAlpha: 0, ease: Power1.easeOut }, 1.6);
 
-      tlWch6.from(contactsInfoLinks6, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 2);
+      tlWch6.from([buttonBorderLeft, buttonBorderRight], 0.5, { autoAlpha: 0, ease: Power2.easeInOut }, 0.8);
+      tlWch6.from(buttonBackground, 0.7, { scaleX: 0, ease: Power2.easeInOut }, 1);
+      tlWch6.from(buttonBorderRight, 0.7, { xPercent: -425, ease: Power2.easeInOut }, 1);
+      tlWch6.from(buttonCircle, 0.5, { scale: 0, ease: Power2.easeInOut }, 2);
+      tlWch6.from(buttonText, 0.5, { autoAlpha: 0, y: 10, ease: Power2.easeInOut }, 2.5);
+      tlWch6.from(buttonIcon, 0.5, { y: 50, x: -50, ease: Power2.easeInOut }, 2.6);
+
+      tlWch6.from(contactsInfoLinks6, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 2.8);
       let scene6 = scrollmagic.scene({
         triggerElement: '.section_home-hello',
         triggerHook: 0.5,
