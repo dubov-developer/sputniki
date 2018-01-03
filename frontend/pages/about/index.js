@@ -55,7 +55,37 @@ var Aboutpage = Barba.BaseView.extend({
     
         scenes.push(sceneParalax);
       });
-      
+
+      const ratings = $('.ratings');
+      const ratingsTitle = ratings.find('.ratings__title');
+      const ratingsItems = ratings.find('.ratings__item');
+      const tlRating = new TimelineLite();
+      const tlRatingWch = willChange(tlRating);
+
+      tlRatingWch.from(ratingsTitle, 0.8, { autoAlpha: 0, yPercent: 20, ease: Power2.easeInOut }, 0);
+
+      let sceneRatingTitle = scrollmagic.scene({
+        triggerElement: ratings[0],
+        triggerHook: 0.5,
+        reverse: false
+      }, tlRating);
+  
+      scenes.push(sceneRatingTitle);
+
+      const tlRatingGroup = new TimelineLite();
+      const tlRatingGroupWch = willChange(tlRatingGroup);
+
+      tlRatingGroupWch.staggerFrom(ratingsItems, 0.8, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut }, 0.1, 0);
+
+      let sceneRatingGroup = scrollmagic.scene({
+        triggerElement: ratings[0],
+        offset: '20%',
+        triggerHook: 0.5,
+        reverse: false
+      }, tlRatingGroup);
+  
+      scenes.push(sceneRatingGroup);
+
       const tlcopy = new TimelineLite();
       const tlcopyWch = willChange(tlcopy);
       const copy = document.querySelector('.copyright');

@@ -76,4 +76,49 @@
     margin-bottom rem(45, 17)
 
   &__block
-    imgboxrem('./assets/ratings.png', 17)
+    width rem(536, 17)
+    height rem(395, 17)
+    position relative
+
+  &__item
+    position absolute
+    display flex
+    align-items center
+    justify-content center
+    border 1px solid #514845
+
+    &_1
+      width rem(266, 17)
+      height rem(162, 17)
+      top 0
+      left 0
+
+      .ratings__logo
+        imgboxrem('./assets/tagline.png', 17)
+
+    &_2
+      width rem(268, 17)
+      height rem(232, 17)
+      top 0
+      right 0
+
+      .ratings__logo
+        imgboxrem('./assets/ruward.png', 17)
+
+    &_3
+      width rem(266, 17)
+      height rem(231, 17)
+      bottom 0
+      left 0
+
+      .ratings__logo
+        imgboxrem('./assets/ramu.png', 17)
+
+    &_4
+      width rem(268, 17)
+      height rem(161, 17)
+      bottom 0
+      right 0
+
+      .ratings__logo
+        imgboxrem('./assets/adindex.png', 17)
