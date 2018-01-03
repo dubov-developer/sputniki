@@ -14,10 +14,10 @@ var Contactpage = Barba.BaseView.extend({
   namespace: 'contactspage',
   onEnter: function() {
       // The new Container is ready and attached to the DOM.
-      ContactEnterAnimation();
   },
   onEnterCompleted: function() {
       // The Transition has just finished.
+    ContactEnterAnimation();
     setTimeout(() => {
       const tl = new TimelineLite();
       const tlWch = willChange(tl);

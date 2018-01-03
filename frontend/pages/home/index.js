@@ -14,13 +14,6 @@ let scrolldown;
 var Homepage = Barba.BaseView.extend({
   namespace: 'homepage',
   onEnter: function() {
-    scrolldown = $('.scroll-down');
-    
-    HomeEnterAnimation();
-    
-    setTimeout(() => {
-      scrollbar.addListener(this.onScroll);
-    })
   },
   onScroll: function(event) {
     console.log('>', event.offset.y, isScrollDownVisible);
@@ -35,6 +28,13 @@ var Homepage = Barba.BaseView.extend({
   },
   onEnterCompleted: function() {
       // The Transition has just finished.
+    scrolldown = $('.scroll-down');
+  
+    HomeEnterAnimation();
+    
+    setTimeout(() => {
+      scrollbar.addListener(this.onScroll);
+    })
     setTimeout(() => {
       const tl = new TimelineLite();
       const tlWch = willChange(tl);

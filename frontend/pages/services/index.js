@@ -13,6 +13,8 @@ let scenes = [];
 var Servicespage = Barba.BaseView.extend({
   namespace: 'services',
   onEnter: function() {
+  },
+  onEnterCompleted: function() {
     ServicesEnterAnimation();
 
     setTimeout(() => {
@@ -62,9 +64,6 @@ var Servicespage = Barba.BaseView.extend({
       scenes.push(sceneCopy);
 
     });
-
-  },
-  onEnterCompleted: function() {
   },
   onLeave: function() {
   },

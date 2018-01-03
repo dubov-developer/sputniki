@@ -13,13 +13,12 @@ let scenes = [];
 var Casespage = Barba.BaseView.extend({
   namespace: 'casespage',
   onEnter: function() {
+  },
+  onEnterCompleted: function() {
     disableScroll();
     CasesEnterAnimation().then(() => {
       enableScroll();
     });
-  },
-  onEnterCompleted: function() {
-
     setTimeout(() => {
       const cases = $('.preview-case');
 

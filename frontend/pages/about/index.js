@@ -13,11 +13,9 @@ let scenes = [];
 var Aboutpage = Barba.BaseView.extend({
   namespace: 'aboutpage',
   onEnter: function() {
-    AboutEnterAnimation();
   },
   onEnterCompleted: function() {
-
-
+    AboutEnterAnimation();
     // The Transition has just finished.
     setTimeout(() => {
       const tlcopy = new TimelineLite();
