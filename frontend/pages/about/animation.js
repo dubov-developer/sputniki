@@ -7,7 +7,7 @@ export function AboutEnterAnimation() {
 
     const section = $('.page_about');
     const title = section.find('.title');
-    const description = section.find('.description');
+    const description = section.find('.description').eq(0);
 
     tl.from(title, 0.7, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.3);
     tl.from(description, 0.7, { yPercent: 10, autoAlpha: 0, ease: Power1.easeOut }, 0.7);
