@@ -1,39 +1,24 @@
-require('./style.styl');
+import './style.styl';
 import Barba from 'barba.js';
-import { HomeEnterAnimation, HomeLeaveAnimation } from './animation';
-import { scrollbar } from '../../scroll';
+import { HomeEnterAnimation } from './animation';
+import { scrollbar, enableScroll } from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
 
 import { TimelineLite, TweenMax, Power2 } from 'gsap';
 
 let scenes = [];
-let isScrollDownVisible = true;
-let scrolldown;
 
 var Homepage = Barba.BaseView.extend({
   namespace: 'home',
   onEnter: function() {
   },
-  onScroll: function(event) {
-    if (event.offset.y > 0 && isScrollDownVisible) {
-      TweenMax.to(scrolldown, 0.5, { autoAlpha: 0, ease: Power2.easeInOut });
-      isScrollDownVisible = false;
-    }
-    if (event.offset.y === 0) {
-      TweenMax.to(scrolldown, 0.5, { autoAlpha: 1, ease: Power2.easeInOut });
-      isScrollDownVisible = true;
-    }
-  },
   onEnterCompleted: function() {
       // The Transition has just finished.
-    scrolldown = $('.scroll-down');
-  
-    HomeEnterAnimation();
-    
-    setTimeout(() => {
-      scrollbar.addListener(this.onScroll);
-    })
+    HomeEnterAnimation().then(() => {
+      enableScroll();
+    });
+
     setTimeout(() => {
       const tl = new TimelineLite();
       const tlWch = willChange(tl);
@@ -179,9 +164,6 @@ var Homepage = Barba.BaseView.extend({
     })
   },
   onLeave: function() {
-      // A new Transition toward a new page has just started.
-      HomeLeaveAnimation();
-      scrollbar.removeListener(this.onScroll);
   },
   onLeaveCompleted: function() {
       // The Container has just been removed from the DOM.

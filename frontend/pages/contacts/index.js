@@ -2,7 +2,7 @@ import './style.styl';
 import Barba from 'barba.js';
 import $ from 'jquery';
 import { ContactEnterAnimation } from './animation';
-import { scrollbar } from '../../scroll';
+import { scrollbar, enableScroll } from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
 
@@ -17,7 +17,10 @@ var Contactpage = Barba.BaseView.extend({
   },
   onEnterCompleted: function() {
       // The Transition has just finished.
-    ContactEnterAnimation();
+    ContactEnterAnimation().then(() => {
+      enableScroll();
+    });
+
     setTimeout(() => {
       const tl = new TimelineLite();
       const tlWch = willChange(tl);

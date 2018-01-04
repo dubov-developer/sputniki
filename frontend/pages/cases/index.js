@@ -15,7 +15,6 @@ var Casespage = Barba.BaseView.extend({
   onEnter: function() {
   },
   onEnterCompleted: function() {
-    disableScroll();
     CasesEnterAnimation().then(() => {
       enableScroll();
     });

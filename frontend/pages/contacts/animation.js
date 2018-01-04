@@ -3,7 +3,9 @@ import { TimelineMax, Power1, Power2, Power4 } from 'gsap';
 
 export function ContactEnterAnimation() {
   return new Promise((resolve, reject) => {
-    const tl = new TimelineMax();
+    const tl = new TimelineMax({
+      onComplete: resolve
+    });
 
     const section = $('.section_contacts_1');
     const h1 = section.find('h1');

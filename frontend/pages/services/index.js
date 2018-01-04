@@ -2,7 +2,7 @@ import './style.styl';
 import Barba from 'barba.js';
 import { ServicesEnterAnimation } from './animation';
 
-import { scrollbar } from '../../scroll';
+import { scrollbar, enableScroll } from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
 
@@ -15,7 +15,9 @@ var Servicespage = Barba.BaseView.extend({
   onEnter: function() {
   },
   onEnterCompleted: function() {
-    ServicesEnterAnimation();
+    ServicesEnterAnimation().then(() => {
+      enableScroll();
+    });
 
     setTimeout(() => {
 

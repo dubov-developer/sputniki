@@ -3,7 +3,9 @@ import { TimelineMax, Power1, Power2, Power4 } from 'gsap';
 
 export function AboutEnterAnimation() {
   return new Promise((resolve, reject) => {
-    const tl = new TimelineMax();
+    const tl = new TimelineMax({
+      onComplete: resolve
+    });
 
     const section = $('.page_about');
     const title = section.find('.title');

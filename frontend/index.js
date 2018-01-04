@@ -2,7 +2,7 @@ import $ from 'jquery';
 window.$ = $;
 import './style.styl';
 import Barba from 'barba.js';
-import { initScroll, initTargets, scrollbar } from './scroll.js';
+import { initScroll, initTargets, disableScroll, scrollbar } from './scroll.js';
 import { scrollmagic } from './js/scrollmagic.js';
 import { hover } from './js/hover.js';
 
@@ -13,6 +13,7 @@ import './blocks/case-select/index.js';
 import './blocks/social-icon-list/index.js';
 import './blocks/promo/index.js';
 import './blocks/loader/index.js';
+import './blocks/scroll-down/index.js';
 
 import './pages/home/index';
 import './pages/about/index';
@@ -54,6 +55,7 @@ Barba.Dispatcher.on('linkClicked', function(el) {
 var HideShowTransition = Barba.BaseTransition.extend({
   start: function() {
     window['domModules'].loader.start();
+    disableScroll();
     this.newContainerLoading.then(() => {
       return new Promise((resolve) => {
         setTimeout(() => {

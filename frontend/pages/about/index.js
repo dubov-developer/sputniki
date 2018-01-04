@@ -2,7 +2,7 @@ import './style.styl';
 import Barba from 'barba.js';
 import $ from 'jquery';
 import { AboutEnterAnimation } from './animation';
-import { scrollbar } from '../../scroll';
+import { scrollbar, enableScroll } from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
 
@@ -15,7 +15,9 @@ var Aboutpage = Barba.BaseView.extend({
   onEnter: function() {
   },
   onEnterCompleted: function() {
-    AboutEnterAnimation();
+    AboutEnterAnimation().then(() => {
+      enableScroll();
+    });
     // The Transition has just finished.
     setTimeout(() => {
       const facts = $('.fact');
