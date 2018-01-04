@@ -123,15 +123,16 @@ h1, h2
   &__border
     position absolute
     background-color #5e5955
-    border-radius 99999px
-    width rem(50, 17)
+    width rem(25, 17)
     height 100%
 
     &_left
       left 0
-    
+      border-radius 99999px 0 0 99999px
+
     &_right
       right 0
+      border-radius 0 99999px 99999px 0
 
   &__text
     position relative
