@@ -27,18 +27,30 @@ var Aboutpage = Barba.BaseView.extend({
         const number = element.find('.fact__number');
         const description = element.find('.description');
 
-        const tlShow = new TimelineLite();
-        const tlShowWch = willChange(tlShow);
-        tlShow.from(number, 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0);
-        tlShow.from(description, 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0.3);
+        const tlShowNumber = new TimelineLite();
+        const tlShowNumberWch = willChange(tlShowNumber);
+        tlShowNumberWch.from(number, 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0);
 
-        let sceneShow = scrollmagic.scene({
+        let sceneNumberShow = scrollmagic.scene({
           triggerElement: el,
           triggerHook: 0.6,
-          reverse: false
-        }, tlShow);
+          reverse: true,
+          duration: '60%'
+        }, tlShowNumber);
     
-        scenes.push(sceneShow);
+        scenes.push(sceneNumberShow);
+
+        const tlShowDescription = new TimelineLite();
+        const tlShowDescriptionWch = willChange(tlShowDescription);
+        tlShowDescriptionWch.from(description, 0.5, { autoAlpha: 0, ease: Power2.easeInOut }, 0);
+
+        let sceneDescriptionShow = scrollmagic.scene({
+          triggerElement: el,
+          triggerHook: 0.35,
+          reverse: true,
+        }, tlShowDescription);
+    
+        scenes.push(sceneDescriptionShow);
 
         const tlParalax = new TimelineLite();
         const tlParalaxWch = willChange(tlParalax);
@@ -58,6 +70,7 @@ var Aboutpage = Barba.BaseView.extend({
 
       const ratings = $('.ratings');
       const ratingsTitle = ratings.find('.ratings__title');
+      const ratingsBackground = ratings.find('.ratings__background-block');
       const ratingsItems = ratings.find('.ratings__item');
       const tlRating = new TimelineLite();
       const tlRatingWch = willChange(tlRating);
@@ -75,7 +88,8 @@ var Aboutpage = Barba.BaseView.extend({
       const tlRatingGroup = new TimelineLite();
       const tlRatingGroupWch = willChange(tlRatingGroup);
 
-      tlRatingGroupWch.staggerFrom(ratingsItems, 0.8, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut }, 0.1, 0);
+      tlRatingGroupWch.from(ratingsBackground, 0.8, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut }, 0);
+      tlRatingGroupWch.staggerFrom(ratingsItems, 0.8, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut }, 0.1, 0.8);
 
       let sceneRatingGroup = scrollmagic.scene({
         triggerElement: ratings[0],

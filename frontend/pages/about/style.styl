@@ -80,12 +80,20 @@
     height rem(395, 17)
     position relative
 
+  &__background-block
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background-image-retina('./assets/ratings.png')
+    background-size cover
+
   &__item
     position absolute
     display flex
     align-items center
     justify-content center
-    border 1px solid #514845
 
     &_1
       width rem(266, 17)
