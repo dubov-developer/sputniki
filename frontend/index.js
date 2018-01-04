@@ -1,9 +1,6 @@
 import $ from 'jquery';
 window.$ = $;
-import { scrollbar } from './scroll';
 import './style.styl';
-import imageSrc from './images/cream.png'
-import printMe from './print.js';
 import Barba from 'barba.js';
 import { initScroll, initTargets, scrollbar } from './scroll.js';
 import { scrollmagic } from './js/scrollmagic.js';
@@ -25,34 +22,7 @@ import './pages/cases/index';
 
 import { initDomModules } from './js/common.js';
 
-function component() {
-  var element = document.createElement('div');
-
-  element.innerHTML = 'Hello';
-  element.classList.add('hello');
-
-  // Add the image to our existing div.
-  var myIcon = new Image();
-  myIcon.src = imageSrc;
-
-  element.appendChild(myIcon);
-
-  element.onclick = () => {
-    getAsyncComponent().then((component) => {
-      document.body.appendChild(component);
-    });
-  };
-
-  return element;
-}
-
-function getAsyncComponent() {
-  return import(/* webpackChunkName: "lodash" */ 'lodash').then((_) => {
-    var element = document.createElement('div');
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    return element;
-  });
-}
+import Router from './router.js';
 
 document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
@@ -60,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
   initScroll();
   hover.init();
   scrollmagic.init(scrollbar);
+  Router.init();
 });
 
 Barba.Dispatcher.on('newPageReady', function() {
@@ -71,8 +42,6 @@ Barba.Dispatcher.on('transitionCompleted', function() {
     // из за входной анимации, исправить это
     initTargets();
   }, 1000);
-
-  console.log('COMPLETED');
 });
 
 let prevState = null;

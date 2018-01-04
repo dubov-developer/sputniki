@@ -1,5 +1,6 @@
 html(data-dom-module="base-layout")
   head
+    title Sputniki
     link#favicon(href="favicon.ico", rel="icon", type="image/x-icon")
     script.
       window.retina = window.devicePixelRatio > 1 ? true : false;
@@ -13,13 +14,13 @@ html(data-dom-module="base-layout")
       nav.menu(data-dom-module="menu")
         ul.menu__list
           li.menu__item
-            a(href="about.html").menu__link О нас
+            a(href="about.html", data-name="about").menu__link О нас
           li.menu__item
-            a(href="cases.html").menu__link Кейсы
+            a(href="cases.html", data-name="cases").menu__link Кейсы
           li.menu__item
-            a(href="services.html").menu__link Услуги
+            a(href="services.html", data-name="services").menu__link Услуги
           li.menu__item
-            a(href="contacts.html").menu__link Контакты
+            a(href="contacts.html", data-name="contacts").menu__link Контакты
       a.logo(href="index.html" data-dom-module="logo")
       ul.social-list(data-dom-module="social-icon-list")
         li.social-list__item

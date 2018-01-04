@@ -12,11 +12,10 @@ let isScrollDownVisible = true;
 let scrolldown;
 
 var Homepage = Barba.BaseView.extend({
-  namespace: 'homepage',
+  namespace: 'home',
   onEnter: function() {
   },
   onScroll: function(event) {
-    console.log('>', event.offset.y, isScrollDownVisible);
     if (event.offset.y > 0 && isScrollDownVisible) {
       TweenMax.to(scrolldown, 0.5, { autoAlpha: 0, ease: Power2.easeInOut });
       isScrollDownVisible = false;

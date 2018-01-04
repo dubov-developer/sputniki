@@ -1,7 +1,7 @@
 import './style.styl';
 import $ from 'jquery';
 import { TimelineMax, Power2 } from 'gsap';
-import Barba from 'barba.js';
+import Router from '../../router.js';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -12,21 +12,16 @@ window.domModules['menu'] = {
     this.el = el;
     this.entryAnimation();
 
-    Barba.Dispatcher.on('newPageReady', this.onPageChange.bind(this));
-    this.onPageChange({
-      url: window.location.href
+    Router.events.subscribe((event) => {
+      if (event) {
+        this.onPageChange(event);
+      }
     });
   },
 
-  onPageChange: function(currentStatus) {
-    let link = currentStatus.url.split(window.location.origin)[1].substring(1);
-
-    if (process.env.NODE_ENV === 'production') {
-      link = link.split('/').slice(1).join('/');
-    }
-
+  onPageChange: function(event) {
     const navigationLinks = this.el.find('.menu__link');
-    const navigationLinkIsActive = this.el.find(`[href="${link}"]`);
+    const navigationLinkIsActive = this.el.find(`[data-name="${event.current}"]`);
     navigationLinks.removeClass('active');
     navigationLinkIsActive.addClass('active');
   },

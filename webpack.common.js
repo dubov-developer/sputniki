@@ -24,7 +24,6 @@ const postCssOptions = {
 module.exports = {
   entry: {
     index: './frontend/index.js',
-    about: './frontend/about.js',
   },
   output: {
     filename: '[name].[hash].js',
@@ -55,6 +54,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          }
+        }
+      },
       {
         test: /\.css$/,
         use: NODE_ENV === 'production' ? 

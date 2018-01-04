@@ -11,7 +11,7 @@ import { TimelineLite, Power1, Power2 } from 'gsap';
 let scenes = [];
 
 var Contactpage = Barba.BaseView.extend({
-  namespace: 'contactspage',
+  namespace: 'contacts',
   onEnter: function() {
       // The new Container is ready and attached to the DOM.
   },

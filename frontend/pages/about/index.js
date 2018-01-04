@@ -11,7 +11,7 @@ import { TimelineLite, Power1, Power2 } from 'gsap';
 let scenes = [];
 
 var Aboutpage = Barba.BaseView.extend({
-  namespace: 'aboutpage',
+  namespace: 'about',
   onEnter: function() {
   },
   onEnterCompleted: function() {
