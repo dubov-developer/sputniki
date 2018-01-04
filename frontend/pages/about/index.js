@@ -23,14 +23,12 @@ var Aboutpage = Barba.BaseView.extend({
       facts.each((i, el) => {
         const element = $(el);
         const number = element.find('.fact__number');
-        const line = element.find('.fact__line');
         const description = element.find('.description');
 
         const tlShow = new TimelineLite();
         const tlShowWch = willChange(tlShow);
-        tlShowWch.from(line, 0.8, { transformOrigin: '0% 50%', scaleX: 0, ease: Power2.easeInOut }, 0);
-        tlShow.from(number, 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0.2);
-        tlShow.from(description, 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0.5);
+        tlShow.from(number, 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0);
+        tlShow.from(description, 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0.3);
 
         let sceneShow = scrollmagic.scene({
           triggerElement: el,
