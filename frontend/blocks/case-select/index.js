@@ -17,7 +17,7 @@ window.domModules['case-select'] = {
     setTimeout(() => {
       this.el = el;
       this.fixedContainer = $('.fixed-container');
-
+      this.curentValueText = el.find('[data-current-value] .action-line__options-text');
       this.wrapper = this.el.parent();
       this.wrapperOffset = this.wrapper.offset();
       this.wrapperHeight = this.wrapper.height();
@@ -33,17 +33,33 @@ window.domModules['case-select'] = {
       scrollbar.addListener(this.onScroll);
 
       this.actionLine.on('mouseenter', () => {
-        hover.enter();
+        if (!this.isOpened) {
+          hover.enter();
+        }
       });
 
       this.actionLine.on('mouseleave', () => {
-        hover.leave();
+        if (!this.isOpened) {
+          hover.leave();
+        }
       });
 
       this.items = this.el.find('.case-select-dropdown__item span');
 
-      this.items.on('click', () => {
+      $('.action-line_case-dropdown .action-line__options-text span').on('click', (e) => {
+        const target = $(e.target);
+        this.items.removeClass('active');
+        target.addClass('active');
+        this.curentValueText.text(target.text());
+      });
+
+      this.items.on('click', (e) => {
         let tl = this.el.data('timeline-click');
+        const target = $(e.target);
+        this.curentValueText.text(target.text());
+        this.items.removeClass('active');
+        target.addClass('active');
+        $('.action-line_case-dropdown .action-line__options-text span').removeClass('active');
 
         if (!tl) {
           this.el.data('timeline-click', this.initTimeline(this.el));
@@ -65,9 +81,13 @@ window.domModules['case-select'] = {
         if (this.isOpened) {
           tl.reverse();
           this.isOpened = false;
+          hover.enter();
+          this.actionLine.removeClass('opened');
         } else {
           tl.play();
           this.isOpened = true;
+          hover.leave();
+          this.actionLine.addClass('opened');          
         }
       });
     });
@@ -124,14 +144,16 @@ window.domModules['case-select'] = {
   },
   initTimeline(el) {
     const objectModule = this;
+    const curentValue = el.find('[data-current-value]');
     const dropdown = el.find('.case-select-dropdown');
     const background = el.find('.case-select-dropdown__background');
-    const items = el.find('.case-select-dropdown__items');
+    const innerActionLine = dropdown.find('.action-line');
+    const groups= el.find('.case-select-dropdown__group');
     const optionsButton = el.find('.action-line__options-button');
     const optionsButtonLineV = el.find('.action-line__options-button-line_v');
     const optionsLine = el.find('.action-line__options-line');
     const optionsText = el.find('.action-line__options-text');
-    let yTransformOrigin = optionsText.position().top + Math.abs(parseInt(background.css('top'), 10)) - 4;
+    let yTransformOrigin = optionsText.position().top + Math.abs(parseInt(background.css('top'), 10)) - 6;
     
     const tl = new TimelineMax({
       paused: true,
@@ -139,17 +161,22 @@ window.domModules['case-select'] = {
         el.css({ zIndex: 10 });
         dropdown.css({ display: 'block'});
         objectModule.fixedContainer.css({ zIndex: 0 });
+        TweenMax.set(curentValue, { autoAlpha: 0 });
+        TweenMax.set(innerActionLine, { autoAlpha: 1 });
       },
       onComplete() {
       },
       onReverseComplete() {
         dropdown.css({ display: 'none'});
         objectModule.fixedContainer.css({ zIndex: 1 });
+        TweenMax.set(curentValue, { autoAlpha: 1 });
+        TweenMax.set(innerActionLine, { autoAlpha: 0 });
       }
     })
 
+
     tl.to(background, 0.5, { transformOrigin: `50% ${yTransformOrigin}px`, scaleY: 1, ease: Power2.easeInOut }, 0)
-    tl.to(items, 0.5, { autoAlpha: 1, ease: Power2.easeInOut }, 0.2)
+    tl.to(groups, 0.5, { autoAlpha: 1, ease: Power2.easeInOut }, 0.2)
     tl.to(optionsButton, 0.5, { borderColor: '#fff', ease: Power2.easeInOut }, 0);
     tl.to(optionsLine, 0.5, { backgroundColor: '#fff', ease: Power2.easeInOut }, 0);
     tl.to(optionsButtonLineV, 0.5, { scaleY: 0, ease: Power2.easeInOut }, 0);

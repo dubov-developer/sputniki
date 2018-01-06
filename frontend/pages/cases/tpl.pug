@@ -9,7 +9,7 @@ block content
           .case-select-wrapper
             .case-select(data-dom-module="case-select")
               .case-select__overlay
-              .action-line.action-line_cases
+              .action-line.action-line_cases(data-current-value)
                 .action-line__options-text Все категории
                 .action-line__options-line
                 .action-line__options-button
@@ -18,8 +18,13 @@ block content
               .case-select-dropdown
                 .case-select-dropdown__background
                 .case-select-dropdown__items
-                  .case-select-dropdown__item.active
-                    span Все категории
+                  .action-line.action-line_cases.action-line_case-dropdown
+                    .action-line__options-text
+                      span.active Все категории
+                    .action-line__options-line
+                    .action-line__options-button
+                      .action-line__options-button-line.action-line__options-button-line_h
+                      .action-line__options-button-line.action-line__options-button-line_v
                   .case-select-dropdown__group
                     .case-select-dropdown__item
                       span Advertising Campaigns
