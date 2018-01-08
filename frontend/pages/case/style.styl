@@ -170,6 +170,35 @@
   height rem(540, 17)
   background-color rgba(255, 255, 255, 1)
 
+  &__wrapper
+    height rem(540, 17)
+    cursor none
+
+  &__hover
+    display flex
+    align-items center
+    justify-content center
+    position absolute
+    z-index 1
+    top 0
+    left 0
+    width rem(80, 17)
+    height rem(80, 17)
+    background-color #5d524d
+    border-radius 50%
+    transform scale(0)
+    cursor none
+    pointer-events none
+  
+  &__hover-icon
+    imgboxrem('./assets/arrow-right.png', 17)
+
+    &.left
+      transform rotate(180deg)
+
+    &.right
+      transform rotate(0deg)
+
   &__slide
     height rem(540, 17)
     background-repeat no-repeat
