@@ -2870,6 +2870,10 @@ load-json-file@^2.0.0:
     pify "^2.0.0"
     strip-bom "^3.0.0"
 
+load-script2@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script2/-/load-script2-1.0.0.tgz#ef95c7dae7f4cc7efde2821a9bd2382110a7f24a"
+
 loader-runner@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
@@ -5315,3 +5319,9 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+yt-player@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/yt-player/-/yt-player-2.5.2.tgz#a154341a6325c09b3587eb8ad8e1217c41234aa2"
+  dependencies:
+    load-script2 "^1.0.0"
