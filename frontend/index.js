@@ -25,6 +25,7 @@ import { initDomModules } from './js/common.js';
 
 import Router from './router.js';
 
+
 document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
   initDomModules();
@@ -54,17 +55,29 @@ Barba.Dispatcher.on('linkClicked', function(el) {
 
 var HideShowTransition = Barba.BaseTransition.extend({
   start: function() {
-    window['domModules'].loader.start();
-    disableScroll();
-    this.newContainerLoading.then(() => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          window['domModules'].loader.done().then(() => {
+    return new Promise((resolve, reject) => {
+      disableScroll();
+      let loaderStarted = false;
+      const timeout = setTimeout(() => {
+        window['domModules'].loader.start();
+        loaderStarted = true;
+      }, 500);
+
+
+      this.newContainerLoading.then(() => {
+        return new Promise((resolve) => {
+
+          if (!loaderStarted) {
+            clearTimeout(timeout);
             resolve();
-          });
-        }, 2000);
-      });
-    }).then(this.finish.bind(this));
+          } else {
+            window['domModules'].loader.done().then(() => {
+              resolve();
+            });
+          }
+        });
+      }).then(this.finish.bind(this));
+    });
   },
 
   finish: function() {
