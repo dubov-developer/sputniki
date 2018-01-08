@@ -1,5 +1,7 @@
-import $ from 'jquery';
-window.$ = $;
+const $ = require('jquery');
+window.$ = window.jQuery = $;
+require('slick-carousel/slick/slick.css');
+require('slick-carousel/slick/slick.js');
 import './style.styl';
 import Barba from 'barba.js';
 import { initScroll, initTargets, disableScroll, scrollbar } from './scroll.js';
@@ -15,6 +17,7 @@ import './blocks/social-icon-list/index.js';
 import './blocks/promo/index.js';
 import './blocks/loader/index.js';
 import './blocks/scroll-down/index.js';
+import './blocks/case-slider/index.js';
 
 import './pages/home/index';
 import './pages/about/index';

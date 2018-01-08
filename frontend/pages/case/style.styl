@@ -170,6 +170,28 @@
   height rem(540, 17)
   background-color rgba(255, 255, 255, 1)
 
+  &__slide
+    height rem(540, 17)
+    background-repeat no-repeat
+
+    &_1
+      background-image-retina('./assets/case-1-slide-1.jpg')
+      background-size cover
+
+    &_2
+      background-image-retina('./assets/case-1-slide-2.jpg')
+      background-size cover
+
+    &_3
+      background-image-retina('./assets/case-1-slide-3.jpg')
+      background-size cover
+
+  .slick-list, .slick-track
+    height rem(540, 17)
+
+  .slick-slide > div
+    height rem(540, 17)
+
 .case-results
   margin-left rem(480, 17)
 
