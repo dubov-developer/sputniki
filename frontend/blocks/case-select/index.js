@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import { TimelineMax, Power2, TweenMax } from 'gsap';
 import getViewport from 'getviewport';
-import { scrollbar } from '../../scroll.js';
+import { scrollbar, disableScroll, enableScroll } from '../../scroll.js';
 import { hover } from '../../js/hover.js';
 import Router from '../../router.js';
 
@@ -17,6 +17,7 @@ window.domModules['case-select'] = {
   init: function(el) {
     setTimeout(() => {
       this.el = el;
+      this.globalOverlay = $('.global-overlay');
       this.fixedContainer = $('.fixed-container');
       this.curentValueText = el.find('[data-current-value] .action-line__options-text');
       this.wrapper = this.el.parent();
@@ -78,9 +79,9 @@ window.domModules['case-select'] = {
         this.isOpened = false;
       });
 
-      this.actionLine.on('click', () => {
+      this.actionLine.on('click', (e) => {
         let tl = this.el.data('timeline-click');
-
+        
         if (!tl) {
           this.el.data('timeline-click', this.initTimeline(this.el));
           tl = this.el.data('timeline-click');
@@ -89,14 +90,24 @@ window.domModules['case-select'] = {
         if (this.isOpened) {
           tl.reverse();
           this.isOpened = false;
-          hover.enter();
+          if (!e.isTrigger) {
+            hover.enter();
+          }
           this.actionLine.removeClass('opened');
         } else {
           tl.play();
           this.isOpened = true;
-          hover.leave();
+          if (!e.isTrigger) {
+            hover.leave();
+          }
           this.actionLine.addClass('opened');          
         }
+      });
+
+      this.globalOverlay.on('click', (e) => {
+        this.el.find('.action-line[data-current-value]').trigger('click');
+        e.stopPropagation();
+        e.preventDefault();
       });
     });
   },
@@ -171,6 +182,7 @@ window.domModules['case-select'] = {
         objectModule.fixedContainer.css({ zIndex: 0 });
         TweenMax.set(curentValue, { autoAlpha: 0 });
         TweenMax.set(innerActionLine, { autoAlpha: 1 });
+        disableScroll();
       },
       onComplete() {
       },
@@ -179,10 +191,11 @@ window.domModules['case-select'] = {
         objectModule.fixedContainer.css({ zIndex: 1 });
         TweenMax.set(curentValue, { autoAlpha: 1 });
         TweenMax.set(innerActionLine, { autoAlpha: 0 });
+        enableScroll();
       }
     })
 
-
+    tl.to(this.globalOverlay, 0.5, { autoAlpha: 1 }, 0);
     tl.to(background, 0.5, { transformOrigin: `50% ${yTransformOrigin}px`, scaleY: 1, ease: Power2.easeInOut }, 0)
     tl.to(groups, 0.5, { autoAlpha: 1, ease: Power2.easeInOut }, 0.2)
     tl.to(optionsButton, 0.5, { borderColor: '#fff', ease: Power2.easeInOut }, 0);
