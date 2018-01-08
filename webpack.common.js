@@ -131,5 +131,10 @@ module.exports = {
       title: 'Cases',
       filename: 'cases.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl.pug',
+      title: 'Case',
+      filename: 'case.html'
+    }),
   ],
 };

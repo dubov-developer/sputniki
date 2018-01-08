@@ -29,6 +29,10 @@ var Casespage = Barba.BaseView.extend({
         hover.leave();
       });
 
+      cases.on('click', () => {
+        hover.leave();
+      });
+
       cases.each((index, elem) => {
         const tl = new TimelineLite();
         const tlWch = willChange(tl);

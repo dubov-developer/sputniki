@@ -6,6 +6,7 @@ import { initScroll, initTargets, disableScroll, scrollbar } from './scroll.js';
 import { scrollmagic } from './js/scrollmagic.js';
 import { hover } from './js/hover.js';
 
+import './blocks/fixed-container/index.js';
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
 import './blocks/services/index.js';
