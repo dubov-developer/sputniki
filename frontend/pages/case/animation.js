@@ -7,5 +7,6 @@ export function CaseEnterAnimation() {
     const tl = new TimelineMax({
       onComplete: resolve,
     });
+    tl.from($('.case'), 0.5, { autoAlpha: 0, y: -50 });
   })
 }

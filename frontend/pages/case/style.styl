@@ -84,3 +84,76 @@
     imgboxrem('./assets/watch-video.png', 17)
 
   
+.case-info
+  position relative
+  margin rem(155, 17) 0
+  display flex
+
+  &__main
+    width rem(220, 17)
+    margin-right rem(260, 17)
+
+  &__separator
+    position absolute
+    left rem(314, 17)
+    top 0
+    width 1px
+    background-color #514845
+    height 100%
+
+.case-description
+  width rem(465, 17)
+
+  &__title
+    font-size rem(36, 17)
+    font-weight 500
+    letter-spacing rem(2, 17)
+    margin-bottom rem(40, 17)
+
+  &__text
+    font-size rem(18, 17)
+    line-height rem(36, 17)
+    font-weight 300
+    letter-spacing rem(1.3, 17)
+
+.case-description + .case-description
+  margin-top rem(135, 17)
+
+.case-fact
+  &__name
+    font-size rem(12, 17)
+    font-weight 300
+    color #766764
+    letter-spacing rem(1.8, 17)
+    margin-bottom rem(32, 17)
+
+  &__title
+    font-size rem(24, 17)
+    font-weight 300
+    letter-spacing rem(1.2, 17)
+  
+  &__list
+    margin 0
+    padding 0
+    list-style-type none
+
+    li
+      position relative
+      padding-left rem(18, 17)
+      font-size rem(16, 17)
+      font-weight 300
+      line-height rem(37, 17)
+
+
+      &:before
+        content '•'
+        position absolute
+        left 0
+        color #5f534f
+        font-size rem(14, 17)
+
+  &__title + &__list
+    margin-top rem(16, 17)
+
+.case-fact + .case-fact
+  margin-top rem(125, 17)
