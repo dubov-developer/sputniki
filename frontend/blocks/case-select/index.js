@@ -3,6 +3,7 @@ import { TimelineMax, Power2, TweenMax } from 'gsap';
 import getViewport from 'getviewport';
 import { scrollbar } from '../../scroll.js';
 import { hover } from '../../js/hover.js';
+import Router from '../../router.js';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -31,6 +32,13 @@ window.domModules['case-select'] = {
   
       this.onScroll = this.onScroll.bind(this);
       scrollbar.addListener(this.onScroll);
+
+      this.routerSubscription = Router.events.subscribe((e) => {
+        if (e && e.name === 'transitionCompleted' && e.current !== 'cases') {
+          scrollbar.removeListener(this.onScroll);
+          this.routerSubscription.unsubscribe();
+        }
+      });
 
       this.actionLine.on('mouseenter', () => {
         if (!this.isOpened) {
