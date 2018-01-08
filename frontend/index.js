@@ -21,6 +21,7 @@ import './pages/about/index';
 import './pages/services/index';
 import './pages/contacts/index';
 import './pages/cases/index';
+import './pages/case/index';
 
 import { initDomModules } from './js/common.js';
 

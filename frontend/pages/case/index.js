@@ -10,12 +10,12 @@ import { TimelineLite, Power2 } from 'gsap';
 
 let scenes = [];
 
-var Casespage = Barba.BaseView.extend({
+var Casepage = Barba.BaseView.extend({
   namespace: 'case',
   onEnter: function() {
   },
   onEnterCompleted: function() {
-    CasesEnterAnimation().then(() => {
+    CaseEnterAnimation().then(() => {
       enableScroll();
     });
   },
