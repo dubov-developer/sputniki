@@ -15,7 +15,7 @@ window.domModules['scroll-down'] = {
     this.onScroll = this.onScroll.bind(this);
 
     Router.events.subscribe((event) => {
-      if (event && event.name === 'animationCompleted' && event.current.name === 'home') {
+      if (event && event.name === 'animationCompleted' && event.current === 'home') {
         TweenMax.to(this.el, 1.5, { autoAlpha: 1, ease: Power2.easeInOut });
         scrollbar.addListener(this.onScroll);
       }
