@@ -17,11 +17,11 @@ window.domModules['fixed-container'] = {
     });
   },
   onPageChange: function(event) {
-    if (event.current === 'case') {
+    if (event.current && event.current.name === 'case') {
       TweenMax.set(this.el, { autoAlpha: 0 });
     }
 
-    if (event.current !== 'case') {
+    if (event.current && event.current.name !== 'case') {
       TweenMax.set(this.el, { autoAlpha: 1 });
     }
   },

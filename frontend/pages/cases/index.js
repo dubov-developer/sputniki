@@ -5,20 +5,32 @@ import { hover } from '../../js/hover.js';
 import { scrollbar, disableScroll, enableScroll } from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
-
+import Router from '../../router.js';
 import { TimelineLite, Power2 } from 'gsap';
 
 let scenes = [];
+let routerSubscription;
 
 var Casespage = Barba.BaseView.extend({
   namespace: 'cases',
   onEnter: function() {
   },
   onEnterCompleted: function() {
-    CasesEnterAnimation().then(() => {
-      enableScroll();
-    });
     setTimeout(() => {
+      routerSubscription = Router.events.subscribe((e) => {
+        if (e && e.name === 'transitionCompleted') {
+          if (e.previous === null || (e.previous && e.previous.name !== 'case')) {
+            CasesEnterAnimation().then(() => {
+              enableScroll();
+            });
+          } else {
+            scrollbar.scrollIntoView($(`[data-case=${e.previous.queryParams.case}]`)[0], {
+              offsetTop: 50
+            });
+            enableScroll();
+          }
+        }
+      });
       const cases = $('.preview-case');
 
       cases.on('mouseenter', () => {
@@ -51,6 +63,10 @@ var Casespage = Barba.BaseView.extend({
   onLeave: function() {
   },
   onLeaveCompleted: function() {
+    if (routerSubscription) {
+      routerSubscription.unsubscribe();
+    }
+
     if (scenes.length) {
       scenes.forEach((scene) => {
         scrollmagic.destroy(scene);

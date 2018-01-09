@@ -15,12 +15,12 @@ window.domModules['scroll-down'] = {
     this.onScroll = this.onScroll.bind(this);
 
     Router.events.subscribe((event) => {
-      if (event && event.name === 'animationCompleted' && event.current === 'home') {
+      if (event && event.name === 'animationCompleted' && event.current.name === 'home') {
         TweenMax.to(this.el, 1.5, { autoAlpha: 1, ease: Power2.easeInOut });
         scrollbar.addListener(this.onScroll);
       }
 
-      if (event && event.name === 'transitionCompleted' && event.previous === 'home') {
+      if (event && event.name === 'transitionCompleted' && event.previous && event.previous.name === 'home') {
         TweenMax.to(this.el, 0.5, { autoAlpha: 0, ease: Power2.easeInOut });
         scrollbar.removeListener(this.onScroll);
       }

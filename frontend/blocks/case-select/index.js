@@ -35,9 +35,11 @@ window.domModules['case-select'] = {
       scrollbar.addListener(this.onScroll);
 
       this.routerSubscription = Router.events.subscribe((e) => {
-        if (e && e.name === 'transitionCompleted' && e.current !== 'cases') {
+        if (e && e.name === 'transitionCompleted' && e.current.name !== 'cases') {
           scrollbar.removeListener(this.onScroll);
-          this.routerSubscription.unsubscribe();
+          if (this.routerSubscription) {
+            this.routerSubscription.unsubscribe();
+          }
         }
       });
 
