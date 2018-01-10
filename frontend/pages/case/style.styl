@@ -38,8 +38,6 @@
 
 .case-promo
   position relative
-  display flex
-  align-items center
   margin-top rem(80, 17)
   height rem(540, 17)
   background-image-retina('./assets/case-1.png')
@@ -56,22 +54,26 @@
     background-color rgba(0, 0, 0, 0.5)
 
   &__info
-    position relative
-    display flex
+    position absolute
+    bottom rem(47, 17)
+    left 0
     width 100%
-    justify-content space-between
-    align-items center
 
   &__name
-    margin-left rem(65, 17)
+    position absolute
+    bottom 0
+    left rem(65, 17)
+    width 60%
     font-size rem(60, 17)
     line-height 1.2
     font-weight 500
 
 .watch-video
+  position absolute
+  bottom rem(16, 17)
+  right rem(95, 17)
   display flex
   align-items center
-  margin-right rem(95, 17)
   cursor pointer
 
   &__text

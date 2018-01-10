@@ -94,6 +94,16 @@ window.domModules['case-promo'] = {
     })
 
     disableScroll();
+
+    this.routerSubscription = Router.events.subscribe((e) => {
+      if (e && e.name === 'transitionCompleted' && e.current.name !== 'case') {
+        this.removeVideo();
+        if (this.routerSubscription) {
+          this.routerSubscription.unsubscribe();
+        }
+      }
+    });
+
   },
   removeVideo() {
     TweenMax.to(this.wrapper, 0.5, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut, onComplete: () => {
