@@ -75,12 +75,12 @@ var Aboutpage = Barba.BaseView.extend({
       const tlRating = new TimelineLite();
       const tlRatingWch = willChange(tlRating);
 
-      tlRatingWch.from(ratingsTitle, 0.8, { autoAlpha: 0, yPercent: 20, ease: Power2.easeInOut }, 0);
+      tlRatingWch.from(ratingsTitle, 0.8, { autoAlpha: 0, yPercent: 20, ease: Power1.easeOut }, 0);
 
       let sceneRatingTitle = scrollmagic.scene({
         triggerElement: ratings[0],
         triggerHook: 0.5,
-        reverse: false
+        reverse: true
       }, tlRating);
   
       scenes.push(sceneRatingTitle);
@@ -88,14 +88,14 @@ var Aboutpage = Barba.BaseView.extend({
       const tlRatingGroup = new TimelineLite();
       const tlRatingGroupWch = willChange(tlRatingGroup);
 
-      tlRatingGroupWch.from(ratingsBackground, 0.8, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut }, 0);
-      tlRatingGroupWch.staggerFrom(ratingsItems, 0.8, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut }, 0.1, 0.8);
+      tlRatingGroupWch.from(ratingsBackground, 0.8, { autoAlpha: 0, y: 20, ease: Power1.easeOut }, 0);
+      tlRatingGroupWch.staggerFrom(ratingsItems, 0.8, { autoAlpha: 0, ease: Power1.easeOut }, 0.1, 0.8);
 
       let sceneRatingGroup = scrollmagic.scene({
         triggerElement: ratings[0],
         offset: '20%',
         triggerHook: 0.5,
-        reverse: false
+        reverse: true
       }, tlRatingGroup);
   
       scenes.push(sceneRatingGroup);
