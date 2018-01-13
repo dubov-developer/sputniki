@@ -31,6 +31,8 @@ window.domModules['case-slider'] = {
 
     this.wrapper.slick({
       arrows: false,
+      infinite: true,
+      useCss: true
     });
 
     this.wrapper.on('mouseleave', (e) => {
