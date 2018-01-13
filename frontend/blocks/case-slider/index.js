@@ -11,14 +11,26 @@ if (!window.domModules) {
 
 window.domModules['case-slider'] = {
   init: function(el) {
+    this.el = el;
     this.wrapper = el.find('.case-slider__wrapper');
     this.wrapperWidth = this.wrapper.width();
     this.hover = el.find('.case-slider__hover');
     this.hoverIcon = this.hover.find('.case-slider__hover-icon');
     this.hoverSize = this.hover.height() / 2;
+    this.paginationCurrent = this.el.find('.case-slider__pagination-current');
+    this.paginationCount = this.el.find('.case-slider__pagination-count');
+
+    this.wrapper.on('init', (event, slick) => {
+      this.paginationCurrent.text('1');
+      this.paginationCount.text(slick.slideCount);
+    });
+
+    this.wrapper.on('afterChange', (event, slick, currentIndex) => {
+      this.paginationCurrent.text(currentIndex + 1);
+    });
 
     this.wrapper.slick({
-      arrows: false
+      arrows: false,
     });
 
     this.wrapper.on('mouseleave', (e) => {

@@ -218,6 +218,25 @@
       background-image-retina('./assets/case-1-slide-3.jpg')
       background-size cover
 
+  &__pagination
+    position absolute
+    top 100%
+    margin-top rem(30, 17)
+    font-size rem(14, 17)
+    font-weight 300
+    color #766764
+
+  &__pagination-separator
+    margin 0 rem(10, 17)
+
+  &__pagination-current, &__pagination-count
+    display inline-block
+    text-align center
+    width rem(10, 17)
+
+  &__pagination-current
+    margin-left rem(-2, 17)
+
   .slick-list, .slick-track
     height rem(540, 17)
 
