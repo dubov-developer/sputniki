@@ -33,16 +33,26 @@ window.domModules['case-promo'] = {
     this.playerOverlay = $('<div>');
     this.playerOverlay.addClass('player-overlay');
 
+    this.loader = $(`<div class="player-loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div> 
+    </div>`)
+
     this.playerClose = $('<div>');
     this.playerClose.addClass('player-close');
 
     this.playerOverlay.append(this.playerClose);
     this.wrapper.append(playerEl);
     this.wrapper.append(this.playerOverlay);
+    this.wrapper.append(this.loader);
     this.body.append(this.wrapper);
     this.closeSize = this.playerClose.height() / 2;
 
-    TweenMax.set(this.wrapper, { autoAlpha: 0, scale: 0.5 });
+    TweenMax.set(this.wrapper, { autoAlpha: 0 });
+    TweenMax.set(playerEl, { autoAlpha: 0 });
 
     this.playerOverlay.on('mouseleave', (e) => {
       this.closeVisible = false;
@@ -74,19 +84,47 @@ window.domModules['case-promo'] = {
       autoplay: true,
       captions: false,
       controls: false,
-      related: false,
       info: false,
-      modestBranding: false,
-      annotations: false,
+      modestBranding: true,
+      related: false,
     });
+
+    let created = false;
 
     player.load('v8HxC9mr1vE');
 
     window['domModules'].loader.start();
 
     player.on('playing', () => {
-      window['domModules'].loader.done();
-      TweenMax.to(this.wrapper, 0.8, { autoAlpha: 1, scale: 1, ease: Power2.easeInOut });
+      if (!created) {
+        created = true;
+        player.setVolume(0);
+
+        setTimeout(() => {
+          window['domModules'].loader.done();
+          
+          let timer;
+          let loaderLines = $('.player-loader').children('div');
+          let loaderLinesShowPosition = [loaderLines.eq(2), loaderLines.eq(0), loaderLines.eq(1), loaderLines.eq(3), loaderLines.eq(4)]
+          const tl = new TimelineMax({
+          });
+          tl.set(this.wrapper, { autoAlpha: 1 }, 0);
+          tl.staggerFrom(loaderLinesShowPosition, 0.3, { xPercent: '100%', ease: Power2.easeOut }, 0.1);
+          tl.set(this.wrapper.find('iframe'), { autoAlpha: 1 });
+          tl.addCallback(() => {
+            player.seek(0);
+            timer = setInterval(() => {
+              player.seek(0);
+            }, 10);
+          })
+          tl.staggerTo(loaderLinesShowPosition, 0.3, { xPercent: '-100%', ease: Power2.easeIn }, 0.1);
+          tl.addCallback(() => {
+            clearInterval(timer);
+            player.setVolume(100);
+          }, 1.2);
+
+        }, 2000);
+      }
     });
 
     player.on('ended', () => {
@@ -106,7 +144,7 @@ window.domModules['case-promo'] = {
 
   },
   removeVideo() {
-    TweenMax.to(this.wrapper, 0.5, { autoAlpha: 0, scale: 0.5, ease: Power2.easeInOut, onComplete: () => {
+    TweenMax.to(this.wrapper, 0.5, { autoAlpha: 0, ease: Power2.easeInOut, onComplete: () => {
       enableScroll();
       this.hasActiveVideo = false;
       this.wrapper.remove();
