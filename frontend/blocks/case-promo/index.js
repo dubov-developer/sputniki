@@ -43,6 +43,9 @@ window.domModules['case-promo'] = {
 
     this.playerClose = $('<div>');
     this.playerClose.addClass('player-close');
+    this.playerCloseIcon = $('<div>');
+    this.playerCloseIcon.addClass('player-close__icon');
+    this.playerClose.append(this.playerCloseIcon);
 
     this.playerOverlay.append(this.playerClose);
     this.wrapper.append(playerEl);
@@ -69,7 +72,8 @@ window.domModules['case-promo'] = {
       });
 
       if (!this.closeVisible) {
-        TweenMax.to(this.playerClose, 0.5, { scale: 1, ease: Power2.easeOut });
+        TweenMax.to(this.playerClose, 0.3, { scale: 1, ease: Power2.easeOut });
+        TweenMax.from(this.playerCloseIcon, 0.3, { autoAlpha: 0, delay: 0.3, ease: Power2.easeOut });
         this.closeVisible = true;
       }
     });

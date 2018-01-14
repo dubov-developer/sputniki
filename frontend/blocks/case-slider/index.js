@@ -35,12 +35,13 @@ window.domModules['case-slider'] = {
       useCss: true
     });
 
-    this.wrapper.on('mouseleave', (e) => {
-      TweenMax.to(this.hover, 0.5, { scale: 0, ease: Power2.easeOut });
+    this.wrapper.on('mouseenter', (e) => {
+      TweenMax.to(this.hover, 0.3, { scale: 1, ease: Power2.easeOut });
+      TweenMax.from(this.hoverIcon, 0.3, { autoAlpha: 0, delay: 0.3, ease: Power2.easeOut });
     });
 
-    this.wrapper.on('mouseenter', (e) => {
-      TweenMax.to(this.hover, 0.5, { scale: 1, ease: Power2.easeOut });
+    this.wrapper.on('mouseleave', (e) => {
+      TweenMax.to(this.hover, 0.3, { scale: 0, ease: Power2.easeOut });
     });
 
     this.wrapper.on('click', (e) => {
