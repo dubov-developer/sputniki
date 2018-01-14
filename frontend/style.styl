@@ -167,6 +167,10 @@ h1, h2
   display flex
   align-items center
 
+  &:hover
+    .action-line__options-button-hover
+      transform scale(1)
+
   &__options-text
     font-size rem(16, 17)
     line-height 1.5
@@ -180,28 +184,46 @@ h1, h2
     background-color #514845
 
   &__options-button
-    width rem(46, 17)
-    height rem(46, 17)
+    flex-shrink 0
+    width rem(47, 17)
+    height rem(47, 17)
     border-radius 50%
     border 1px solid #514845
     cursor pointer
     position relative
+    display flex
+    align-items center
+    justify-content center
+
+  &__options-button-hover
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    border-radius 50%
+    background-color #514845
+    transform scale(0)
+    transition transform 0.25s ease-in-out
+
+  &__options-button-lines
+    position relative
+    width 11px
+    height 11px
   
   &__options-button-line
     position absolute
     background-color #fff
-    top 50%
-    left 50%
-    
+
     &_h
-      width 10px
+      width 11px
       height 1px
-      margin-left -5px
+      margin-top 5px
 
     &_v
       width 1px
-      height 10px
-      margin-top -5px
+      height 11px
+      margin-left 5px
 
 .action-line_service
   .action-line
