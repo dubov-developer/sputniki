@@ -2,7 +2,6 @@ import $ from 'jquery';
 import { TimelineMax, Power2, TweenMax } from 'gsap';
 import getViewport from 'getviewport';
 import { scrollbar, disableScroll, enableScroll } from '../../scroll.js';
-import { hover } from '../../js/hover.js';
 import Router from '../../router.js';
 
 if (!window.domModules) {
@@ -43,18 +42,6 @@ window.domModules['case-select'] = {
         }
       });
 
-      this.actionLine.on('mouseenter', () => {
-        if (!this.isOpened) {
-          hover.enter();
-        }
-      });
-
-      this.actionLine.on('mouseleave', () => {
-        if (!this.isOpened) {
-          hover.leave();
-        }
-      });
-
       this.items = this.el.find('.case-select-dropdown__item span');
 
       $('.action-line_case-dropdown .action-line__options-text span').on('click', (e) => {
@@ -92,16 +79,12 @@ window.domModules['case-select'] = {
         if (this.isOpened) {
           tl.reverse();
           this.isOpened = false;
-          if (!e.isTrigger) {
-            hover.enter();
-          }
+
           this.actionLine.removeClass('opened');
         } else {
           tl.play();
           this.isOpened = true;
-          if (!e.isTrigger) {
-            hover.leave();
-          }
+
           this.actionLine.addClass('opened');          
         }
       });

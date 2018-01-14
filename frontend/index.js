@@ -11,6 +11,7 @@ import { hover } from './js/hover.js';
 import './blocks/fixed-container/index.js';
 import './blocks/menu/index.js';
 import './blocks/logo/index.js';
+import './blocks/showreel/index.js';
 import './blocks/services/index.js';
 import './blocks/case-select/index.js';
 import './blocks/social-icon-list/index.js';
