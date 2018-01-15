@@ -32,7 +32,7 @@ import './pages/case/index';
 import { initDomModules } from './js/common.js';
 
 import Router from './router.js';
-
+import { preloadImages } from './js/image-preloader';
 
 document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
@@ -71,19 +71,27 @@ var HideShowTransition = Barba.BaseTransition.extend({
         loaderStarted = true;
       }, 500);
 
-
       this.newContainerLoading.then(() => {
-        return new Promise((resolve) => {
 
-          if (!loaderStarted) {
-            clearTimeout(timeout);
-            resolve();
-          } else {
-            window['domModules'].loader.done().then(() => {
-              resolve();
-            });
+        return Promise.resolve().then(() => {
+          if ($(this.newContainer).data('namespace') === 'case') {
+            return preloadImages.load([
+              require('./pages/case/assets/case-1.png'),
+              require('./pages/case/assets/case-1@2x.png')
+            ])
           }
-        });
+        }).then(() => {
+          return new Promise((resolve) => {
+            if (!loaderStarted) {
+              clearTimeout(timeout);
+              resolve();
+            } else {
+              window['domModules'].loader.done().then(() => {
+                resolve();
+              });
+            }
+          });
+        })
       }).then(this.finish.bind(this));
     });
   },
