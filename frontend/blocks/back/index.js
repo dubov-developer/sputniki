@@ -15,6 +15,10 @@ window.domModules['back'] = {
     this.onResize = this.onResize.bind(this);
     this.page = $('.page-container_case');
 
+    this.el.on('click', () => {
+      history.back();
+    });
+
     setTimeout(() => {
       this.calcOffset();
       scrollbar.addListener(this.onScroll);

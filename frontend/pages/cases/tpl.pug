@@ -1,8 +1,8 @@
 extends ../layout.pug
 
 block content
-  .global-overlay
   .barba-container(data-namespace="cases")
+    .global-overlay
     .page-container
       .cases
         .cases__content
@@ -23,7 +23,7 @@ block content
                 .case-select-dropdown__items
                   .action-line.action-line_cases.action-line_case-dropdown
                     .action-line__options-text
-                      span.active Все категории
+                      a(href="cases.html#All", data-type-id="All").active Все категории
                     .action-line__options-line
                     .action-line__options-button
                       .action-line__options-button-hover
@@ -32,21 +32,21 @@ block content
                         .action-line__options-button-line.action-line__options-button-line_v
                   .case-select-dropdown__group
                     .case-select-dropdown__item
-                      span Advertising Campaigns
+                      a(href="cases.html#1", data-type-id="1") Advertising Campaigns
                     .case-select-dropdown__item
-                      span BTL & Trade
+                      a(href="cases.html#2", data-type-id="2") BTL & Trade
                     .case-select-dropdown__item
-                      span Digital
+                      a(href="cases.html#3", data-type-id="3") Digital
                   .case-select-dropdown__group
                     .case-select-dropdown__item
-                      span Media
+                      a(href="cases.html#4", data-type-id="4") Media
                     .case-select-dropdown__item
-                      span SMM
+                      a(href="cases.html#5", data-type-id="5") SMM
                     .case-select-dropdown__item
-                      span Video
+                      a(href="cases.html#6", data-type-id="6") Video
 
           .preview-cases
-            a.preview-case(href="case.html?case=1", data-case="1")
+            a.preview-case(href="case.html?case=1", data-case="1", data-types="[1, 2, 3]")
               .preview-case__background
               .preview-case__animation
 
@@ -55,7 +55,7 @@ block content
                   Ди Каприо <br> о настоящем
                 .preview-case__description ACГ: Водка «Пять Озёр»
 
-            a.preview-case(href="case.html?case=2", data-case="2")
+            a.preview-case(href="case.html?case=2", data-case="2", data-types="[2, 5, 6]")
               .preview-case__background
               .preview-case__animation
               .preview-case__content
@@ -63,7 +63,7 @@ block content
                   Девочка <br> на лайте
                 .preview-case__description Абрау Дюрсо
 
-            a.preview-case(href="case.html?case=3", data-case="3")
+            a.preview-case(href="case.html?case=3", data-case="3", data-types="[1, 4, 6]")
               .preview-case__background
               .preview-case__animation
               .preview-case__content
@@ -71,7 +71,7 @@ block content
                   Поезд Москва — <br> будущее уже здесь!
                 .preview-case__description Московский транспорт
 
-            a.preview-case(href="case.html?case=4", data-case="4")
+            a.preview-case(href="case.html?case=4", data-case="4", data-types="[2, 5, 6]")
               .preview-case__background
               .preview-case__animation
               .preview-case__content

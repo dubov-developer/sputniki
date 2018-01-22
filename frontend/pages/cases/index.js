@@ -20,10 +20,12 @@ var Casespage = Barba.BaseView.extend({
       routerSubscription = Router.events.subscribe((e) => {
         if (e && e.name === 'transitionCompleted') {
           if (e.previous === null || (e.previous && e.previous.name !== 'case')) {
+            onTypeChange();
             CasesEnterAnimation().then(() => {
               enableScroll();
             });
           } else {
+            onTypeChange();
             scrollbar.scrollIntoView($(`[data-case=${e.previous.queryParams.case}]`)[0], {
               offsetTop: 50
             });
@@ -31,33 +33,70 @@ var Casespage = Barba.BaseView.extend({
           }
         }
       });
-      const cases = $('.preview-case');
 
-      cases.on('mouseenter', () => {
-        hover.enter();
+
+      $('.case-select').on('typeChange', (e) => {
+        setTimeout(() => {
+          onTypeChange();
+        });
       });
 
-      cases.on('mouseleave', () => {
-        hover.leave();
-      });
+      function onTypeChange() {
+        if (scenes && scenes.length) {
+          scenes.forEach((scene) => {
+            scrollmagic.destroy(scene);
+          });
+          scenes = [];
+        } 
 
-      cases.on('click', () => {
-        hover.leave();
-      });
 
-      cases.each((index, elem) => {
-        const tl = new TimelineLite();
-        const tlWch = willChange(tl);
-        const animation = $(elem).find('.preview-case__animation');
-        tlWch.to(animation, 0.5, { xPercent: 100, ease: Power2.easeOut }, 0);
-    
-        let scene = scrollmagic.scene({
-          triggerElement: elem,
-          triggerHook: 0.9,
-        }, tl);
-    
-        scenes.push(scene);
-      });
+        let type = 'All';
+        if (location.hash) {
+          type = location.hash.slice(1);
+        }
+  
+        let cases = $('.preview-case').show();
+  
+        if (type !== 'All') {
+          cases.each((i, e) => {
+            const el = $(e);
+            const types = el.data('types');
+            if (types.indexOf(parseInt(type)) !== -1) {
+              el.addClass('active');
+            } else {
+              el.hide();
+            }
+          });
+          scrollbar.update();
+          cases = $('.preview-case.active');
+        }
+  
+        cases.on('mouseenter', () => {
+          hover.enter();
+        });
+  
+        cases.on('mouseleave', () => {
+          hover.leave();
+        });
+  
+        cases.on('click', () => {
+          hover.leave();
+        });
+  
+        cases.each((index, elem) => {
+          const tl = new TimelineLite();
+          const tlWch = willChange(tl);
+          const animation = $(elem).find('.preview-case__animation');
+          tlWch.to(animation, 0.5, { xPercent: 100, ease: Power2.easeOut }, 0);
+      
+          let scene = scrollmagic.scene({
+            triggerElement: elem,
+            triggerHook: 0.9,
+          }, tl);
+      
+          scenes.push(scene);
+        });
+      }
     });
   },
   onLeave: function() {
