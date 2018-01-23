@@ -20,6 +20,36 @@ var Aboutpage = Barba.BaseView.extend({
     });
     // The Transition has just finished.
     setTimeout(() => {
+      const tlTitle = new TimelineLite();
+      const tlTitleWch = willChange(tlTitle);
+      const title = $('.page__content .title').eq(0);
+
+      tlTitleWch.to(title, 0.8, { opacity: 0, ease: Power1.easeOut }, 0);
+    
+      let sceneTitle = scrollmagic.scene({
+        triggerElement: title[0],
+        triggerHook: 1,
+        offset: '85%',
+        duration: '35%',
+      }, tlTitle);
+
+      scenes.push(sceneTitle);
+
+      const tlDescription = new TimelineLite();
+      const tlDescriptionWch = willChange(tlDescription);
+      const description = $('.page__content .description').eq(0);
+
+      tlTitleWch.to(description, 0.8, { opacity: 0, ease: Power1.easeOut }, 0);
+    
+      let sceneDescription = scrollmagic.scene({
+        triggerElement: description[0],
+        triggerHook: 1,
+        offset: '50%',
+        duration: '85%',
+      }, tlDescription);
+
+      scenes.push(sceneDescription);
+
       const facts = $('.fact');
 
       facts.each((i, el) => {

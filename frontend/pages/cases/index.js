@@ -17,6 +17,21 @@ var Casespage = Barba.BaseView.extend({
   },
   onEnterCompleted: function() {
     setTimeout(() => {
+      const tlCasesTitle = new TimelineLite();
+      const tlCasesTitleWch = willChange(tlCasesTitle);
+      const casesTitle = $('.cases__title');
+
+      tlCasesTitleWch.to(casesTitle, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
+    
+      let scene = scrollmagic.scene({
+        triggerElement: casesTitle[0],
+        triggerHook: 1,
+        offset: '75%',
+        duration: '35%',
+      }, tlCasesTitle);
+
+      scenes.push(scene);
+
       routerSubscription = Router.events.subscribe((e) => {
         if (e && e.name === 'transitionCompleted') {
           if (e.previous === null || (e.previous && e.previous.name !== 'case')) {
@@ -34,7 +49,6 @@ var Casespage = Barba.BaseView.extend({
         }
       });
 
-
       $('.case-select').on('typeChange', (e) => {
         setTimeout(() => {
           onTypeChange();
@@ -43,10 +57,12 @@ var Casespage = Barba.BaseView.extend({
 
       function onTypeChange() {
         if (scenes && scenes.length) {
-          scenes.forEach((scene) => {
-            scrollmagic.destroy(scene);
+          scenes.forEach((scene, index) => {
+            if (index !== 0) {
+              scrollmagic.destroy(scene);
+            } 
           });
-          scenes = [];
+          scenes = [].concat(scenes[0]);
         } 
 
 
