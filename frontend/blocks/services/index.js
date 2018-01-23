@@ -51,11 +51,16 @@ window.domModules['services'] = {
           scrollbar.scrollTo(0, scrollbar.offset.y + service.offset().top - offset, 500);
         }, 0);
       },
+      onUpdate: onUpdateFn,
       onReverseComplete() {
         service.removeClass('active');
         scrollbar.update();
       }
     })
+
+    function onUpdateFn() {
+      scrollbar.update();
+    }
 
     let height = 0;
     let yTransformOrigin = optionsLine.position().top + parseInt(service.css('paddingTop'), 10);
