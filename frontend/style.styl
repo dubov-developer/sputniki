@@ -93,6 +93,9 @@ h1, h2
     text-decoration none
     display inline-block
     vertical-align middle
+    transition color 0.3s ease-in-out
+    &:hover
+      color #a79d96
 
   &__separator
     display inline-block
@@ -113,6 +116,9 @@ h1, h2
   text-decoration none
   transition background-color 0.3s ease-in-out
 
+  &:hover
+    .telegram__background, .telegram__border
+      background-color #a79d96
 
   &__background
     position absolute
@@ -121,12 +127,14 @@ h1, h2
     right rem(25, 17)
     height 100%
     background-color #5e5955
+    transition background-color 0.3s ease-in-out
     transform scaleX(1)
     transform-origin 0 50%
 
   &__border
     position absolute
     background-color #5e5955
+    transition background-color 0.3s ease-in-out
     width rem(25, 17)
     height 100%
 
