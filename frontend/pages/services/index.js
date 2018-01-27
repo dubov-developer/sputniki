@@ -10,6 +10,8 @@ import { TimelineLite, Power2 } from 'gsap';
 
 let scenes = [];
 
+let onServiceToggle;
+
 var Servicespage = Barba.BaseView.extend({
   namespace: 'services',
   onEnter: function() {
@@ -56,14 +58,21 @@ var Servicespage = Barba.BaseView.extend({
       const tlcopy = new TimelineLite();
       const tlcopyWch = willChange(tlcopy);
       const copy = document.querySelector('.copyright');
-      tlcopyWch.to(copy, 1, { startAt: { opacity: 0 }, opacity: 1, ease: Power2.easeInOut, immediateRender: true }, 0.1);
+      tlcopyWch.to(copy, 1, { startAt: { autoAlpha: 0 }, autoAlpha: 1, ease: Power2.easeInOut, immediateRender: true }, 0.1);
   
       let sceneCopy = scrollmagic.scene({
-        triggerElement: $('.service:last-child')[0],
-        triggerHook: 0.5,
+        triggerElement: $('.copy-trigger')[0],
+        offset: '15%',
+        triggerHook: 1,
       }, tlcopy);
 
       scenes.push(sceneCopy);
+
+      onServiceToggle = function() {
+        sceneCopy.update(true);
+      }
+
+      $('body').on('service-toggle', onServiceToggle);
 
     });
   },
@@ -76,6 +85,7 @@ var Servicespage = Barba.BaseView.extend({
       });
       scenes = [];
     }
+    $('body').off('service-toggle', onServiceToggle);
   }
 });
 

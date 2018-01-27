@@ -80,6 +80,16 @@ var HideShowTransition = Barba.BaseTransition.extend({
               require('./pages/case/assets/case-1@2x.png')
             ])
           }
+
+          if ($(this.newContainer).data('namespace') === 'contacts') {
+            return preloadImages.load([
+              require('./pages/contacts/assets/pin.png'),
+              require('./pages/contacts/assets/pin@2x.png'),
+              require('./pages/contacts/assets/pin-hover.png'),
+              require('./pages/contacts/assets/pin-hover@2x.png'),
+            ])
+          }
+
         }).then(() => {
           return new Promise((resolve) => {
             if (!loaderStarted) {

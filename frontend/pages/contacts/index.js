@@ -104,7 +104,7 @@ var Contactpage = Barba.BaseView.extend({
       const tlcopy = new TimelineLite();
       const tlcopyWch = willChange(tlcopy);
       const copy = document.querySelector('.copyright');
-      tlcopyWch.to(copy, 1, { startAt: { opacity: 0 }, opacity: 1, ease: Power2.easeInOut, immediateRender: true }, 0.1);
+      tlcopyWch.to(copy, 1, { startAt: { autoAlpha: 0 }, autoAlpha: 1, ease: Power2.easeInOut, immediateRender: true }, 0.1);
   
       let sceneCopy = scrollmagic.scene({
         triggerElement: '.section_contacts-hello',

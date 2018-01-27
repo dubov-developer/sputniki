@@ -28,6 +28,7 @@ window.domModules['services'] = {
       } else{
         tl.play();
       }
+      $('body').trigger('service-toggle');
     });
   },
   initTimeline(service) {
