@@ -136,8 +136,8 @@ var Aboutpage = Barba.BaseView.extend({
       tlcopyWch.to(copy, 1, { startAt: { autoAlpha: 0 }, autoAlpha: 1, ease: Power2.easeInOut, immediateRender: true }, 0.1);
       
       let sceneCopy = scrollmagic.scene({
-        triggerElement: '.ratings',
-        triggerHook: 0,
+        triggerElement: '.copy-trigger',
+        triggerHook: 1,
       }, tlcopy);
   
       scenes.push(sceneCopy);
