@@ -76,8 +76,8 @@ var HideShowTransition = Barba.BaseTransition.extend({
         return Promise.resolve().then(() => {
           if ($(this.newContainer).data('namespace') === 'case') {
             return preloadImages.load([
-              require('./pages/case/assets/case-1.png'),
-              require('./pages/case/assets/case-1@2x.png')
+              require('./pages/case/assets/case-abrau-durso.jpg'),
+              require('./pages/case/assets/case-abrau-durso@2x.jpg')
             ])
           }
 

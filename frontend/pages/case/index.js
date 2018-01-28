@@ -8,8 +8,12 @@ import { willChange } from '../../js/gsap-helpers';
 
 import { TimelineLite, Power2, Linear } from 'gsap';
 
+const throttle = require('throttle-debounce/throttle');
+
 let scenes = [];
 
+let onScrollFn;
+let onScrollEnd;
 var Casepage = Barba.BaseView.extend({
   namespace: 'case',
   onEnter: function() {
@@ -20,6 +24,29 @@ var Casepage = Barba.BaseView.extend({
     });
 
     setTimeout(() => {
+      let scrollOnTheEnd = 0
+
+      onScrollEnd = () => {
+        ++scrollOnTheEnd;
+        if (scrollOnTheEnd >= 5) {
+          const href = $('.case-next').attr('href');
+          Barba.Pjax.goTo(href);
+        }
+      }
+
+      onScrollEnd = throttle(300, onScrollEnd)
+
+      onScrollFn = (e) => {
+        if (e.offset.y == e.limit.y) {
+          document.querySelector('.custom-scroll').addEventListener('wheel', onScrollEnd);
+        } else {
+          scrollOnTheEnd = 0;
+          document.querySelector('.custom-scroll').removeEventListener('wheel', onScrollEnd);
+        }
+      }
+
+      scrollbar.addListener(onScrollFn);
+
       const tlpromo = new TimelineLite();
       const tlpromoWch = willChange(tlpromo);
       const promo = $('.case-promo');
@@ -89,6 +116,9 @@ var Casepage = Barba.BaseView.extend({
       });
       scenes = [];
     }
+
+    scrollbar.removeListener(onScrollFn);
+    document.querySelector('.custom-scroll').removeEventListener('wheel', onScrollEnd);
   }
 });
 

@@ -14,6 +14,7 @@ if (!window.domModules) {
 window.domModules['case-promo'] = {
   hasActiveVideo: false,
   init(el) {
+    this.el = el;
     el.on('click', () => {
       if (!this.hasActiveVideo) {
         this.createVideo();
@@ -95,7 +96,7 @@ window.domModules['case-promo'] = {
 
     let created = false;
 
-    player.load('v8HxC9mr1vE');
+    player.load(this.el.data('video'));
 
     window['domModules'].loader.start();
 

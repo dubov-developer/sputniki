@@ -132,9 +132,14 @@ module.exports = {
       filename: 'cases.html'
     }),
     new HtmlWebpackPlugin({
-      template: '!!pug-loader!frontend/pages/case/tpl.pug',
+      template: '!!pug-loader!frontend/pages/case/tpl-abrau-durso.pug',
       title: 'Case',
-      filename: 'case.html'
+      filename: 'case-abrau-durso.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl-train-moscow.pug',
+      title: 'Case',
+      filename: 'case-train-moscow.html'
     }),
   ],
 };
