@@ -44,6 +44,10 @@
   background-size cover
   cursor pointer
 
+  &:hover
+    .watch-video__hover
+      transform scale(1.05)
+
   &_abrau-durso
     background-image-retina('./assets/case-abrau-durso.jpg')
     background-size cover
@@ -90,10 +94,32 @@
     font-weight 300
     margin-right rem(30, 17)
 
+  &__circle
+    width rem(70, 17)
+    height rem(70, 17)
+    border 1px solid #fff
+    box-sizing border-box
+    border-radius 50%
+    display flex
+    justify-content center
+    align-items center
+    position relative
+
   &__icon
     imgboxrem('./assets/watch-video.png', 17)
+    position relative
 
-  
+  &__hover
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    border-radius 50%
+    background-color #514745
+    transform scale(0)
+    transition transform 0.25s ease-in-out
+
 .case-info
   position relative
   margin rem(155, 17) 0
@@ -130,8 +156,7 @@
 
     span
       font-weight 500
-      font-size rem(24, 17)
-      color #766764
+      font-size rem(18, 17)
 
 .case-description + .case-description
   margin-top rem(135, 17)
@@ -214,18 +239,6 @@
     height rem(540, 17)
     background-repeat no-repeat
 
-    &_1
-      background-image-retina('./assets/case-1-slide-1.jpg')
-      background-size cover
-
-    &_2
-      background-image-retina('./assets/case-1-slide-2.jpg')
-      background-size cover
-
-    &_3
-      background-image-retina('./assets/case-1-slide-3.jpg')
-      background-size cover
-
   &__pagination
     position absolute
     top 100%
@@ -274,6 +287,41 @@
     -moz-backface-visibility hidden
     -ms-backface-visibility hidden
     backface-visibility hidden
+
+.case-slider_abrau-durso
+  .case-slider__slide_1
+    background-image-retina('./assets/gallery/abrau-durso/1.jpg')
+    background-size cover
+  .case-slider__slide_2
+    background-image-retina('./assets/gallery/abrau-durso/2.jpg')
+    background-size cover
+  .case-slider__slide_3
+    background-image-retina('./assets/gallery/abrau-durso/3.jpg')
+    background-size cover
+  .case-slider__slide_4
+    background-image-retina('./assets/gallery/abrau-durso/4.jpg')
+    background-size cover
+  .case-slider__slide_5
+    background-image-retina('./assets/gallery/abrau-durso/5.jpg')
+    background-size cover
+  .case-slider__slide_6
+    background-image-retina('./assets/gallery/abrau-durso/6.jpg')
+    background-size cover
+  .case-slider__slide_7
+    background-image-retina('./assets/gallery/abrau-durso/7.jpg')
+    background-size cover
+  .case-slider__slide_8
+    background-image-retina('./assets/gallery/abrau-durso/8.jpg')
+    background-size cover
+  .case-slider__slide_9
+    background-image-retina('./assets/gallery/abrau-durso/9.jpg')
+    background-size cover
+  .case-slider__slide_10
+    background-image-retina('./assets/gallery/abrau-durso/10.jpg')
+    background-size cover
+  .case-slider__slide_11
+    background-image-retina('./assets/gallery/abrau-durso/11.jpg')
+    background-size cover
 
 .case-results
   margin-left rem(480, 17)
