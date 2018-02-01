@@ -37,6 +37,11 @@
   position relative
   cursor none
 
+  &_visa
+    .preview-case__background
+      background-image-retina('./assets/visa.jpg')
+      background-size cover
+
   &:first-child
     .preview-case__background
       background-image-retina('./assets/case-1.jpg')
@@ -50,11 +55,6 @@
   &:nth-child(3)
     .preview-case__background
       background-image-retina('./assets/case-3.jpg')
-      background-size cover
-
-  &:nth-child(4)
-    .preview-case__background
-      background-image-retina('./assets/case-4.jpg')
       background-size cover
 
   &__background
@@ -75,12 +75,13 @@
 
   &__content
     position absolute
-    bottom rem(40, 17)
+    bottom rem(35, 17)
     left rem(40, 17)
     color #fff
 
   &__description
     font-size rem(18, 17)
+    line-height rem(22, 17)
     font-weight 300
     letter-spacing rem(1, 17)
   

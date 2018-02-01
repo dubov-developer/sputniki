@@ -141,5 +141,10 @@ module.exports = {
       title: 'Case',
       filename: 'case-train-moscow.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl-visa.pug',
+      title: 'Case',
+      filename: 'case-visa.html'
+    }),
   ],
 };
