@@ -9,9 +9,14 @@ if (!window.domModules) {
   window.domModules = {};
 }
 
+const resolution = window.devicePixelRatio > 1 ? 'retina' : 'default';
+
+const slides = require('../../pages/case/gallery.js');
+
 window.domModules['case-slider'] = {
   init: function(el) {
     this.el = el;
+    this.sliderName = el.data('slider');
     this.wrapper = el.find('.case-slider__wrapper');
     this.wrapperWidth = this.wrapper.width();
     this.hover = el.find('.case-slider__hover');
@@ -19,6 +24,14 @@ window.domModules['case-slider'] = {
     this.hoverSize = this.hover.height() / 2;
     this.paginationCurrent = this.el.find('.case-slider__pagination-current');
     this.paginationCount = this.el.find('.case-slider__pagination-count');
+
+    let slidesHtml = '';
+
+    slides[this.sliderName][resolution].forEach((url) => {
+      slidesHtml += `<img class='case-slider__slide' src='${url}' />`
+    });
+
+    this.wrapper.append(slidesHtml);
 
     this.wrapper.on('init', (event, slick) => {
       this.paginationCurrent.text('1');
