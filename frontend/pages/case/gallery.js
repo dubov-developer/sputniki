@@ -93,5 +93,19 @@ module.exports = {
       require('./assets/gallery/visa/5@2x.jpg'),
       require('./assets/gallery/visa/6@2x.jpg'),
     ]
+  },
+  'egk-ural': {
+    'default': [
+      require('./assets/gallery/egk-ural/1.jpg'),
+      require('./assets/gallery/egk-ural/2.jpg'),
+      require('./assets/gallery/egk-ural/3.jpg'),
+      require('./assets/gallery/egk-ural/4.jpg'),
+    ],
+    'retina': [
+      require('./assets/gallery/egk-ural/1@2x.jpg'),
+      require('./assets/gallery/egk-ural/2@2x.jpg'),
+      require('./assets/gallery/egk-ural/3@2x.jpg'),
+      require('./assets/gallery/egk-ural/4@2x.jpg'),
+    ]
   }
 }

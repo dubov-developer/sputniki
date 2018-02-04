@@ -42,6 +42,11 @@
       background-image-retina('./assets/visa.jpg')
       background-size cover
 
+  &_egk-ural
+    .preview-case__background
+      background-image-retina('./assets/egk-ural.jpg')
+      background-size cover
+
   &:first-child
     .preview-case__background
       background-image-retina('./assets/case-1.jpg')
@@ -64,6 +69,14 @@
     width 100%
     height 100%
     background-repeat no-repeat
+
+  &__overlay
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background-color rgba(0, 0, 0, .5)
 
   &__animation
     position absolute

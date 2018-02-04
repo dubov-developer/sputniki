@@ -64,6 +64,10 @@
     background-image-retina('./assets/case-di-caprio.jpg')
     background-size cover
 
+  &_egk-ural
+    background-image-retina('./assets/case-egk-ural.jpg')
+    background-size cover
+
   &__overlay
     position absolute
     top 0
@@ -148,7 +152,7 @@
     bottom rem(12, 17)
 
 .case-description
-  width rem(465, 17)
+  width rem(480, 17)
 
   &__title
     font-size rem(36, 17)
@@ -170,6 +174,9 @@
       font-size rem(18, 17)
   
   &__text + &__link
+    margin-top rem(30, 17)
+
+  &__link + &__text  
     margin-top rem(30, 17)
 
   &__link
@@ -207,7 +214,7 @@
       padding-left rem(18, 17)
       font-size rem(16, 17)
       font-weight 300
-      line-height rem(37, 17)
+      line-height rem(22, 17)
 
 
       &:before
@@ -216,9 +223,12 @@
         left 0
         color #5f534f
         font-size rem(14, 17)
+    
+    li + li
+      margin-top rem(20, 17)
 
   &__title + &__list
-    margin-top rem(16, 17)
+    margin-top rem(30, 17)
 
 .case-fact + .case-fact
   margin-top rem(125, 17)
@@ -330,6 +340,10 @@
   cursor pointer
   text-decoration none
 
+  &_di-caprio
+    background-image-retina('./assets/case-di-caprio.jpg')
+    background-size cover
+
   &_abrau-durso
     background-image-retina('./assets/case-abrau-durso.jpg')
     background-size cover
@@ -342,8 +356,8 @@
     background-image-retina('./assets/case-visa.jpg')
     background-size cover
 
-  &_di-caprio
-    background-image-retina('./assets/case-di-caprio.jpg')
+  &_egk-ural
+    background-image-retina('./assets/case-egk-ural.jpg')
     background-size cover
 
   &:hover

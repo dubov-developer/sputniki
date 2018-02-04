@@ -151,5 +151,12 @@ function getImageUrlByCaseName(caseName) {
     ];
   }
 
+  if (caseName === 'egk-ural') {
+    return [
+      require('./pages/case/assets/case-egk-ural.jpg'),
+      require('./pages/case/assets/case-egk-ural@2x.jpg')
+    ];
+  }
+
   return urls;
 }
