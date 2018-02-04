@@ -75,10 +75,12 @@ var HideShowTransition = Barba.BaseTransition.extend({
 
         return Promise.resolve().then(() => {
           if ($(this.newContainer).data('namespace') === 'case') {
-            return preloadImages.load([
-              require('./pages/case/assets/case-abrau-durso.jpg'),
-              require('./pages/case/assets/case-abrau-durso@2x.jpg')
-            ])
+            const caseName = $(this.newContainer).data('case');
+            const urls = getImageUrlByCaseName(caseName);
+
+            console.log('!', caseName, urls);
+
+            return preloadImages.load(urls);
           }
 
           if ($(this.newContainer).data('namespace') === 'contacts') {
@@ -117,3 +119,37 @@ var HideShowTransition = Barba.BaseTransition.extend({
 Barba.Pjax.getTransition = function() {
   return HideShowTransition;
 };
+
+function getImageUrlByCaseName(caseName) {
+  const urls = [];
+
+  if (caseName === 'di-caprio') {
+    return [
+      require('./pages/case/assets/case-di-caprio.jpg'),
+      require('./pages/case/assets/case-di-caprio@2x.jpg')
+    ];
+  }
+
+  if (caseName === 'abrau-durso') {
+    return [
+      require('./pages/case/assets/case-abrau-durso.jpg'),
+      require('./pages/case/assets/case-abrau-durso@2x.jpg')
+    ];
+  }
+
+  if (caseName === 'train-moscow') {
+    return [
+      require('./pages/case/assets/case-train-moscow.jpg'),
+      require('./pages/case/assets/case-train-moscow@2x.jpg')
+    ];
+  }
+
+  if (caseName === 'visa') {
+    return [
+      require('./pages/case/assets/case-visa.jpg'),
+      require('./pages/case/assets/case-visa@2x.jpg')
+    ];
+  }
+
+  return urls;
+}

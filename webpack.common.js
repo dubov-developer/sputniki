@@ -132,6 +132,11 @@ module.exports = {
       filename: 'cases.html'
     }),
     new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl-di-caprio.pug',
+      title: 'Case',
+      filename: 'case-di-caprio.html'
+    }),
+    new HtmlWebpackPlugin({
       template: '!!pug-loader!frontend/pages/case/tpl-abrau-durso.pug',
       title: 'Case',
       filename: 'case-abrau-durso.html'
