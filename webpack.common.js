@@ -176,5 +176,10 @@ module.exports = {
       title: 'Case',
       filename: 'case-julius-meinl.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl-kotex-active.pug',
+      title: 'Case',
+      filename: 'case-kotex-active.html'
+    }),
   ],
 };

@@ -186,5 +186,12 @@ function getImageUrlByCaseName(caseName) {
     ];
   }
 
+  if (caseName === 'kotex-active') {
+    return [
+      require('./pages/case/assets/case-kotex-active.jpg'),
+      require('./pages/case/assets/case-kotex-active@2x.jpg')
+    ];
+  }
+
   return urls;
 }

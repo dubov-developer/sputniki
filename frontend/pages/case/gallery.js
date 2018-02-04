@@ -203,5 +203,25 @@ module.exports = {
       require('./assets/gallery/julius-meinl/9@2x.jpg'),
       require('./assets/gallery/julius-meinl/10@2x.jpg'),
     ]
+  },
+  'kotex-active': {
+    'default': [
+      require('./assets/gallery/kotex-active/1.jpg'),
+      require('./assets/gallery/kotex-active/2.jpg'),
+      require('./assets/gallery/kotex-active/3.jpg'),
+      require('./assets/gallery/kotex-active/4.jpg'),
+      require('./assets/gallery/kotex-active/5.jpg'),
+      require('./assets/gallery/kotex-active/6.jpg'),
+      require('./assets/gallery/kotex-active/7.jpg'),
+    ],
+    'retina': [
+      require('./assets/gallery/kotex-active/1@2x.jpg'),
+      require('./assets/gallery/kotex-active/2@2x.jpg'),
+      require('./assets/gallery/kotex-active/3@2x.jpg'),
+      require('./assets/gallery/kotex-active/4@2x.jpg'),
+      require('./assets/gallery/kotex-active/5@2x.jpg'),
+      require('./assets/gallery/kotex-active/6@2x.jpg'),
+      require('./assets/gallery/kotex-active/7@2x.jpg'),
+    ]
   }
 }
