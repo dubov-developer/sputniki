@@ -165,5 +165,12 @@ function getImageUrlByCaseName(caseName) {
     ];
   }
 
+  if (caseName === 'husky') {
+    return [
+      require('./pages/case/assets/case-husky.jpg'),
+      require('./pages/case/assets/case-husky@2x.jpg')
+    ];
+  }
+
   return urls;
 }

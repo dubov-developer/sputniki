@@ -125,5 +125,29 @@ module.exports = {
       require('./assets/gallery/5-ozer/5@2x.jpg'),
       require('./assets/gallery/5-ozer/6@2x.jpg'),
     ]
+  },
+  'husky': {
+    'default': [
+      require('./assets/gallery/husky/1.jpg'),
+      require('./assets/gallery/husky/2.jpg'),
+      require('./assets/gallery/husky/3.jpg'),
+      require('./assets/gallery/husky/4.jpg'),
+      require('./assets/gallery/husky/5.jpg'),
+      require('./assets/gallery/husky/6.jpg'),
+      require('./assets/gallery/husky/7.jpg'),
+      require('./assets/gallery/husky/8.jpg'),
+      require('./assets/gallery/husky/9.jpg'),
+    ],
+    'retina': [
+      require('./assets/gallery/husky/1@2x.jpg'),
+      require('./assets/gallery/husky/2@2x.jpg'),
+      require('./assets/gallery/husky/3@2x.jpg'),
+      require('./assets/gallery/husky/4@2x.jpg'),
+      require('./assets/gallery/husky/5@2x.jpg'),
+      require('./assets/gallery/husky/6@2x.jpg'),
+      require('./assets/gallery/husky/7@2x.jpg'),
+      require('./assets/gallery/husky/8@2x.jpg'),
+      require('./assets/gallery/husky/9@2x.jpg'),
+    ]
   }
 }
