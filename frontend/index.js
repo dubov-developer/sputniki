@@ -158,5 +158,12 @@ function getImageUrlByCaseName(caseName) {
     ];
   }
 
+  if (caseName === '5-ozer') {
+    return [
+      require('./pages/case/assets/case-5-ozer.jpg'),
+      require('./pages/case/assets/case-5-ozer@2x.jpg')
+    ];
+  }
+
   return urls;
 }

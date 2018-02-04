@@ -156,5 +156,10 @@ module.exports = {
       title: 'Case',
       filename: 'case-egk-ural.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl-5-ozer.pug',
+      title: 'Case',
+      filename: 'case-5-ozer.html'
+    }),
   ],
 };
