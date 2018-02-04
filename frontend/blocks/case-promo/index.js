@@ -136,6 +136,13 @@ window.domModules['case-promo'] = {
       this.removeVideo();
     })
 
+    $(document).on('keyup', (e) => {
+      console.log('e', e)
+      if (e.keyCode == 27) {
+        this.removeVideo();
+      }
+    });
+
     disableScroll();
 
     this.routerSubscription = Router.events.subscribe((e) => {
