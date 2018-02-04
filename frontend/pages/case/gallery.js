@@ -177,5 +177,31 @@ module.exports = {
       require('./assets/gallery/mageta/10@2x.jpg'),
       require('./assets/gallery/mageta/11@2x.jpg'),
     ]
+  },
+  'julius-meinl': {
+    'default': [
+      require('./assets/gallery/julius-meinl/1.jpg'),
+      require('./assets/gallery/julius-meinl/2.jpg'),
+      require('./assets/gallery/julius-meinl/3.jpg'),
+      require('./assets/gallery/julius-meinl/4.jpg'),
+      require('./assets/gallery/julius-meinl/5.jpg'),
+      require('./assets/gallery/julius-meinl/6.jpg'),
+      require('./assets/gallery/julius-meinl/7.jpg'),
+      require('./assets/gallery/julius-meinl/8.jpg'),
+      require('./assets/gallery/julius-meinl/9.jpg'),
+      require('./assets/gallery/julius-meinl/10.jpg'),
+    ],
+    'retina': [
+      require('./assets/gallery/julius-meinl/1@2x.jpg'),
+      require('./assets/gallery/julius-meinl/2@2x.jpg'),
+      require('./assets/gallery/julius-meinl/3@2x.jpg'),
+      require('./assets/gallery/julius-meinl/4@2x.jpg'),
+      require('./assets/gallery/julius-meinl/5@2x.jpg'),
+      require('./assets/gallery/julius-meinl/6@2x.jpg'),
+      require('./assets/gallery/julius-meinl/7@2x.jpg'),
+      require('./assets/gallery/julius-meinl/8@2x.jpg'),
+      require('./assets/gallery/julius-meinl/9@2x.jpg'),
+      require('./assets/gallery/julius-meinl/10@2x.jpg'),
+    ]
   }
 }

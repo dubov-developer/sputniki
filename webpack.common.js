@@ -171,5 +171,10 @@ module.exports = {
       title: 'Case',
       filename: 'case-mageta.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl-julius-meinl.pug',
+      title: 'Case',
+      filename: 'case-julius-meinl.html'
+    }),
   ],
 };

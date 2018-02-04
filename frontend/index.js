@@ -179,5 +179,12 @@ function getImageUrlByCaseName(caseName) {
     ];
   }
 
+  if (caseName === 'julius-meinl') {
+    return [
+      require('./pages/case/assets/case-julius-meinl.jpg'),
+      require('./pages/case/assets/case-julius-meinl@2x.jpg')
+    ];
+  }
+
   return urls;
 }
