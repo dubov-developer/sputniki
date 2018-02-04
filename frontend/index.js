@@ -172,5 +172,12 @@ function getImageUrlByCaseName(caseName) {
     ];
   }
 
+  if (caseName === 'mageta') {
+    return [
+      require('./pages/case/assets/case-mageta.jpg'),
+      require('./pages/case/assets/case-mageta@2x.jpg')
+    ];
+  }
+
   return urls;
 }

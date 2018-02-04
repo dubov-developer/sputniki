@@ -166,5 +166,10 @@ module.exports = {
       title: 'Case',
       filename: 'case-husky.html'
     }),
+    new HtmlWebpackPlugin({
+      template: '!!pug-loader!frontend/pages/case/tpl-mageta.pug',
+      title: 'Case',
+      filename: 'case-mageta.html'
+    }),
   ],
 };

@@ -149,5 +149,33 @@ module.exports = {
       require('./assets/gallery/husky/8@2x.jpg'),
       require('./assets/gallery/husky/9@2x.jpg'),
     ]
+  },
+  'mageta': {
+    'default': [
+      require('./assets/gallery/mageta/1.jpg'),
+      require('./assets/gallery/mageta/2.jpg'),
+      require('./assets/gallery/mageta/3.jpg'),
+      require('./assets/gallery/mageta/4.jpg'),
+      require('./assets/gallery/mageta/5.jpg'),
+      require('./assets/gallery/mageta/6.jpg'),
+      require('./assets/gallery/mageta/7.jpg'),
+      require('./assets/gallery/mageta/8.jpg'),
+      require('./assets/gallery/mageta/9.jpg'),
+      require('./assets/gallery/mageta/10.jpg'),
+      require('./assets/gallery/mageta/11.jpg'),
+    ],
+    'retina': [
+      require('./assets/gallery/mageta/1@2x.jpg'),
+      require('./assets/gallery/mageta/2@2x.jpg'),
+      require('./assets/gallery/mageta/3@2x.jpg'),
+      require('./assets/gallery/mageta/4@2x.jpg'),
+      require('./assets/gallery/mageta/5@2x.jpg'),
+      require('./assets/gallery/mageta/6@2x.jpg'),
+      require('./assets/gallery/mageta/7@2x.jpg'),
+      require('./assets/gallery/mageta/8@2x.jpg'),
+      require('./assets/gallery/mageta/9@2x.jpg'),
+      require('./assets/gallery/mageta/10@2x.jpg'),
+      require('./assets/gallery/mageta/11@2x.jpg'),
+    ]
   }
 }
