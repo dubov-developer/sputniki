@@ -54,6 +54,15 @@ Barba.Dispatcher.on('transitionCompleted', function() {
   }, 1000);
 });
 
+// Потом переделать
+
+$(window).on('resize', () => {
+  setTimeout(() => {
+    initTargets();
+  })
+});
+
+
 let prevState = null;
 
 Barba.Dispatcher.on('linkClicked', function(el) {

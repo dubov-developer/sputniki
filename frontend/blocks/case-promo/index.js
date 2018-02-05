@@ -94,6 +94,9 @@ window.domModules['case-promo'] = {
       related: false,
     });
 
+
+    $(window).on('resize', this.onResize);
+
     let created = false;
 
     player.load(this.el.data('video'));
@@ -155,7 +158,13 @@ window.domModules['case-promo'] = {
     });
 
   },
+  onResize() {
+    console.log('ON RESIZE');
+    $('#player').width(getViewport().width);
+    $('#player').height(getViewport().height);
+  },
   removeVideo() {
+    $(window).off('resize', this.onResize);
     TweenMax.to(this.wrapper, 0.5, { autoAlpha: 0, ease: Power2.easeInOut, onComplete: () => {
       enableScroll();
       this.hasActiveVideo = false;

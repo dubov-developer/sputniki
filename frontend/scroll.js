@@ -50,7 +50,7 @@ export function initTargets() {
       const element = $(el);
       targetsArray.push({
         el: element,
-        offset: element.offset().top
+        offset: element.offset().top + (scrollbar ? scrollbar.offset.y : 0)
       })
     });
   }
