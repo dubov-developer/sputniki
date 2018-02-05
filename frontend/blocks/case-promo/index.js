@@ -35,6 +35,7 @@ window.domModules['case-promo'] = {
     this.player.load(this.videoList[0].videoId);
     window['domModules'].loader.start();
     this.player.on('playing', this.onFirstPlaying);
+    this.activeVideoIndex = 0;
   },
   onFirstPlaying() {
     if (!this.firstVideoLoaded) {
@@ -59,6 +60,9 @@ window.domModules['case-promo'] = {
           }, 10);
         });
         tl.staggerTo(loaderLinesShowPosition, 0.3, { xPercent: '-100%', ease: Power2.easeIn }, 0.1);
+        if (this.playerMenu) {
+          tl.staggerFrom(this.playerMenu, 0.5, { y: 50, autoAlpha: 0, ease: Power2.easeOut });
+        }
         tl.addCallback(() => {
           clearInterval(timer);
           this.player.setVolume(100);
@@ -101,7 +105,7 @@ window.domModules['case-promo'] = {
       let menuItems = '';
       this.videoList.forEach((item, index) => {
         const className = index === 0 ? 'active' : '';
-        menuItems += `<a class="${className}" data-video='${item.videoId}'>${item.name}</a>`;
+        menuItems += `<a class="${className}" data-index='${index}' data-video='${item.videoId}'>${item.name}</a>`;
       });
       this.playerMenu.append(menuItems);
     }
@@ -145,6 +149,7 @@ window.domModules['case-promo'] = {
         if (target.hasClass('active')) {
           return;
         }
+        this.activeVideoIndex = parseInt(target.data('index'), 10);
         target.addClass('active').siblings().removeClass('active');
         const videoId = target.data('video');
         this.playVideo(videoId);
@@ -167,7 +172,17 @@ window.domModules['case-promo'] = {
     });
 
     this.player.on('ended', () => {
-      this.removeVideo();
+      if (this.activeVideoIndex < this.videoList.length - 1) {
+        this.activeVideoIndex++;
+        this.playerMenu
+          .find('a').eq(this.activeVideoIndex)
+          .addClass('active')
+          .siblings()
+          .removeClass('active');
+        this.playVideo(this.videoList[this.activeVideoIndex].videoId);
+      } else {
+        this.removeVideo();
+      }
     });
 
     this.window.on('resize', this.onResize);
@@ -185,9 +200,7 @@ window.domModules['case-promo'] = {
     });
   },
   playVideo(videoId) {
-    // this.player.destroy()
     this.player.load(videoId);
-    // window['domModules'].loader.start();
   },
   onKeyUp(e) {
     if (e.keyCode == 27) {
