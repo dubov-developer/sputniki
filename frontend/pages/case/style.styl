@@ -494,3 +494,24 @@
     height calc(100vh/5)
     width 100%
     background-color #5d524d
+
+.player-menu
+  position absolute
+  left 0
+  right 0
+  z-index 3
+  margin 0 auto
+  width rem(960, 17)
+  bottom rem(40, 17)
+  cursor pointer
+
+  a
+    font-size rem(24, 17)
+    font-weight 400
+
+    &.active
+      border-bottom 1px solid #fff
+      cursor default
+  
+  a + a
+    margin-left rem(60, 17)
