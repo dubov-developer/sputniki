@@ -113,7 +113,9 @@ window.domModules['case-promo'] = {
     this.playerOverlay.append(this.playerClose);
     this.wrapper.append(this.playerEl);
     this.wrapper.append(this.playerOverlay);
-    this.wrapper.append(this.playerMenu);
+    if (this.videoList.length > 1) {
+      this.wrapper.append(this.playerMenu);
+    }
     this.wrapper.append(this.loader);
     this.body.append(this.wrapper);
     this.closeSize = this.playerClose.height() / 2;
