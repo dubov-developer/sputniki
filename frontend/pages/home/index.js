@@ -14,6 +14,7 @@ var Homepage = Barba.BaseView.extend({
   onEnter: function() {
   },
   onEnterCompleted: function() {
+    return;
       // The Transition has just finished.
     HomeEnterAnimation().then(() => {
       enableScroll();

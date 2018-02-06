@@ -1,4 +1,5 @@
 @import './fonts/style.css';
+@import './variables.styl';
 
 html
   position fixed
@@ -6,6 +7,11 @@ html
   left 0
   width 100%
   height 100%
+  +width-lessthan(tablet)
+    position relative
+    top auto
+    left auto
+    width auto
 
 body
   font-family 'Graphik LCG'
@@ -38,6 +44,8 @@ h1, h2
   position relative
   overflow hidden
   width 100%
+  +width-lessthan(tablet)
+    overflow visible
 
 .fixed-container
   position fixed
@@ -45,11 +53,16 @@ h1, h2
   top 0
   left 0
   height 100%
+  +width-lessthan(tablet)
+    display none
 
 .page-container
   position relative
   width 59.6%
   margin-left 41.4%
+  +width-lessthan(tablet)
+    margin 0
+    width 100%
 
   &_case
     width rem(960, 17)
@@ -60,12 +73,20 @@ h1, h2
   height 100vh
   display flex
   align-items center
+  +width-lessthan(tablet)
+    height auto
 
   &__content
     margin-top rem(-18, 17)
     margin-left rem(75, 17)
     position absolute
     top 50%
+    +width-lessthan(tablet)
+      position static
+      top auto
+      margin-top 0
+      margin-left auto
+      margin-right auto
   
   &__row
     display flex
@@ -73,6 +94,8 @@ h1, h2
 
 .section + .section
   margin-top 0vh
+  +width-lessthan(tablet)
+    margin-top 150px
 
 .copyright
   position fixed

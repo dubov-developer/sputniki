@@ -37,9 +37,13 @@ import { preloadImages } from './js/image-preloader';
 document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
   initDomModules();
-  initScroll();
+  
+  
+  /* Поставить условие на адаптивку */
+  // initScroll();
+  // scrollmagic.init(scrollbar);
+  /* Поставить условие на адаптивку */
   hover.init();
-  scrollmagic.init(scrollbar);
   Router.init();
 });
 

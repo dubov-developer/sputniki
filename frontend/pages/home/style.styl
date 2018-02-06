@@ -1,16 +1,20 @@
-
+@import '../../variables.styl';
   
 .promo
   height 100vh
   display flex
   align-items center
   justify-content flex-start
-  
+  +width-lessthan(tablet)
+    justify-content center
+
   &__items
     position relative
     width rem(325, 17)
     height rem(325, 17)
     margin-left rem(50, 17)
+    +width-lessthan(tablet)
+      margin-left 0
    
   &__item
     position absolute
@@ -81,11 +85,19 @@
       position absolute
       top 50%
       margin-top rem(-75, 17)
+      +width-lessthan(tablet)
+        margin-top 0
+        position static
+        top auto
+        margin-left 0
+        width 100%
 
     &__content
       position relative
       top auto
       left 5%
+      +width-lessthan(tablet)
+        left 0
 
 .show-cases
   display flex
@@ -106,6 +118,8 @@
   flex-direction column
   align-items flex-start
   justify-content center
+  +width-lessthan(tablet)
+    margin-bottom 150px
 
   .section__row
     align-items flex-end

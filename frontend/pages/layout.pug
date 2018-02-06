@@ -2,6 +2,7 @@ html(data-dom-module="base-layout")
   head
     title Sputniki
     link#favicon(href="favicon.ico", rel="icon", type="image/x-icon")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
     script.
       window.retina = window.devicePixelRatio > 1 ? true : false;
       if (window.retina && document.getElementById('favicon')) {
@@ -29,9 +30,9 @@ html(data-dom-module="base-layout")
           a.social-list__link.social-list__link_instagram(href="#", data-icon="instagram")
         li.social-list__item
           a.social-list__link.social-list__link_youtube(href="#", data-icon="youtube")
-    .scroll-down(data-dom-module="scroll-down")
-      .scroll-down__line
-      .scroll-down__arrow
+    //- .scroll-down(data-dom-module="scroll-down")
+    //-   .scroll-down__line
+    //-   .scroll-down__arrow
     .loader(data-dom-module="loader")
     p.copyright © Sputniki_  2018
     .custom-scroll
