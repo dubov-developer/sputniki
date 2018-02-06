@@ -20,6 +20,10 @@ window.domModules['case-promo'] = {
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onFirstPlaying = this.onFirstPlaying.bind(this);
     this.playVideo = this.playVideo.bind(this);
+    this.onVideoEnd = this.onVideoEnd.bind(this);
+    this.onItemMenuClick = this.onItemMenuClick.bind(this);
+    this.onControlHide = this.onControlHide.bind(this);
+    this.onControlShow = this.onControlShow.bind(this);
     this.videoList = this.el.data('video');
 
     el.on('click', () => {
@@ -36,40 +40,6 @@ window.domModules['case-promo'] = {
     window['domModules'].loader.start();
     this.player.on('playing', this.onFirstPlaying);
     this.activeVideoIndex = 0;
-  },
-  onFirstPlaying() {
-    if (!this.firstVideoLoaded) {
-      this.firstVideoLoaded = true;
-      this.player.setVolume(0);
-
-      setTimeout(() => {
-        window['domModules'].loader.done();
-        
-        let timer;
-        let loaderLines = $('.player-loader').children('div');
-        let loaderLinesShowPosition = [loaderLines.eq(2), loaderLines.eq(0), loaderLines.eq(1), loaderLines.eq(3), loaderLines.eq(4)]
-        const tl = new TimelineMax({
-        });
-        tl.set(this.wrapper, { autoAlpha: 1 }, 0);
-        tl.staggerFrom(loaderLinesShowPosition, 0.3, { xPercent: '100%', ease: Power2.easeOut }, 0.1);
-        tl.set(this.wrapper.find('iframe'), { autoAlpha: 1 });
-        tl.addCallback(() => {
-          this.player.seek(0);
-          timer = setInterval(() => {
-            this.player.seek(0);
-          }, 10);
-        });
-        tl.staggerTo(loaderLinesShowPosition, 0.3, { xPercent: '-100%', ease: Power2.easeIn }, 0.1);
-        if (this.playerMenu) {
-          tl.staggerFrom(this.playerMenu, 0.5, { y: 50, autoAlpha: 0, ease: Power2.easeOut });
-        }
-        tl.addCallback(() => {
-          clearInterval(timer);
-          this.player.setVolume(100);
-        }, 1.2);
-
-      }, 2000);
-    }
   },
   createHTMLAndInitListeners() {
     this.closeVisible = false;
@@ -129,6 +99,14 @@ window.domModules['case-promo'] = {
     });
 
     this.playerOverlay.on('mousemove', (e) => {
+      if (this.timer) {
+        clearTimeout(this.timer);
+        this.timer = null;
+        this.setTimer();
+      } else {
+        this.el.trigger('showControl');
+        this.setTimer();
+      }
       const top = e.pageY - this.closeSize;
       const left = e.pageX - this.closeSize;
 
@@ -145,17 +123,7 @@ window.domModules['case-promo'] = {
     });
 
     if (this.playerMenu) {
-      this.playerMenu.on('click', 'a', (e) => {
-        const target = $(e.target);
-  
-        if (target.hasClass('active')) {
-          return;
-        }
-        this.activeVideoIndex = parseInt(target.data('index'), 10);
-        target.addClass('active').siblings().removeClass('active');
-        const videoId = target.data('video');
-        this.playVideo(videoId);
-      });
+      this.playerMenu.on('click', 'a', this.onItemMenuClick);
     }
 
     this.playerOverlay.on('click', () => {
@@ -173,20 +141,10 @@ window.domModules['case-promo'] = {
       related: false,
     });
 
-    this.player.on('ended', () => {
-      if (this.activeVideoIndex < this.videoList.length - 1) {
-        this.activeVideoIndex++;
-        this.playerMenu
-          .find('a').eq(this.activeVideoIndex)
-          .addClass('active')
-          .siblings()
-          .removeClass('active');
-        this.playVideo(this.videoList[this.activeVideoIndex].videoId);
-      } else {
-        this.removeVideo();
-      }
-    });
+    this.el.on('hideControl', this.onControlHide);
+    this.el.on('showControl', this.onControlShow);
 
+    this.player.on('ended', this.onVideoEnd);
     this.window.on('resize', this.onResize);
     this.document.on('keyup', this.onKeyUp);
 
@@ -200,6 +158,86 @@ window.domModules['case-promo'] = {
         }
       }
     });
+  },
+  onControlShow() {
+    console.log('SHOW CONTROL');
+    if (this.playerMenu) {
+      TweenMax.to(this.playerMenu, 0.5, { autoAlpha: 1, ease: Power2.easeInOut });
+    }
+  },
+  onControlHide() {
+    this.closeVisible = false;
+    TweenMax.to(this.playerClose, 0.5, { scale: 0, ease: Power2.easeOut });
+    if (this.playerMenu) {
+      TweenMax.to(this.playerMenu, 0.5, { autoAlpha: 0, ease: Power2.easeInOut });
+    }
+  },
+  onItemMenuClick(e) {
+    const target = $(e.target);
+  
+    if (target.hasClass('active')) {
+      return;
+    }
+    this.activeVideoIndex = parseInt(target.data('index'), 10);
+    target.addClass('active').siblings().removeClass('active');
+    const videoId = target.data('video');
+    this.playVideo(videoId);
+  },
+  onFirstPlaying() {
+    if (!this.firstVideoLoaded) {
+      this.firstVideoLoaded = true;
+      this.player.setVolume(0);
+
+      setTimeout(() => {
+        window['domModules'].loader.done();
+        
+        let timer;
+        let loaderLines = $('.player-loader').children('div');
+        let loaderLinesShowPosition = [loaderLines.eq(2), loaderLines.eq(0), loaderLines.eq(1), loaderLines.eq(3), loaderLines.eq(4)]
+        const tl = new TimelineMax({
+        });
+        tl.set(this.wrapper, { autoAlpha: 1 }, 0);
+        tl.staggerFrom(loaderLinesShowPosition, 0.3, { xPercent: '100%', ease: Power2.easeOut }, 0.1);
+        tl.set(this.wrapper.find('iframe'), { autoAlpha: 1 });
+        tl.addCallback(() => {
+          this.player.seek(0);
+          timer = setInterval(() => {
+            this.player.seek(0);
+          }, 10);
+        });
+        tl.staggerTo(loaderLinesShowPosition, 0.3, { xPercent: '-100%', ease: Power2.easeIn }, 0.1);
+        if (this.playerMenu) {
+          tl.staggerFrom(this.playerMenu, 0.5, { y: 50, autoAlpha: 0, ease: Power2.easeOut });
+        }
+        tl.addCallback(() => {
+          clearInterval(timer);
+          this.player.setVolume(100);
+
+          this.setTimer();
+        }, 1.2);
+
+      }, 2000);
+    }
+  },
+  onVideoEnd() {
+    if (this.activeVideoIndex < this.videoList.length - 1) {
+      this.activeVideoIndex++;
+      this.playerMenu
+        .find('a').eq(this.activeVideoIndex)
+        .addClass('active')
+        .siblings()
+        .removeClass('active');
+      this.playVideo(this.videoList[this.activeVideoIndex].videoId);
+    } else {
+      this.removeVideo();
+    }
+  },
+  setTimer() {
+    this.timer = setTimeout(() => {
+      this.el.trigger('hideControl');
+      clearTimeout(this.timer);
+      this.timer = null;
+    }, 5000);
   },
   playVideo(videoId) {
     this.player.load(videoId);
@@ -216,6 +254,8 @@ window.domModules['case-promo'] = {
   removeVideo() {
     this.window.off('resize', this.onResize);
     this.document.off('keyup', this.onKeyUp);
+    clearTimeout(this.timer);
+    this.timer = null;
     TweenMax.to(this.wrapper, 0.5, { autoAlpha: 0, ease: Power2.easeInOut, onComplete: () => {
       enableScroll();
       this.hasActiveVideo = false;
