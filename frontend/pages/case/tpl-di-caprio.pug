@@ -4,8 +4,10 @@ block content
   .barba-container(data-namespace="case", data-case="di-caprio")
     a.back(data-dom-module="back", href="cases.html")
     .page-container.page-container_case
-      .case
+      .case(data-dom-module="video")
         .case-promo.case-promo_di-caprio(data-dom-module="case-promo", data-video='[{ "name": "Видео 1", "videoId": "vUMr7ueA1Hw" }, { "name": "Видео кейса", "videoId": "Kyk7aW5vU9o" }]')
+          .case-promo__canvas-container(data-video-container)
+            canvas
           .case-promo__overlay
           .case-promo__info
             .case-promo__name. 

@@ -46,10 +46,12 @@ block content
                       a(href="cases.html#6", data-type-id="6") Video
 
           .preview-cases
-            a.preview-case(href="case-di-caprio.html?case=1", data-case="1", data-types="[1, 2, 3]")
+            a.preview-case(data-dom-module="video" href="case-di-caprio.html?case=1", data-case="1", data-types="[1, 2, 3]")
               .preview-case__background
+              .preview-case__canvas-container
+                canvas.preview-case__canvas
               .preview-case__animation
-
+              .preview-case__overlay
               .preview-case__content
                 .preview-case__title. 
                   Невозможно <br>

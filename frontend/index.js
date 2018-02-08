@@ -21,6 +21,7 @@ import './blocks/scroll-down/index.js';
 import './blocks/case-slider/index.js';
 import './blocks/case-promo/index.js';
 import './blocks/back/index.js';
+import './blocks/video/index.js';
 
 import './pages/home/index';
 import './pages/about/index';

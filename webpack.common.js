@@ -77,7 +77,7 @@ module.exports = {
         [ 'style-loader', 'css-loader?minimize&-autoprefixer', { loader: 'postcss-loader', options: postCssOptions }, 'stylus-loader'] 
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|mp4)$/,
         use: [
           'file-loader'
         ]
