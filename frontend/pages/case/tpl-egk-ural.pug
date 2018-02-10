@@ -4,8 +4,10 @@ block content
   .barba-container(data-namespace="case", data-case="egk-ural")
     a.back(data-dom-module="back", href="cases.html")
     .page-container.page-container_case
-      .case
+      .case(data-dom-module="video", data-case="egk-ural")
         .case-promo.case-promo_egk-ural(data-dom-module="case-promo", data-video='[{ "name": "Кейс", "videoId": "_jIbdkaatf8"}]')
+          .case-promo__background
+          .case-promo__canvas-container(data-video-container)
           .case-promo__overlay
           .case-promo__info
             .case-promo__name. 

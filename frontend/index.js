@@ -22,6 +22,7 @@ import './blocks/case-slider/index.js';
 import './blocks/case-promo/index.js';
 import './blocks/back/index.js';
 import './blocks/video/index.js';
+import './blocks/video-preview/index.js';
 
 import './pages/home/index';
 import './pages/about/index';
@@ -48,6 +49,7 @@ Barba.Dispatcher.on('newPageReady', function() {
 });
 
 Barba.Dispatcher.on('transitionCompleted', function() {
+  $('body').trigger('pageTransitionCompleted');
   initDomModules();
   setTimeout(() => {
     // из за входной анимации, исправить это

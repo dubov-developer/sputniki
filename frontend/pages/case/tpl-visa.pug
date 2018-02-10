@@ -4,8 +4,10 @@ block content
   .barba-container(data-namespace="case", data-case="visa")
     a.back(data-dom-module="back", href="cases.html")
     .page-container.page-container_case
-      .case
+      .case(data-dom-module="video", data-case="visa")
         .case-promo.case-promo_visa(data-dom-module="case-promo", data-video='[{ "name": "Кейс", "videoId": "W3myk2KBW6g"}]')
+          .case-promo__background
+          .case-promo__canvas-container(data-video-container)
           .case-promo__overlay
           .case-promo__info
             .case-promo__name. 

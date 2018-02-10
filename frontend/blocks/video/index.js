@@ -2,7 +2,18 @@ import $ from 'jquery';
 import { TimelineMax, TweenMax, Power2 } from 'gsap';
 import getViewport from 'getviewport';
 
-const videoUrl = require('../../video/di-caprio.mp4');
+const videoUrls = {
+  'di-caprio': require('../../video/di-caprio.mp4'),
+  'abrau-durso': require('../../video/abrau-durso.mp4'),
+  'train-moscow': require('../../video/train-moscow.mp4'),
+  'visa': require('../../video/visa.mp4'),
+  'egk-ural': require('../../video/egk-ural.mp4'),
+  'husky': require('../../video/husky.mp4'),
+  '5-ozer': require('../../video/5-ozer.mp4'),
+  'mageta': require('../../video/mageta.mp4'),
+  'julius-meinl': require('../../video/julius-meinl.mp4'),
+  'kotex-active': require('../../video/kotex-active.mp4'),
+};
 
 if (!window.domModules) {
   window.domModules = {};
@@ -11,33 +22,45 @@ if (!window.domModules) {
 window.domModules['video'] = {
   init(el) {
     this.el = el;
-    this.videoRatio = 640 / 360;
+    this.videoRatio = 960 / 540;
     this.container = this.el.find('[data-video-container]');
-    if (!this.container.length) {
-      this.container = this.el;
-    }
-    this.width = this.container.width();
-    this.height = this.container.height();
-    this.canvas = this.container.find('canvas')[0];
-    this.ctx = this.canvas.getContext('2d');
-
+    this.caseName = this.el.data('case');
+    this.background = this.el.find('.case-promo__background');
+    this.onPageTransitionCompleted = this.onPageTransitionCompleted.bind(this);
     this.onWindowResize();
 
-    this.loadVideo(videoUrl).then(() => {
+    this.loadVideo(videoUrls[this.caseName]).then(() => {
       this.inited = true;
+      this.container.append('<canvas class="preview-case__canvas"></canvas>')
+      this.canvas = this.container.find('canvas')[0];
+      this.ctx = this.canvas.getContext('2d');
+      this.onWindowResize();
       setTimeout(() => {
         this.currentTimer = setInterval(() => {
           this.renderFrame(this.videoElement);
         }, 1000 / 60);
         
         this.videoElement.play();
-      }, 5000);
+      }, 0);
     });
+
+    $('body').one('pageTransitionCompleted', this.onPageTransitionCompleted);
 
     window.addEventListener('resize', this.onWindowResize.bind(this));
   },
+  onPageTransitionCompleted(){
+    this.destroyVideo();
+  },
+  destroyVideo() {
+    if (this.inited) {
+      clearInterval(this.currentTimer);
+      $(this.videoElement).remove();
+      this.ctx.clearRect(0, 0, this.width, this.height);
+      this.inited = false;
+    }
+  },
   renderFrame(video) {
-    this.ctx.drawImage(video, 0, 0, 640, 360, 0, 0, this.fitSizes.width, this.fitSizes.height);
+    this.ctx.drawImage(video, 0, 0, 960, 540, 0, 0, this.fitSizes.width, this.fitSizes.height);
   },
   loadVideo(url) {
     return new Promise((resolve, reject) => {
@@ -78,11 +101,18 @@ window.domModules['video'] = {
 
     this.fitSizes = this.getFitSizes(this.width, this.height);
 
-    this.canvas.style.marginLeft = `${this.fitSizes.x}px`;
-    this.canvas.style.marginTop = `${this.fitSizes.y}px`;
+    if (this.canvas) {
+      this.canvas.style.marginLeft = `${this.fitSizes.x}px`;
+      this.canvas.style.marginTop = `${this.fitSizes.y}px`;
+  
+      this.canvas.width = this.width + Math.abs(this.fitSizes.x);
+      this.canvas.height = this.height + Math.abs(this.fitSizes.y);
+    }
 
-    this.canvas.width = this.width + Math.abs(this.fitSizes.x);
-    this.canvas.height = this.height + Math.abs(this.fitSizes.y);
+    this.background.css({
+      width: Math.floor(this.width),
+      height: Math.floor(this.height),
+    });
 
     if (this.videoElement) {
       this.renderFrame(this.videoElement);
