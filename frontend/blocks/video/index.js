@@ -11,7 +11,7 @@ if (!window.domModules) {
 window.domModules['video'] = {
   init(el) {
     this.el = el;
-    this.videoRatio = 960 / 540;
+    this.videoRatio = 640 / 360;
     this.container = this.el.find('[data-video-container]');
     if (!this.container.length) {
       this.container = this.el;
@@ -31,13 +31,13 @@ window.domModules['video'] = {
         }, 1000 / 60);
         
         this.videoElement.play();
-      }, 0);
+      }, 5000);
     });
 
     window.addEventListener('resize', this.onWindowResize.bind(this));
   },
   renderFrame(video) {
-    this.ctx.drawImage(video, 0, 0, 960, 540, 0, 0, this.fitSizes.width, this.fitSizes.height);
+    this.ctx.drawImage(video, 0, 0, 640, 360, 0, 0, this.fitSizes.width, this.fitSizes.height);
   },
   loadVideo(url) {
     return new Promise((resolve, reject) => {
