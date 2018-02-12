@@ -15,6 +15,17 @@
 
   &__link
     display block
+    
+    svg
+      path
+        transition stroke 0.3s ease-in-out, fill 0.3s ease-in-out
+
+    &:hover
+      svg
+        path[fill]
+          fill rgba(255, 255, 255, .7)
+        path[stroke]
+          stroke rgba(255, 255, 255, .7)
 
     &_fb, &_instagram
       width rem(30, 17)
