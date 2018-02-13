@@ -111,7 +111,7 @@ module.exports = {
   '5-ozer': {
     'default': [
       require('./assets/gallery/5-ozer/1.jpg'),
-      require('./assets/gallery/5-ozer/2.jpg'),
+      // require('./assets/gallery/5-ozer/2.jpg'),
       require('./assets/gallery/5-ozer/3.jpg'),
       require('./assets/gallery/5-ozer/4.jpg'),
       require('./assets/gallery/5-ozer/5.jpg'),
@@ -119,7 +119,7 @@ module.exports = {
     ],
     'retina': [
       require('./assets/gallery/5-ozer/1@2x.jpg'),
-      require('./assets/gallery/5-ozer/2@2x.jpg'),
+      // require('./assets/gallery/5-ozer/2@2x.jpg'),
       require('./assets/gallery/5-ozer/3@2x.jpg'),
       require('./assets/gallery/5-ozer/4@2x.jpg'),
       require('./assets/gallery/5-ozer/5@2x.jpg'),
