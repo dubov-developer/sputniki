@@ -2,9 +2,9 @@ import Scrollbar from 'smooth-scrollbar';
 import $ from 'jquery';
 import getViewport from 'getviewport';
 
+export let scrollbar;
 let stopScroll = false;
 let lastStackIndex = 0;
-export let scrollbar;
 let timeoutFn;
 const scrollBarOptions = { damping: 0.1, renderByPixels: true };
 let targetsArray = null;
@@ -15,10 +15,19 @@ export function initScroll() {
   initListeners();
 }
 
+export function destroyScroll() {
+  scrollbar.addListener(onCustomScroll);
+  $(window).off('resize', resizeTarget);
+  Scrollbar.destroy(document.querySelector('.custom-scroll'));
+  document.querySelector('.custom-scroll').removeEventListener('wheel', onMouseWheel);
+}
+
 function initListeners() {
   document.querySelector('.custom-scroll').addEventListener('wheel', onMouseWheel);
   
   scrollbar.addListener(onCustomScroll);
+
+  $(window).on('resize', resizeTarget);
 
   setTimeout(() => {
     initTargets();
@@ -78,36 +87,8 @@ function onCustomScroll(status) {
   }
 }
 
-function easeInOutCirc(pos) {
-  if((pos/=0.5) < 1) return -0.5 * (Math.sqrt(1 - pos*pos) - 1);
-  return 0.5 * (Math.sqrt(1 - (pos-=2)*pos) + 1);
-}
-
-function easeOutBack(pos) {
-  var s = 1.70158;
-  return (pos=pos-1)*pos*((s+1)*pos + s) + 1;
-}
-
-function easeInBack(pos) {
-  var s = 1.70158;
-  return (pos)*pos*((s+1)*pos - s);
-}
-
-function easeInOutBack(pos) {
-  var s = 1.70158;
-  if((pos/=0.5) < 1) return 0.5*(pos*pos*(((s*=(1.525))+1)*pos -s));
-  return 0.5*((pos-=2)*pos*(((s*=(1.525))+1)*pos +s) +2);
-}
-
-function easeInCubic(pos) {
-  return Math.pow(pos, 3);
-}
-
-function easeInOutSine(pos) {
-  return (-0.5 * (Math.cos(Math.PI*pos) -1));
-}
-
-function easeInOutQuart(pos) {
-  if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,4);
-  return -0.5 * ((pos-=2)*Math.pow(pos,3) - 2);
+function resizeTarget() {
+  setTimeout(() => {
+    initTargets();
+  })
 }

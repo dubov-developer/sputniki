@@ -1,9 +1,13 @@
+@import '../../variables.styl';
+
 .scroll-down
   position fixed
   right rem(100, 17)
   bottom rem(60, 17)
   opacity 0
   visibility hidden
+  +width-lessthan(tablet)
+    display none
 
   &__line
     height rem(100, 17)

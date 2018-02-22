@@ -10,9 +10,11 @@ export const scrollmagic = {
   controller: null,
   init(scrollbar) {
     this.scrollbar = scrollbar;
-    this.scrollbar.addListener((event) => {
-      this.refresh(event);
-    });
+    if (scrollbar) {
+      this.scrollbar.addListener((event) => {
+        this.refresh(event);
+      });
+    }
 
     this.createController();
   },

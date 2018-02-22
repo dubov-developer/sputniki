@@ -2,6 +2,7 @@ html(data-dom-module="base-layout")
   head
     title Sputniki
     link#favicon(href="favicon.ico", rel="icon", type="image/x-icon")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
     script.
       window.retina = window.devicePixelRatio > 1 ? true : false;
       if (window.retina && document.getElementById('favicon')) {
@@ -10,6 +11,9 @@ html(data-dom-module="base-layout")
         favicon.setAttribute('href', faviconHref);
       }
   body
+    .mobile-header
+      a.logo(href="index.html" data-dom-module="logo")
+      .burger
     .fixed-container(data-dom-module="fixed-container")
       nav.menu(data-dom-module="menu")
         ul.menu__list
