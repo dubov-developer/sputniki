@@ -64,6 +64,7 @@ h1, h2
   +width-lessthan(tablet)
     margin 0
     width 100%
+    overflow hidden
 
   &_case
     width rem(960, 17)
@@ -74,8 +75,6 @@ h1, h2
   height 100vh
   display flex
   align-items center
-  +width-lessthan(tablet)
-    height auto
 
   &__content
     margin-top rem(-18, 17)
@@ -86,7 +85,7 @@ h1, h2
       position static
       top auto
       margin-top 0
-      margin-left auto
+      margin-left rem(40, 17)
       margin-right auto
   
   &__row
@@ -96,7 +95,7 @@ h1, h2
 .section + .section
   margin-top 0vh
   +width-lessthan(tablet)
-    margin-top 150px
+    margin-top 0
 
 .copyright
   position fixed
@@ -112,16 +111,31 @@ h1, h2
   position relative
   overflow hidden
   
+  
   &__item
     font-size rem(20, 17)
     font-weight 300
-    color #5e5955
     text-decoration none
+    color #5e5955
     display inline-block
     vertical-align middle
     transition color 0.3s ease-in-out
+
+    a
+      text-decoration none
+      color #5e5955
+      &:hover
+        color #a79d96
+
     &:hover
       color #a79d96
+
+    +width-lessthan(tablet)
+      display block
+
+  &__separator + &__item
+    +width-lessthan(tablet)
+      margin-top rem(46, 17)
 
   &__separator
     display inline-block
@@ -130,6 +144,10 @@ h1, h2
     width 1px
     background-color #5e5955
     margin 0 rem(42, 17)
+    +width-lessthan(tablet)
+      margin 0
+      display none
+
 
 .telegram
   display block
@@ -141,7 +159,9 @@ h1, h2
   justify-content space-between
   text-decoration none
   transition background-color 0.3s ease-in-out
-
+  +width-lessthan(tablet)
+    height rem(56, 17)
+    width 100%
   &:hover
     .telegram__background, .telegram__border
       background-color #a79d96
@@ -179,6 +199,10 @@ h1, h2
     letter-spacing rem(0.5, 17)
     font-weight 300
     margin-left rem(25, 17)
+    +width-lessthan(tablet)
+      font-size rem(15, 17)
+    +width-lessthan(375)
+      font-size rem(12, 17)
 
   &__circle
     position relative
@@ -193,9 +217,14 @@ h1, h2
     position absolute
     top 50%
     left 50%
-    margin-top rem(-8.5, 17)
-    margin-left rem(-11, 17)
-    imgboxrem('./images/plane.png', 17)
+    margin-top rem(-13, 17)
+    margin-left rem(-13.5, 17)
+    background-image-retina('./images/facebook-messenger.svg')
+    background-size contain
+    background-repeat no-repeat
+    background-position center
+    width rem(27, 17)
+    height rem(26, 17)
 
 .action-line
   display flex
@@ -313,19 +342,39 @@ h1, h2
 .mobile-header
   position fixed
   z-index 1
-  top 0
-  left 0
+  padding rem(40, 17) rem(40, 17) rem(20, 17)
   width 100%
-  height 80px
+  box-sizing border-box
   display none
   background-color #000
+  clearfix()
+
   +width-lessthan(tablet)
     display block
 
+  .mobile-logo
+    display block
+    float left
+    margin-top rem(-4, 17)
+    imgboxrem('./images/logo-device.png', 17)
+    +width-lessthan(375)
+      imgboxrem('./images/logo-device.png', 19)
+
 .burger
-  position absolute
-  top 20px
-  right 50px
-  width 40px
-  height 40px
-  background-color #fff
+  position relative
+  float right
+  width rem(32, 17)
+  height rem(26, 17)
+  display flex
+  flex-direction column
+  justify-content space-between
+  +width-lessthan(375)
+    height rem(26, 19)
+
+  &__line
+    height 2px
+    width 100%
+    background-color #fff
+
+    +width-lessthan(mobile)
+      height 1px

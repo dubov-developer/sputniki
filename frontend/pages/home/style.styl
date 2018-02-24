@@ -15,7 +15,10 @@
     margin-left rem(50, 17)
     +width-lessthan(tablet)
       margin-left 0
-   
+      margin-top rem(50, 17)
+      width rem(302, 17)
+      height rem(302, 17)
+
   &__item
     position absolute
     left 0
@@ -25,30 +28,46 @@
     &_1
       opacity 1
       imgboxrem('./assets/case-1.png', 17)
+      +width-lessthan(tablet)
+        imgboxrem('./assets/case-1-device.png', 17)
 
     &_2
       imgboxrem('./assets/case-2.png', 17)
+      +width-lessthan(tablet)
+        imgboxrem('./assets/case-2-device.png', 17)
 
     &_3
       imgboxrem('./assets/case-3.png', 17)
+      +width-lessthan(tablet)
+        imgboxrem('./assets/case-3-device.png', 17)
 
     &_4
       imgboxrem('./assets/case-4.png', 17)
+      +width-lessthan(tablet)
+        imgboxrem('./assets/case-4-device.png', 17)
 
     &_5
       imgboxrem('./assets/case-5.png', 17)
-
+      +width-lessthan(tablet)
+        imgboxrem('./assets/case-5-device.png', 17)
+ 
     &_6
       imgboxrem('./assets/case-6.png', 17)
+      +width-lessthan(tablet)
+        imgboxrem('./assets/case-6-device.png', 17)
 
     &_7
       imgboxrem('./assets/case-7.png', 17)
+      +width-lessthan(tablet)
+        imgboxrem('./assets/case-7-device.png', 17)
 
 .section_home-description, .section_home-slogan
   p
     font-size rem(60, 17)
     line-height 1.2
     font-weight 300
+    +width-lessthan(tablet)
+      font-size rem(36, 17)
 
     span
       display inline-block
@@ -62,6 +81,9 @@
     line-height 1.2
     font-weight 200
     margin-bottom rem(50, 17)
+    +width-lessthan(tablet)
+      font-size rem(36, 17)
+      margin-bottom rem(30, 17)
 
     span
       display inline-block
@@ -92,6 +114,7 @@
         top auto
         margin-left 0
         width 100%
+        height rem(222, 17)
 
     &__content
       position relative
@@ -110,28 +133,61 @@
     font-size rem(18, 17)
     letter-spacing rem(3, 17)
     font-weight 300
+    +width-lessthan(tablet)
+      font-size rem(11, 17)
+      letter-spacing rem(1.5, 17)
 
   &__icon
     margin-left rem(20, 17)
     imgboxrem('./assets/show-cases.png', 17)
+    +width-lessthan(tablet)
+      imgboxrem('./assets/show-cases-device.png', 17)
+      margin-left rem(15, 17)
 
 .section_home-hello
   flex-direction column
   align-items flex-start
   justify-content center
-  +width-lessthan(tablet)
-    margin-bottom 150px
 
   .section__row
     align-items flex-end
     margin-bottom rem(52, 17)
+    +width-lessthan(tablet)
+      margin-bottom 0
+
+  .section__content
+    +width-lessthan(tablet)
+      position relative
+      margin 0
+      width 100%
+      padding-left rem(40, 17)
+      padding-right rem(40, 17)
+      box-sizing border-box
+
+  .contacts-info-links
+    +width-lessthan(tablet)
+      margin-bottom rem(45, 17)
 
   h2
     font-size rem(60, 17)
     line-height 1.2
     font-weight 500
     margin-right rem(50, 17)
+    +width-lessthan(tablet)
+      font-size rem(36, 17)
+      margin-right 0
+      margin-bottom rem(48, 17)
 
   .telegram
     position relative
     top rem(-8, 17)
+
+    +width-lessthan(tablet)
+      position absolute
+      width rem(295, 17)
+      margin-left rem(40, 17)
+      bottom rem(-55, 17)
+      top auto
+      left 0
+    +width-lessthan(375)
+      width rem(245, 17)

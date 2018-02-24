@@ -17,28 +17,35 @@ window.domModules['base-layout'] = {
 
   },
   factor: 1280 / 700,
+  deviceFactor: 750 / 1333,
   tick: function() {
     let width;
     let height;
-    
+    let fontSize;
     const viewportWidth = getViewport().width;
     const viewportHeight = getViewport().height;
 
+    const factor = viewportWidth >= 1024 ? this.factor : this.deviceFactor;
     
-    height = viewportHeight;
-    width = height * this.factor;
+    if (viewportWidth >= 1024) {
+      height = viewportHeight;
+      width = height * factor;
+  
+      if (width > viewportWidth) {
+        width = viewportWidth;
+        height = width / factor;
+      }
+  
+      if (width < 960) {
+        width = 960;
+        height = width / factor;
+      }
 
-    if (width > viewportWidth) {
+      fontSize = 14 + (8 * (width - 1024) / (1600 - 1024));
+    } else {
       width = viewportWidth;
-      height = width / this.factor;
+      fontSize = 15.8 + (15 * (width - 320) / (1023 - 320));
     }
-
-    if (width < 960) {
-      width = 960;
-      height = width / this.factor;
-    }
-
-    const fontSize = 14 + (8 * (width - 1024) / (1600 - 1024));
 
     this.el.css({
       fontSize,
