@@ -29,7 +29,6 @@ module.exports = {
     filename: '[name].[hash].js',
     chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'docs'),
-    publicPath: '/',
   },
   resolve: {
     modules: [
