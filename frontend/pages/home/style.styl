@@ -15,7 +15,7 @@
     margin-left rem(50, 17)
     +width-lessthan(tablet)
       margin-left 0
-      margin-top rem(50, 17)
+      margin-top rem(-50, 17)
       width rem(302, 17)
       height rem(302, 17)
 
@@ -148,6 +148,8 @@
   flex-direction column
   align-items flex-start
   justify-content center
+  +width-lessthan(tablet)
+    padding-bottom rem(56+140, 17)
 
   .section__row
     align-items flex-end

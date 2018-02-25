@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { TimelineMax, TweenMax, Power2 } from 'gsap';
-import { scrollbar, disableScroll, enableScroll } from '../../scroll.js';
+import scrollbarObject from '../../scroll';
 import Router from '../../router.js';
 import getViewport from 'getviewport';
 
@@ -17,11 +17,11 @@ window.domModules['back'] = {
 
     setTimeout(() => {
       this.calcOffset();
-      scrollbar.addListener(this.onScroll);
+      scrollbarObject.addListener(this.onScroll);
       window.addEventListener('resize', this.onResize);
       this.routerSubscription = Router.events.subscribe((e) => {
         if (e && e.name === 'transitionCompleted' && e.current.name !== 'case') {
-          scrollbar.removeListener(this.onScroll);
+          scrollbarObject.removeListener(this.onScroll);
           window.removeEventListener('resize', this.onResize);
           if (this.routerSubscription) {
             this.routerSubscription.unsubscribe();

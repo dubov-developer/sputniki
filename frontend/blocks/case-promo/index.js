@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import { TimelineMax, Power2, TweenMax } from 'gsap';
 import getViewport from 'getviewport';
-import { scrollbar, disableScroll, enableScroll } from '../../scroll.js';
+import scrollbarObject from '../../scroll';
 import { hover } from '../../js/hover.js';
 import Router from '../../router.js';
 
@@ -148,7 +148,7 @@ window.domModules['case-promo'] = {
     this.window.on('resize', this.onResize);
     this.document.on('keyup', this.onKeyUp);
 
-    disableScroll();
+    scrollbarObject.disableScroll();
 
     this.routerSubscription = Router.events.subscribe((e) => {
       if (e && e.name === 'transitionCompleted' && e.current.name !== 'case') {
@@ -257,7 +257,7 @@ window.domModules['case-promo'] = {
     clearTimeout(this.timer);
     this.timer = null;
     TweenMax.to(this.wrapper, 0.5, { autoAlpha: 0, ease: Power2.easeInOut, onComplete: () => {
-      enableScroll();
+      scrollbarObject.enableScroll();
       this.hasActiveVideo = false;
       this.wrapper.remove();
     }});

@@ -1,12 +1,11 @@
 import Barba from 'barba.js';
 import $ from 'jquery';
 import { preloadImages } from './js/image-preloader';
-import { disableScroll, scrollbar } from './scroll.js';
-
+import scrollbarObject from './scroll.js';
 export const HideShowTransition = Barba.BaseTransition.extend({
   start: function() {
     return new Promise((resolve, reject) => {
-      disableScroll();
+      scrollbarObject.disableScroll();
       let loaderStarted = false;
       const timeout = setTimeout(() => {
         window['domModules'].loader.start();
@@ -47,9 +46,7 @@ export const HideShowTransition = Barba.BaseTransition.extend({
   },
 
   finish: function() {
-    if (scrollbar) {
-      scrollbar.setPosition(0, 0);
-    }
+    scrollbarObject.setPosition(0, 0);
 
     this.done();
   }

@@ -4,8 +4,8 @@ require('slick-carousel/slick/slick.css');
 require('slick-carousel/slick/slick.js');
 import './style.styl';
 import Barba from 'barba.js';
-import { initScroll, destroyScroll, initTargets, disableScroll, scrollbar } from './scroll.js';
-import { scrollmagic } from './js/scrollmagic.js';
+import scrollbarObject from './scroll.js';
+
 import { hover } from './js/hover.js';
 import { initDomModules } from './js/common.js';
 import { HideShowTransition } from './transitions';
@@ -36,24 +36,11 @@ import './pages/case/index';
 
 import Router from './router.js';
 
-$('body').on('layoutStateChange', (e, data) => {
-  if (data.previous === 'desktop' && data.current === 'tablet') {
-    destroyScroll();
-  }
-
-  if (data.current === 'desktop' && data.previous === 'tablet') {
-    initScroll();
-    scrollmagic.init(scrollbar);
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.start();
   initDomModules();
 
   if (adaptive.currentState === 'desktop') {
-    initScroll();
-    scrollmagic.init(scrollbar);
     hover.init();
   }
 
@@ -69,7 +56,7 @@ Barba.Dispatcher.on('transitionCompleted', function() {
   initDomModules();
   setTimeout(() => {
     // из за входной анимации, исправить это
-    initTargets();
+    scrollbarObject.initTargets();
   }, 1000);
 });
 

@@ -2,7 +2,7 @@ import './style.styl';
 import Barba from 'barba.js';
 import { CasesEnterAnimation } from './animation';
 import { hover } from '../../js/hover.js';
-import { scrollbar, disableScroll, enableScroll } from '../../scroll';
+import scrollbarObject from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
 import Router from '../../router.js';
@@ -37,14 +37,17 @@ var Casespage = Barba.BaseView.extend({
           if (e.previous === null || (e.previous && e.previous.name !== 'case')) {
             onTypeChange();
             CasesEnterAnimation().then(() => {
-              enableScroll();
+              scrollbarObject.enableScroll();
             });
           } else {
             onTypeChange();
-            scrollbar.scrollIntoView($(`[data-case=${e.previous.queryParams.case}]`)[0], {
-              offsetTop: 50
-            });
-            enableScroll();
+            if (scrollbarObject.scrollbarInstance) {
+              scrollbarObject.scrollbarInstance.scrollIntoView($(`[data-case=${e.previous.queryParams.case}]`)[0], {
+                offsetTop: 50
+              });
+            }
+
+            scrollbarObject.enableScroll();
           }
         }
       });
@@ -83,7 +86,9 @@ var Casespage = Barba.BaseView.extend({
               el.hide();
             }
           });
-          scrollbar.update();
+          if (scrollbarObject.scrollbarInstance) {
+            scrollbarObject.scrollbarInstance.update();
+          }
           cases = $('.preview-case.active');
         }
   

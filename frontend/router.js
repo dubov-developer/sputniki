@@ -1,6 +1,6 @@
 import Barba from 'barba.js';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { disableScroll } from './scroll.js';
+import scrollbarObject from './scroll.js';
 
 class Router {
   constructor() {
@@ -8,7 +8,7 @@ class Router {
     this.Barba = Barba;
 
     setTimeout(() => {
-      disableScroll();
+      scrollbarObject.disableScroll();
       const url = Barba.HistoryManager.currentStatus().url;
       const currentQueryIndex = url.indexOf('?');
       const currentQueryParams = currentQueryIndex !== -1 ? parseQuery(url.slice(currentQueryIndex)) : {};

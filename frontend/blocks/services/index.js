@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import { TimelineMax, Power2 } from 'gsap';
 import getViewport from 'getviewport';
-import { scrollbar } from '../../scroll.js';
+import scrollbarObject from '../../scroll';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -48,19 +48,25 @@ window.domModules['services'] = {
         service.addClass('active');
         setTimeout(() => {
           const offset = (getViewport().height - service.outerHeight()) / 2;
-          scrollbar.update();
-          scrollbar.scrollTo(0, scrollbar.offset.y + service.offset().top - offset, 500);
+          if (scrollbarObject.scrollbarInstance) {
+            scrollbarObject.scrollbarInstance.update();
+            scrollbarObject.scrollbarInstance.scrollTo(0, scrollbarObject.scrollbarInstance.offset.y + service.offset().top - offset, 500);
+          }
         }, 0);
       },
       onUpdate: onUpdateFn,
       onReverseComplete() {
         service.removeClass('active');
-        scrollbar.update();
+        if (scrollbarObject.scrollbarInstance) {
+          scrollbarObject.scrollbarInstance.update();
+        }
       }
     })
 
     function onUpdateFn() {
-      scrollbar.update();
+      if (scrollbarObject.scrollbarInstance) {
+        scrollbarObject.scrollbarInstance.update();
+      }
     }
 
     let height = 0;

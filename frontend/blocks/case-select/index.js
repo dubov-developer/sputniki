@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import { TimelineMax, Power2, TweenMax } from 'gsap';
 import getViewport from 'getviewport';
-import { scrollbar, disableScroll, enableScroll } from '../../scroll.js';
+import scrollbarObject from '../../scroll.js';
+
 import Router from '../../router.js';
 
 if (!window.domModules) {
@@ -31,11 +32,11 @@ window.domModules['case-select'] = {
       this.menuOffset = this.menu.offset();
   
       this.onScroll = this.onScroll.bind(this);
-      scrollbar.addListener(this.onScroll);
+      scrollbarObject.addListener(this.onScroll);
 
       this.routerSubscription = Router.events.subscribe((e) => {
         if (e && e.name === 'transitionCompleted' && e.current.name !== 'cases') {
-          scrollbar.removeListener(this.onScroll);
+          scrollbarObject.removeListener(this.onScroll);
           if (this.routerSubscription) {
             this.routerSubscription.unsubscribe();
           }
@@ -180,7 +181,7 @@ window.domModules['case-select'] = {
         objectModule.fixedContainer.css({ zIndex: 0 });
         TweenMax.set(curentValue, { autoAlpha: 0 });
         TweenMax.set(innerActionLine, { autoAlpha: 1 });
-        disableScroll();
+        scrollbarObject.disableScroll();
       },
       onComplete() {
       },
@@ -189,7 +190,7 @@ window.domModules['case-select'] = {
         objectModule.fixedContainer.css({ zIndex: 1 });
         TweenMax.set(curentValue, { autoAlpha: 1 });
         TweenMax.set(innerActionLine, { autoAlpha: 0 });
-        enableScroll();
+        scrollbarObject.enableScroll();
       }
     })
 

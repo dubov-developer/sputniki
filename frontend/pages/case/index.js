@@ -2,7 +2,7 @@ import './style.styl';
 import Barba from 'barba.js';
 import { CaseEnterAnimation } from './animation';
 import { hover } from '../../js/hover.js';
-import { scrollbar, disableScroll, enableScroll } from '../../scroll';
+import scrollbarObject from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
 
@@ -20,7 +20,7 @@ var Casepage = Barba.BaseView.extend({
   },
   onEnterCompleted: function() {
     CaseEnterAnimation().then(() => {
-      enableScroll();
+      scrollbarObject.enableScroll();
     });
 
     setTimeout(() => {
@@ -45,7 +45,7 @@ var Casepage = Barba.BaseView.extend({
         }
       }
 
-      scrollbar.addListener(onScrollFn);
+      scrollbarObject.addListener(onScrollFn);
 
       const tlpromo = new TimelineLite();
       const tlpromoWch = willChange(tlpromo);
@@ -117,7 +117,7 @@ var Casepage = Barba.BaseView.extend({
       scenes = [];
     }
 
-    scrollbar.removeListener(onScrollFn);
+    scrollbarObject.removeListener(onScrollFn);
     document.querySelector('.custom-scroll').removeEventListener('wheel', onScrollEnd);
   }
 });

@@ -7,13 +7,18 @@
   opacity 0
   visibility hidden
   +width-lessthan(tablet)
-    display none
+    right auto
+    bottom rem(40, 17)
+    left rem(40, 17)
 
   &__line
     height rem(100, 17)
     width 1px
     background-color #4d4643
     margin 0 auto rem(20, 17)
+
+    +width-lessthan(tablet)
+      height rem(95, 17)
   
   &__arrow
     imgboxrem('../../images/arrow-down.png', 17)

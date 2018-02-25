@@ -1,8 +1,7 @@
 import $ from 'jquery';
 import { TimelineMax, TweenMax, Power2 } from 'gsap';
 import getViewport from 'getviewport';
-import { scrollbar, disableScroll, enableScroll } from '../../scroll.js';
-
+import scrollbarObject from '../../scroll.js';
 const videoUrls = {
   'di-caprio': require('../../video/di-caprio.mp4'),
   'abrau-durso': require('../../video/abrau-durso.mp4'),
@@ -37,7 +36,7 @@ window.domModules['video-preview'] = {
     $('body').one('pageTransitionCompleted', this.onPageTransitionCompleted);
     $(document).on('mousemove', this.onDocumentMouseMove);
     setTimeout(() => {
-      scrollbar.addListener(this.onScroll);
+      scrollbarObject.addListener(this.onScroll);
     });
 
     this.el.on('mouseenter', '.preview-case', (e) => {
@@ -59,7 +58,9 @@ window.domModules['video-preview'] = {
       x: e.clientX,
       y: e.clientY
     };
-    this.prevScrollOffset = scrollbar.offset.y;
+    if (scrollbarObject.scrollbarInstance) {
+      this.prevScrollOffset = scrollbarObject.scrollbarInstance.offset.y;
+    }
   },
   onScroll(e) {
     if (this.prevMousePosition) {
@@ -76,7 +77,7 @@ window.domModules['video-preview'] = {
     this.destroyVideo();
     window.removeEventListener('resize', this.onWindowResize);
     $(document).off('mousemove', this.onDocumentMouseMove);
-    scrollbar.removeListener(this.onScroll);
+    scrollbarObject.removeListener(this.onScroll);
   },
   createVideo() {
     this.loadVideo(videoUrls[this.caseName]).then(() => {

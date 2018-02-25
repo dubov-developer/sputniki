@@ -11,12 +11,18 @@ export const scrollmagic = {
   init(scrollbar) {
     this.scrollbar = scrollbar;
     if (scrollbar) {
-      this.scrollbar.addListener((event) => {
-        this.refresh(event);
-      });
+      this.onCustomScroll = this.onCustomScroll.bind(this);
+      this.scrollbar.addListener(this.onCustomScroll);
     }
 
     this.createController();
+  },
+  onCustomScroll(event) {
+    this.refresh(event);
+  },
+  removeCustomScrollListener() {
+    this.scrollbar.removeListener(this.onCustomScroll);
+    this.scrollbar = null;
   },
   scene(opts, timeline) {
     let scene;

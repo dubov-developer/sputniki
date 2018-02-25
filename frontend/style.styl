@@ -75,6 +75,8 @@ h1, h2
   height 100vh
   display flex
   align-items center
+  +width-lessthan(tablet)
+    height auto
 
   &__content
     margin-top rem(-18, 17)
@@ -95,7 +97,7 @@ h1, h2
 .section + .section
   margin-top 0vh
   +width-lessthan(tablet)
-    margin-top 0
+    margin-top 30vh
 
 .copyright
   position fixed
@@ -106,6 +108,11 @@ h1, h2
   color rgba(255, 255, 255, .2)
   visibility hidden
   opacity 0
+  +width-lessthan(tablet)
+    font-size rem(9, 17)
+    right auto
+    bottom rem(40, 17)
+    left rem(40, 17)
 
 .contacts-info-links
   position relative
@@ -124,6 +131,7 @@ h1, h2
     a
       text-decoration none
       color #5e5955
+      transition color 0.3s ease-in-out
       &:hover
         color #a79d96
 
