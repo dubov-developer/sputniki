@@ -180,14 +180,24 @@ function scrollMagicInit() {
   const buttonCircle = $('.section_home-hello .telegram__circle');
   tlWch6.from(h26, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0);
 
-  tlWch6.from([buttonBorderLeft, buttonBorderRight], 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, 0.8);
-  tlWch6.from(buttonBackground, 0.8, { scaleX: 0, autoAlpha: 0, ease: Power2.easeInOut }, 0.8);
-  tlWch6.from(buttonBorderRight, 0.8, { xPercent: -850, ease: Power2.easeInOut }, 0.8);
-  tlWch6.from(buttonCircle, 0.5, { scale: 0, ease: Power2.easeInOut }, 1.6);
-  tlWch6.from(buttonText, 0.5, { autoAlpha: 0, y: 10, ease: Power2.easeInOut }, 2.1);
-  tlWch6.from(buttonIcon, 0.5, { y: 50, x: -50, ease: Power2.easeInOut }, 2.1);
+  let startButtonAnimation;
+  let startInfoLineAnimation;
+  if (adaptive.currentState === 'desktop') {
+    startButtonAnimation = 0.8;
+    startInfoLineAnimation = 2.8;
+  } else {
+    startInfoLineAnimation = 0.8;
+    startButtonAnimation = 1.6;
+  }
 
-  tlWch6.from(contactsInfoLinks6, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 2.8);
+  tlWch6.from([buttonBorderLeft, buttonBorderRight], 0.8, { autoAlpha: 0, ease: Power2.easeInOut }, startButtonAnimation);
+  tlWch6.from(buttonBackground, 0.8, { scaleX: 0, autoAlpha: 0, ease: Power2.easeInOut }, startButtonAnimation);
+  tlWch6.from(buttonBorderRight, 0.8, { xPercent: -850, ease: Power2.easeInOut }, startButtonAnimation);
+  tlWch6.from(buttonCircle, 0.5, { scale: 0, ease: Power2.easeInOut }, startButtonAnimation + 0.8);
+  tlWch6.from(buttonText, 0.5, { autoAlpha: 0, y: 10, ease: Power2.easeInOut }, startButtonAnimation + 1.3);
+  tlWch6.from(buttonIcon, 0.5, { y: 50, x: -50, ease: Power2.easeInOut }, startButtonAnimation + 1.3);
+
+  tlWch6.from(contactsInfoLinks6, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, startInfoLineAnimation);
 
   let scene6 = scrollmagic.scene({
     triggerElement: '.section_home-hello',
