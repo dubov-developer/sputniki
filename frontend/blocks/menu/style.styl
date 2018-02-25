@@ -1,8 +1,14 @@
+@import '../../variables.styl';
+
 .menu
   position absolute
   z-index 1
   top rem(80, 17)
   left rem(95, 17)
+
+  +width-lessthan(tablet)
+    top rem(170, 17)
+    left rem(40, 17)
 
   &__list
     list-style-type none
@@ -13,9 +19,14 @@
   &__item
     display inline-block
     padding 0 rem(5, 17)
+    +width-lessthan(tablet)
+      display block
 
   &__item + &__item
     margin-left rem(60, 17)
+    +width-lessthan(tablet)
+      margin-left 0
+      margin-top rem(30, 17)
 
   &__link
     display block
@@ -25,6 +36,9 @@
     text-decoration none
     font-size rem(16, 17)
     line-height 1.5
+    +width-lessthan(tablet)
+      font-size rem(30, 17)
+      display inline-block
 
     &.active,
     &:hover

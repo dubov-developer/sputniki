@@ -26,6 +26,7 @@ import './blocks/case-promo/index.js';
 import './blocks/back/index.js';
 import './blocks/video/index.js';
 import './blocks/video-preview/index.js';
+import './blocks/mobile-header/index.js';
 
 import './pages/home/index';
 import './pages/about/index';

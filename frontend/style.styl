@@ -55,7 +55,14 @@ h1, h2
   left 0
   height 100%
   +width-lessthan(tablet)
-    display none
+    z-index 1000
+    width 100%
+    background-color #000
+    transform translateX(-100%)
+    transition transform 0.3s ease-in-out
+
+    &.opened
+      transform translateX(0)
 
 .page-container
   position relative
@@ -117,8 +124,7 @@ h1, h2
 .contacts-info-links
   position relative
   overflow hidden
-  
-  
+
   &__item
     font-size rem(20, 17)
     font-weight 300
@@ -349,7 +355,7 @@ h1, h2
 
 .mobile-header
   position fixed
-  z-index 1
+  z-index 2000
   padding rem(40, 17) rem(40, 17) rem(20, 17)
   width 100%
   box-sizing border-box
@@ -368,6 +374,12 @@ h1, h2
     +width-lessthan(375)
       imgboxrem('./images/logo-device.png', 19)
 
+    &.opened
+      margin-top rem(-1, 17)
+      imgboxrem('./images/logo-device-small.png', 17)
+      +width-lessthan(375)
+        imgboxrem('./images/logo-device-small.png', 19)
+
 .burger
   position relative
   float right
@@ -379,10 +391,28 @@ h1, h2
   +width-lessthan(375)
     height rem(26, 19)
 
+
+  &.opened
+    .burger__line:nth-child(1)
+      transform rotate(45deg)
+
+    .burger__line:nth-child(2)
+      opacity 0
+
+    .burger__line:nth-child(3)
+      transform rotate(-45deg)
+
   &__line
     height 2px
     width 100%
     background-color #fff
+    transition transform 0.3s ease-in-out, opacity 0.3s ease-in-out
+
+    &:nth-child(1)
+      transform-origin 0% 0%
+
+    &:nth-child(3)
+      transform-origin 0 100%
 
     +width-lessthan(mobile)
       height 1px
