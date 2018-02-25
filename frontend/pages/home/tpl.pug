@@ -16,14 +16,19 @@ block content
         .section__content
           p. 
             <span>Коммуникации</span> <br><span>на стыке <b>Digital</b>,</span> <br><span><b>BTL</b>, <b>Content</b></span>
-      section.section.section_home-cases(data-scroll-target)
-        a.section__home-cases-image(href="cases.html", data-dom-module="showreel")
-          .section__content
-            p. 
-              <span>Всегда</span> <br> <span>успешные <b>кейсы</b></span>
-            .show-cases
-              .show-cases__text Showreel
-              .show-cases__icon
+      section.section.section_home-cases(data-scroll-target, data-dom-module="video-preview")
+        div(data-dom-module="showreel")
+          div(data-dom-module="case-promo", data-video='[{ "name": "Кейс", "videoId": "vUMr7ueA1Hw"}]')
+            a.section__home-cases-image(data-video-preview, data-case="di-caprio")
+              .section__background(data-video-background)
+              .section__canvas-container(data-video-canvas-container)
+              .section__overlay
+              .section__content
+                p. 
+                  <span>Всегда</span> <br> <span>успешные <b>кейсы</b></span>
+                .show-cases
+                  .show-cases__text Showreel
+                  .show-cases__icon
       section.section.section_home-slogan(data-scroll-target)
         .section__content
           p. 

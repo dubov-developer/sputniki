@@ -160,7 +160,6 @@ window.domModules['case-promo'] = {
     });
   },
   onControlShow() {
-    console.log('SHOW CONTROL');
     if (this.playerMenu) {
       TweenMax.to(this.playerMenu, 0.5, { autoAlpha: 1, ease: Power2.easeInOut });
     }

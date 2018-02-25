@@ -95,10 +95,6 @@
     &__home-cases-image
       text-decoration none
       color #fff
-      background-image-retina('./assets/cases.jpg')
-      background-repeat no-repeat
-      background-size cover
-      background-position center
       height rem(368, 17)
       width calc(100% + 5%)
       margin-left -5%
@@ -115,6 +111,31 @@
         margin-left 0
         width 100%
         height rem(222, 17)
+
+    &__canvas-container
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+
+    &__overlay
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background-color rgba(0, 0, 0, .5)    
+
+    &__background
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background-repeat no-repeat
+      background-image-retina('../../video/di-caprio.jpg')
+      background-size cover
 
     &__content
       position relative

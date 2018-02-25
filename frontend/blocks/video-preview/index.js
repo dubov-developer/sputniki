@@ -24,9 +24,9 @@ window.domModules['video-preview'] = {
     this.prevMousePosition = null;
     this.el = el;
     this.prevCase = null;
-    this.firstContainer = this.el.find('.preview-case__canvas-container').eq(0);
+    this.firstContainer = this.el.find('[data-video-canvas-container]').eq(0);
     this.videoRatio = 960 / 540;
-    this.background = this.el.find('.preview-case__background');
+    this.background = this.el.find('[data-video-background]');
     this.onPageTransitionCompleted = this.onPageTransitionCompleted.bind(this);
     this.onWindowResize = this.onWindowResize.bind(this);
     this.onScroll = this.onScroll.bind(this)
@@ -39,17 +39,17 @@ window.domModules['video-preview'] = {
       scrollbarObject.addListener(this.onScroll);
     });
 
-    this.el.on('mouseenter', '.preview-case', (e) => {
+    this.el.on('mouseenter', '[data-video-preview]', (e) => {
       if (!this.inited) {
         this.inited = true;
-        this.caseEl = $(e.target).closest('.preview-case');
-        this.container = this.caseEl.find('.preview-case__canvas-container');
+        this.caseEl = $(e.target).closest('[data-video-preview]');
+        this.container = this.caseEl.find('[data-video-canvas-container]');
         this.caseName = this.caseEl.data('case');
         this.createVideo();
       }
     });
 
-    this.el.on('mouseleave', '.preview-case', (e) => {
+    this.el.on('mouseleave', '[data-video-preview]', (e) => {
       this.destroyVideo();
     });
   },
