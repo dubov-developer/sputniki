@@ -24,7 +24,7 @@ window.domModules['video-preview'] = {
     this.prevMousePosition = null;
     this.el = el;
     this.prevCase = null;
-    this.firstContainer = this.el.find('[data-video-canvas-container]').eq(0);
+  
     this.videoRatio = 960 / 540;
     this.background = this.el.find('[data-video-background]');
     this.onPageTransitionCompleted = this.onPageTransitionCompleted.bind(this);
@@ -32,11 +32,24 @@ window.domModules['video-preview'] = {
     this.onScroll = this.onScroll.bind(this)
     this.onDocumentMouseMove = this.onDocumentMouseMove.bind(this);
     window.addEventListener('resize', this.onWindowResize);
-    this.onWindowResize();
     $('body').one('pageTransitionCompleted', this.onPageTransitionCompleted);
     $(document).on('mousemove', this.onDocumentMouseMove);
+
     setTimeout(() => {
       scrollbarObject.addListener(this.onScroll);
+    });
+    
+    setTimeout(() => {
+      this.firstContainer = this.el.find('[data-video-canvas-container]:visible').eq(0);
+      this.onWindowResize();
+    })
+
+    $('.case-select').on('typeChange', (e) => {
+      setTimeout(() => {
+        this.firstContainer = this.el.find('[data-video-canvas-container]:visible').eq(0);
+        console.log('this.firstContainer', this.firstContainer);
+        this.onWindowResize();
+      }, 100);
     });
 
     this.el.on('mouseenter', '[data-video-preview]', (e) => {
