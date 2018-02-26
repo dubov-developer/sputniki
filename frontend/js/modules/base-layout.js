@@ -44,7 +44,7 @@ window.domModules['base-layout'] = {
       fontSize = 14 + (8 * (width - 1024) / (1600 - 1024));
     } else {
       width = viewportWidth;
-      fontSize = 15.8 + (15 * (width - 320) / (1023 - 320));
+      fontSize = 14.8 + (30 * (width - 320) / (1023 - 320));
     }
 
     this.el.css({

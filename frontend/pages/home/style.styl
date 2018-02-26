@@ -13,7 +13,14 @@
     width rem(325, 17)
     height rem(325, 17)
     margin-left rem(50, 17)
+
     +width-lessthan(tablet)
+      margin-left 0
+      margin-top rem(20, 17)
+      width rem(245, 17)
+      height rem(245, 17)
+
+    +width-lessthan(mobile)
       margin-left 0
       margin-top rem(-50, 17)
       width rem(302, 17)
@@ -28,37 +35,65 @@
     &_1
       opacity 1
       imgboxrem('./assets/case-1.png', 17)
+
       +width-lessthan(tablet)
+        imgboxrem('./assets/case-1-device.png', 21)
+
+      +width-lessthan(mobile)
         imgboxrem('./assets/case-1-device.png', 17)
 
     &_2
       imgboxrem('./assets/case-2.png', 17)
+
       +width-lessthan(tablet)
+        imgboxrem('./assets/case-2-device.png', 21)
+
+      +width-lessthan(mobile)
         imgboxrem('./assets/case-2-device.png', 17)
 
     &_3
       imgboxrem('./assets/case-3.png', 17)
+
       +width-lessthan(tablet)
+        imgboxrem('./assets/case-3-device.png', 21)
+
+      +width-lessthan(mobile)
         imgboxrem('./assets/case-3-device.png', 17)
 
     &_4
       imgboxrem('./assets/case-4.png', 17)
+
       +width-lessthan(tablet)
+        imgboxrem('./assets/case-4-device.png', 21)
+
+      +width-lessthan(mobile)
         imgboxrem('./assets/case-4-device.png', 17)
 
     &_5
       imgboxrem('./assets/case-5.png', 17)
+
       +width-lessthan(tablet)
+        imgboxrem('./assets/case-5-device.png', 21)
+
+      +width-lessthan(mobile)
         imgboxrem('./assets/case-5-device.png', 17)
  
     &_6
       imgboxrem('./assets/case-6.png', 17)
+
       +width-lessthan(tablet)
+        imgboxrem('./assets/case-6-device.png', 21)
+
+      +width-lessthan(mobile)
         imgboxrem('./assets/case-6-device.png', 17)
 
     &_7
       imgboxrem('./assets/case-7.png', 17)
+
       +width-lessthan(tablet)
+        imgboxrem('./assets/case-7-device.png', 21)
+
+      +width-lessthan(mobile)
         imgboxrem('./assets/case-7-device.png', 17)
 
 .section_home-description, .section_home-slogan
@@ -111,6 +146,9 @@
         margin-left 0
         width 100%
         height rem(222, 17)
+
+    &__wrapper
+      width 100%
 
     &__canvas-container
       position absolute
