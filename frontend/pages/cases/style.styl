@@ -16,7 +16,7 @@
   position relative
   margin-top 50vh
   +width-lessthan(tablet)
-    margin-top rem(260, 17)
+    margin-top rem(175, 17)
 
   &__content
     min-height 100vh
@@ -34,6 +34,7 @@
     margin-bottom rem(32, 17)
     +width-lessthan(tablet)
       font-size rem(36, 17)
+      margin-bottom rem(64, 17)
 
 .preview-cases
   margin-bottom rem(70, 17)
@@ -155,7 +156,7 @@
     letter-spacing rem(1, 17)
     +width-lessthan(tablet)
       font-size rem(10, 17)
-      line-height normal
+      line-height 1.2
   
   &__title
     font-size rem(36, 17)
@@ -164,8 +165,8 @@
     margin-bottom rem(40, 17)
     +width-lessthan(tablet)
       font-size rem(20, 17)
-      line-height normal
-      margin-bottom 0
+      line-height 1.2
+      margin-bottom rem(20, 17)
 
 .preview-case + .preview-case
   margin-top rem(70, 17)
@@ -176,6 +177,8 @@
   position relative
   z-index 10
   height rem(46, 17)
+  +width-lessthan(tablet)
+    margin-bottom rem(30, 17)
 
 .action-line_cases
   cursor pointer
@@ -272,6 +275,8 @@
   top rem(16, 17)
   left 0
   width rem(535, 17)
+  +width-lessthan(tablet)
+    width 100%
 
   &__background
     background-color #514845
@@ -281,6 +286,8 @@
     left rem(-70, 17)
     right rem(-65, 17)
     transform scaleY(0)
+    +width-lessthan(tablet)
+      top rem(-60, 17)
 
   &__items
     position relative
@@ -294,14 +301,20 @@
     margin-top rem(20, 17)
     opacity 0
     visibility hidden
+    +width-lessthan(tablet)
+      margin-top rem(30, 17)
 
   &__group + &__group
     width auto
+    +width-lessthan(tablet)
+      margin-top rem(42, 17)
   
   &__item
     font-size rem(16, 17)
     font-weight 300
     letter-spacing rem(1, 17)
+    +width-lessthan(tablet)
+      font-size rem(14, 17)
     
     a
       text-decoration none

@@ -190,7 +190,7 @@ window.domModules['case-select'] = {
       },
       onReverseComplete() {
         dropdown.css({ display: 'none'});
-        objectModule.fixedContainer.css({ zIndex: 1 });
+        objectModule.fixedContainer.attr('style', '')
         TweenMax.set(curentValue, { autoAlpha: 1 });
         TweenMax.set(innerActionLine, { autoAlpha: 0 });
         scrollbarObject.enableScroll();
