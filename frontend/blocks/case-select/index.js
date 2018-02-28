@@ -2,6 +2,7 @@ import $ from 'jquery';
 import { TimelineMax, Power2, TweenMax } from 'gsap';
 import getViewport from 'getviewport';
 import scrollbarObject from '../../scroll.js';
+import { adaptive } from '../../js/adaptive.js';
 
 import Router from '../../router.js';
 
@@ -30,9 +31,11 @@ window.domModules['case-select'] = {
       this.selectText = el.find('.action-line__options-text');
       this.selectTextPosition = this.selectText.position();
       this.menuOffset = this.menu.offset();
-  
-      this.onScroll = this.onScroll.bind(this);
-      scrollbarObject.addListener(this.onScroll);
+      
+      if (adaptive.currentState === 'desktop') {
+        this.onScroll = this.onScroll.bind(this);
+        scrollbarObject.addListener(this.onScroll);
+      }
 
       this.routerSubscription = Router.events.subscribe((e) => {
         if (e && e.name === 'transitionCompleted' && e.current.name !== 'cases') {

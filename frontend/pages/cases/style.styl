@@ -1,3 +1,5 @@
+@import '../../variables.styl';
+
 .global-overlay
   position fixed
   top 0
@@ -13,21 +15,31 @@
   display block
   position relative
   margin-top 50vh
+  +width-lessthan(tablet)
+    margin-top rem(260, 17)
 
   &__content
     min-height 100vh
     margin-left rem(75, 17)
     margin-top rem(-10, 17)
+    +width-lessthan(tablet)
+      margin-left rem(40, 17)
+      margin-right rem(40, 17)
+      margin-top 0
 
   &__title
     position relative
     font-size rem(60, 17)
     font-weight 500
     margin-bottom rem(32, 17)
+    +width-lessthan(tablet)
+      font-size rem(36, 17)
 
 .preview-cases
   margin-bottom rem(70, 17)
   margin-top rem(50, 17)
+  +width-lessthan(tablet)
+    margin-top 0
 
 .preview-case
   display block
@@ -37,6 +49,9 @@
   height rem(300, 17)
   position relative
   cursor none
+  +width-lessthan(tablet)
+    height rem(166, 17)
+    width 100%
 
   &_visa
     .preview-case__background
@@ -129,21 +144,33 @@
     bottom rem(35, 17)
     left rem(40, 17)
     color #fff
+    +width-lessthan(tablet)
+      left rem(20, 17)
+      bottom rem(20, 17)
 
   &__description
     font-size rem(18, 17)
     line-height rem(22, 17)
     font-weight 300
     letter-spacing rem(1, 17)
+    +width-lessthan(tablet)
+      font-size rem(10, 17)
+      line-height normal
   
   &__title
     font-size rem(36, 17)
     line-height 1.2
     font-weight 500
     margin-bottom rem(40, 17)
+    +width-lessthan(tablet)
+      font-size rem(20, 17)
+      line-height normal
+      margin-bottom 0
 
 .preview-case + .preview-case
   margin-top rem(70, 17)
+  +width-lessthan(tablet)
+    margin-top rem(40, 17)
 
 .case-select-wrapper
   position relative
@@ -154,6 +181,8 @@
   cursor pointer
   width rem(535, 17)
   justify-content space-between
+  +width-lessthan(tablet)
+    width 100%
 
   &.opened
     cursor pointer
@@ -164,6 +193,9 @@
       z-index 2
       background-color #000
       padding-right rem(30, 17)
+      +width-lessthan(tablet)
+        font-size rem(14, 17)
+        padding-right rem(10, 17)
 
     &__options-line
       margin-left 0
@@ -171,6 +203,13 @@
       margin-right rem(20, 17)
       position absolute
       right rem(46, 17)
+      +width-lessthan(tablet)
+        right rem(35, 17)
+    
+    &__options-button
+      +width-lessthan(tablet)
+        width rem(40, 17)
+        height rem(40, 17)
 
 .action-line_case-dropdown
   margin-top rem(-16, 17)
