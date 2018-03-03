@@ -5,7 +5,7 @@ import { ServicesEnterAnimation } from './animation';
 import scrollbarObject from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
-
+import { adaptive } from '../../js/adaptive.js';
 import { TimelineLite, Power2 } from 'gsap';
 
 let scenes = [];
@@ -47,7 +47,7 @@ var Servicespage = Barba.BaseView.extend({
           let scene2 = scrollmagic.scene({
             triggerElement: el,
             triggerHook: 0.5,
-            offset: '-20%',
+            offset: adaptive.currentState === 'desktop' ? '-20%' : '-50%',
             duration: '35%',
           }, tl2);
     

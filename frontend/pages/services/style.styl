@@ -47,8 +47,6 @@
 
   &__header
     margin-bottom rem(30, 17)
-    +width-lessthan(tablet)
-      margin-bottom 0
 
   &__title
     font-size rem(60, 17)
@@ -81,9 +79,18 @@
     letter-spacing rem(1, 17)
     width 90%
     margin-bottom rem(35, 17)
+    +width-lessthan(tablet)
+      font-size rem(15, 17)
+      line-height rem(24, 17)
+      margin-top rem(30, 17)
+
+      br
+        display none
 
   &__list-group
     clearfix()
+
+
 
   &__list
     list-style-type none
@@ -97,6 +104,8 @@
       padding-left rem(25, 17)
       letter-spacing rem(1, 17)
       font-weight 300
+      +width-lessthan(tablet)
+        font-size rem(13, 17)
 
       &:before
         position absolute
@@ -105,3 +114,9 @@
 
     li + li
       margin-top rem(17, 17)
+      +width-lessthan(tablet)
+        margin-top rem(22, 17)
+
+  &__list + &__list
+    +width-lessthan(tablet)
+      margin-top rem(22, 17)
