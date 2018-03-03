@@ -1,18 +1,34 @@
+@import '../../variables.styl';
+
 .services
   position relative
   top rem(-95, 17)
   margin-top 50vh
   margin-bottom rem(32, 17)
+  +width-lessthan(tablet)
+    top 0
+    margin-top rem(130, 17)
+    margin-bottom 0
 
 .service
   position relative
   width rem(694, 17)
   box-sizing border-box
   padding rem(80, 17) rem(80, 17) rem(80, 17) rem(78, 17)
+  +width-lessthan(tablet)
+    width 100%
+    padding rem(60, 17) rem(40, 17)
+
+
+  &.active
+    +width-lessthan(tablet)
+      z-index 3000
 
   &:first-child
     .service__list:first-child
       width rem(325, 17)
+      +width-lessthan(tablet)
+        width 100%
   
   &__background
     position absolute
@@ -31,11 +47,16 @@
 
   &__header
     margin-bottom rem(30, 17)
+    +width-lessthan(tablet)
+      margin-bottom 0
 
   &__title
     font-size rem(60, 17)
     line-height 1.15
     font-weight 500
+    +width-lessthan(tablet)
+      font-size rem(36, 17)
+      line-height 1.25
 
   &__index
     position absolute
@@ -44,6 +65,9 @@
     right 0
     font-size rem(19, 17)
     color #514845
+    +width-lessthan(tablet)
+      font-size rem(14, 17)
+      top rem(6, 17)
 
   &__content
     height 0

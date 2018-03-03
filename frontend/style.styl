@@ -253,12 +253,17 @@ h1, h2
     line-height 1.5
     letter-spacing rem(1, 17)
     font-weight 300
+    +width-lessthan(tablet)
+      font-size rem(14, 17)
 
   &__options-line
     margin-left rem(30, 17)
     margin-right rem(15, 17)
     height 1px
     background-color #514845
+    +width-lessthan(tablet)
+      margin-left rem(15, 17)
+      margin-right rem(10, 17)
 
   &__options-button
     flex-shrink 0
@@ -271,6 +276,9 @@ h1, h2
     display flex
     align-items center
     justify-content center
+    +width-lessthan(tablet)
+      width rem(40, 17)
+      height rem(40, 17)
 
   &__options-button-hover
     position absolute
