@@ -51,6 +51,8 @@ window.domModules['services'] = {
           if (scrollbarObject.scrollbarInstance) {
             scrollbarObject.scrollbarInstance.update();
             scrollbarObject.scrollbarInstance.scrollTo(0, scrollbarObject.scrollbarInstance.offset.y + service.offset().top - offset, 500);
+          } else {
+            $(window).scrollTop(service.offset().top - offset);
           }
         }, 0);
       },
