@@ -57,8 +57,8 @@ window.domModules['services'] = {
             $('html, body').animate({
               scrollTop: service.offset().top - offset,
             }, 500, 'swing', () => {
-              disableBodyScroll(true, '.service');
               $('body').css('overflow', 'hidden');
+              disableBodyScroll(true, '.service');
               background.height(height);
             });
           }
