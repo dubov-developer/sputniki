@@ -44,6 +44,7 @@ window.domModules['services'] = {
     const tl = new TimelineMax({
       paused: true,
       onComplete() {
+        const height = service.outerHeight();
         content.css('height', 'auto');
         service.addClass('active');
         setTimeout(() => {
@@ -52,7 +53,12 @@ window.domModules['services'] = {
             scrollbarObject.scrollbarInstance.update();
             scrollbarObject.scrollbarInstance.scrollTo(0, scrollbarObject.scrollbarInstance.offset.y + service.offset().top - offset, 500);
           } else {
-            $(window).scrollTop(service.offset().top - offset);
+            $('html, body').animate({
+              scrollTop: service.offset().top - offset,
+            }, 500, 'swing', () => {
+              $('body').css('overflow', 'hidden');
+              background.height(height);
+            });
           }
         }, 0);
       },
@@ -61,6 +67,9 @@ window.domModules['services'] = {
         service.removeClass('active');
         if (scrollbarObject.scrollbarInstance) {
           scrollbarObject.scrollbarInstance.update();
+        } else {
+          background.css('height', '100%');
+          $('body').css('overflow', 'initial');
         }
       }
     })

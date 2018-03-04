@@ -24,20 +24,22 @@ var Servicespage = Barba.BaseView.extend({
     setTimeout(() => {
 
       $('.service').each((index, el) => {
-        const tl = new TimelineLite();
-        const tlWch = willChange(tl);
-
-        tlWch.to(el, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
-    
-        let scene = scrollmagic.scene({
-          triggerElement: el,
-          triggerHook: 1,
-          offset: '100%',
-          duration: '35%',
-        }, tl);
-
-        scenes.push(scene);
-
+        if (adaptive.currentState === 'desktop') {
+          const tl = new TimelineLite();
+          const tlWch = willChange(tl);
+  
+          tlWch.to(el, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
+      
+          let scene = scrollmagic.scene({
+            triggerElement: el,
+            triggerHook: 1,
+            offset: '100%',
+            duration: '35%',
+          }, tl);
+  
+          scenes.push(scene);
+        }
+        
         if (index !== 0) {
           const tl2 = new TimelineLite();
           const tlWch2 = willChange(tl2);
