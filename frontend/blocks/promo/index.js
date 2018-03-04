@@ -46,7 +46,9 @@ window.domModules['promo'] = {
     this.itemsLength = this.items.length;
     this.currentIndex = 0;
 
-    this.startInterval();
+    requestAnimationFrame(() => {
+      this.startInterval();
+    });
 
     Barba.Dispatcher.on('newPageReady', () => {
       clearInterval(this.invervalId);
