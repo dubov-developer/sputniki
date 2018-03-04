@@ -255,11 +255,14 @@
     top rem(-8, 17)
 
     +width-lessthan(tablet)
+      $buttonOffset = rem(80, 17)
       position absolute
-      width rem(295, 17)
+      width "calc(100% - %s)" % $buttonOffset
+      min-width rem(295, 17)
       margin-left rem(40, 17)
       bottom rem(-55, 17)
       top auto
       left 0
+
     +width-lessthan(375)
-      width rem(245, 17)
+      min-width rem(245, 17)
