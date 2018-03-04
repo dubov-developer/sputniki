@@ -62,6 +62,22 @@ var Casepage = Barba.BaseView.extend({
   
       scenes.push(promoScene);
 
+      $('.case-fact, .case-description').each((index, el) => {
+        const tl = new TimelineLite();
+        const tlWch = willChange(tl);
+
+        tlWch.from(el, 0.8, { autoAlpha: 0,  ease: Power2.easeInOut }, 0);
+
+        let scene = scrollmagic.scene({
+          triggerElement: el,
+          triggerHook: 0.9,
+          duration: '50%',
+        }, tl);
+
+        scenes.push(scene);
+      });
+
+
       const tlLine = new TimelineLite();
       const tlLineWch = willChange(tlLine);
       const separator = $('.case-info__separator');
