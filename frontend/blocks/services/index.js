@@ -2,6 +2,7 @@ import $ from 'jquery';
 import { TimelineMax, Power2 } from 'gsap';
 import getViewport from 'getviewport';
 import scrollbarObject from '../../scroll';
+import { disableBodyScroll } from '../../js/disable-body-scroll';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -56,6 +57,7 @@ window.domModules['services'] = {
             $('html, body').animate({
               scrollTop: service.offset().top - offset,
             }, 500, 'swing', () => {
+              disableBodyScroll(true, '.service');
               $('body').css('overflow', 'hidden');
               background.height(height);
             });
@@ -70,6 +72,7 @@ window.domModules['services'] = {
         } else {
           background.css('height', '100%');
           $('body').css('overflow', 'initial');
+          disableBodyScroll(false, '.service')
         }
       }
     })
