@@ -19,17 +19,21 @@
     width 100%
     padding rem(60, 17) rem(40, 17)
 
-
   &.active
     +width-lessthan(tablet)
       z-index 3000
-      height 100vh
-      overflow-y scroll
-      -webkit-overflow-scrolling touch
-
+      // height 100vh
+      // overflow-y scroll
+      // -webkit-overflow-scrolling touch
 
       .service__background
-        min-height 100vh
+        // min-height 100vh
+  
+  // &.fixed
+  //   +width-lessthan(tablet)
+  //     position fixed
+  //     top 0
+  //     left 0
 
   &:first-child
     .service__list:first-child
@@ -96,8 +100,6 @@
 
   &__list-group
     clearfix()
-
-
 
   &__list
     list-style-type none

@@ -13,10 +13,10 @@ window.domModules['services'] = {
     const moduleObject = this;
     this.el = el;
 
-    this.el.on('click', '.service__head', function() {
+    this.el.find('.service').on('click', function() {
       var active = $(".service.active"),
           self = $(this),
-          currentService = self.closest('.service'),
+          currentService = self,
       tl = currentService.data('timeline-click');
 
       if (active.length != 0) {
@@ -49,17 +49,25 @@ window.domModules['services'] = {
         content.css('height', 'auto');
         service.addClass('active');
         setTimeout(() => {
-          const offset = (getViewport().height - service.outerHeight()) / 2;
+          const vh = getViewport().height;
+          const serviceHeight = service.outerHeight();
+          const offset = (vh - serviceHeight) / 2;
+          const moreThanHeight = serviceHeight > vh;
+
+
           if (scrollbarObject.scrollbarInstance) {
             scrollbarObject.scrollbarInstance.update();
             scrollbarObject.scrollbarInstance.scrollTo(0, scrollbarObject.scrollbarInstance.offset.y + service.offset().top - offset, 500);
           } else {
             $('html, body').animate({
-              scrollTop: service.offset().top - offset,
+              scrollTop: moreThanHeight ? service.offset().top : service.offset().top - offset,
             }, 500, 'swing', () => {
-              $('body').css('overflow', 'hidden');
-              disableBodyScroll(true, '.service');
-              background.height(height);
+              // service.addClass('fixed');
+              // $('body').append(service);
+              // $('.custom-scroll').hide();
+              // $('body').css('overflow', 'hidden');
+              // disableBodyScroll(true, '.service');
+              // background.height(height);
             });
           }
         }, 0);
@@ -70,9 +78,9 @@ window.domModules['services'] = {
         if (scrollbarObject.scrollbarInstance) {
           scrollbarObject.scrollbarInstance.update();
         } else {
-          background.css('height', '100%');
-          $('body').css('overflow', 'initial');
-          disableBodyScroll(false, '.service')
+          // background.css('height', '100%');
+          // $('body').css('overflow', 'initial');
+          // disableBodyScroll(false, '.service')
         }
       }
     })
