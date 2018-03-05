@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import { TimelineMax, TweenMax, Power2 } from 'gsap';
 import { scrollbar, disableScroll, enableScroll } from '../../scroll.js';
-import Router from '../../router.js';
 import getViewport from 'getviewport';
 import { hover } from '../../js/hover.js';
 

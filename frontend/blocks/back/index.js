@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import { TimelineMax, TweenMax, Power2 } from 'gsap';
 import scrollbarObject from '../../scroll';
-import Router from '../../router.js';
 import getViewport from 'getviewport';
 
 if (!window.domModules) {
@@ -19,13 +18,11 @@ window.domModules['back'] = {
       this.calcOffset();
       scrollbarObject.addListener(this.onScroll);
       window.addEventListener('resize', this.onResize);
-      this.routerSubscription = Router.events.subscribe((e) => {
-        if (e && e.name === 'transitionCompleted' && e.current.name !== 'case') {
+
+      $('body').on('pageTransitionCompleted', (e, data) => {
+        if (data && data.current.name !== 'case') {
           scrollbarObject.removeListener(this.onScroll);
           window.removeEventListener('resize', this.onResize);
-          if (this.routerSubscription) {
-            this.routerSubscription.unsubscribe();
-          }
         }
       });
     });

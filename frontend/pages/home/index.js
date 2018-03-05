@@ -17,9 +17,10 @@ var Homepage = Barba.BaseView.extend({
   onEnterCompleted: function() {
     setTimeout(() => {
       HomeEnterAnimation().then(() => {
+        scrollbarObject.initTargets();
         scrollbarObject.enableScroll();
+        scrollMagicInit();
       });
-      scrollMagicInit();
     });
     $('body').on('layoutStateChange', onLayoutStateChange);
   },
@@ -52,6 +53,7 @@ function scrollMagicDestroy() {
 }
 
 function scrollMagicInit() {
+  console.log('scrollMagicInit');
   if (adaptive.currentState === 'desktop') {
     const tl = new TimelineLite();
     const tlWch = willChange(tl);

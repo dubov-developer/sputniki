@@ -1,7 +1,6 @@
 import './style.styl';
 import $ from 'jquery';
 import { TimelineMax, Power2 } from 'gsap';
-import Router from '../../router.js';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -12,10 +11,8 @@ window.domModules['menu'] = {
     this.el = el;
     this.entryAnimation();
 
-    Router.events.subscribe((event) => {
-      if (event) {
-        this.onPageChange(event);
-      }
+    $('body').on('pageTransitionCompleted', (e, data) => {
+      this.onPageChange(data);
     });
   },
 

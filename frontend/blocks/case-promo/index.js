@@ -3,7 +3,6 @@ import { TimelineMax, Power2, TweenMax } from 'gsap';
 import getViewport from 'getviewport';
 import scrollbarObject from '../../scroll';
 import { hover } from '../../js/hover.js';
-import Router from '../../router.js';
 
 const YTPlayer = require('yt-player')
 
@@ -150,12 +149,9 @@ window.domModules['case-promo'] = {
 
     scrollbarObject.disableScroll();
 
-    this.routerSubscription = Router.events.subscribe((e) => {
-      if (e && e.name === 'transitionCompleted' && e.current.name !== 'case') {
+    $('body').on('pageTransitionCompleted', (e, data) => {
+      if (data && data.current.name !== 'case') {
         this.removeVideo();
-        if (this.routerSubscription) {
-          this.routerSubscription.unsubscribe();
-        }
       }
     });
   },

@@ -2,7 +2,6 @@ import $ from 'jquery';
 import './style.styl';
 import { TimelineMax, TweenMax, Power2 } from 'gsap';
 import scrollbarObject from '../../scroll.js';
-import Router from '../../router.js';
 
 if (!window.domModules) {
   window.domModules = {};
@@ -14,15 +13,17 @@ window.domModules['scroll-down'] = {
     this.el = el;
     this.onScroll = this.onScroll.bind(this);
 
-    Router.events.subscribe((event) => {
-      if (event && event.name === 'animationCompleted' && event.current === 'home') {
+    $('body').on('pageAnimationCompleted', (e, data) => {
+      if (data && data.current === 'home') {
         if (this.isScrollDownVisible) {
           TweenMax.to(this.el, 1.5, { autoAlpha: 1, ease: Power2.easeInOut });
           scrollbarObject.addListener(this.onScroll);
         }
       }
+    })
 
-      if (event && event.name === 'transitionCompleted' && event.previous && event.previous.name === 'home') {
+    $('body').on('pageTransitionCompleted', (e, data) => {
+      if (data && data.previous && data.previous.name === 'home') {
         TweenMax.to(this.el, 0.5, { autoAlpha: 0, ease: Power2.easeInOut });
         scrollbarObject.removeListener(this.onScroll);
       }

@@ -18,6 +18,7 @@ var Contactpage = Barba.BaseView.extend({
   onEnterCompleted: function() {
       // The Transition has just finished.
     ContactEnterAnimation().then(() => {
+      scrollbarObject.initTargets();
       scrollbarObject.enableScroll();
     });
 

@@ -11,6 +11,10 @@ html(data-dom-module="base-layout")
         favicon.setAttribute('href', faviconHref);
       }
   body
+    .percantage-loader(data-dom-module="percantage-loader")
+      .percantage-loader__item
+        span.percantage-loader__number 0
+        span.percantage-loader__percantage %
     .mobile-header(data-dom-module="mobile-header")
       a.mobile-logo(href="index.html")
       .burger

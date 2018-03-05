@@ -4,8 +4,6 @@ import getViewport from 'getviewport';
 import scrollbarObject from '../../scroll.js';
 import { adaptive } from '../../js/adaptive.js';
 
-import Router from '../../router.js';
-
 if (!window.domModules) {
   window.domModules = {};
 }
@@ -37,12 +35,9 @@ window.domModules['case-select'] = {
         scrollbarObject.addListener(this.onScroll);
       }
 
-      this.routerSubscription = Router.events.subscribe((e) => {
-        if (e && e.name === 'transitionCompleted' && e.current.name !== 'cases') {
+      $('body').on('pageTransitionCompleted', (e, data) => {
+        if (data && data.current.name !== 'cases') {
           scrollbarObject.removeListener(this.onScroll);
-          if (this.routerSubscription) {
-            this.routerSubscription.unsubscribe();
-          }
         }
       });
 
