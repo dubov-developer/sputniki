@@ -18,6 +18,7 @@ var Servicespage = Barba.BaseView.extend({
   },
   onEnterCompleted: function() {
     ServicesEnterAnimation().then(() => {
+      scrollbarObject.initTargets();
       scrollbarObject.enableScroll();
     });
 

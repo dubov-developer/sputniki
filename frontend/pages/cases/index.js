@@ -33,6 +33,7 @@ var Casespage = Barba.BaseView.extend({
       if (data.previous === null || (data.previous && data.previous.name !== 'case')) {
         onTypeChange();
         CasesEnterAnimation().then(() => {
+          scrollbarObject.initTargets();
           scrollbarObject.enableScroll();
         });
       } else {
@@ -42,7 +43,7 @@ var Casespage = Barba.BaseView.extend({
             offsetTop: 50
           });
         }
-
+        scrollbarObject.initTargets();
         scrollbarObject.enableScroll();
       }
     });

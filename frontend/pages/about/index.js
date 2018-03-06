@@ -16,6 +16,7 @@ var Aboutpage = Barba.BaseView.extend({
   },
   onEnterCompleted: function() {
     AboutEnterAnimation().then(() => {
+      scrollbarObject.initTargets();
       scrollbarObject.enableScroll();
     });
     // The Transition has just finished.

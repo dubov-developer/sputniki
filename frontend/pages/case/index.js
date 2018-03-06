@@ -20,6 +20,7 @@ var Casepage = Barba.BaseView.extend({
   },
   onEnterCompleted: function() {
     CaseEnterAnimation().then(() => {
+      scrollbarObject.initTargets();
       scrollbarObject.enableScroll();
     });
 
