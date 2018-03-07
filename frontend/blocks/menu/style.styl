@@ -23,7 +23,7 @@
       display block
 
   &__item + &__item
-    margin-left rem(60, 17)
+    margin-left rem(38, 17)
     +width-lessthan(tablet)
       margin-left 0
       margin-top rem(30, 17)
@@ -36,9 +36,22 @@
     text-decoration none
     font-size rem(16, 17)
     line-height 1.5
+
     +width-lessthan(tablet)
       font-size rem(30, 17)
       display inline-block
+    
+    &_home
+      font-weight 500
+      +width-lessthan(tablet)
+        display none
+
+      span
+        margin-left 2px
+        display inline-block
+        height 2px
+        width 7px
+        background-color #fff
 
     &.active,
     &:hover

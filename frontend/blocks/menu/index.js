@@ -17,6 +17,7 @@ window.domModules['menu'] = {
   },
 
   onPageChange: function(event) {
+    console.log('=>', event.current.name);
     const navigationLinks = this.el.find('.menu__link');
     const navigationLinkIsActive = this.el.find(`[data-name="${event.current.name}"]`);
     navigationLinks.removeClass('active');
