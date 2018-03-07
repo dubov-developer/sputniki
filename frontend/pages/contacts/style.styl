@@ -1,3 +1,13 @@
+@import '../../variables.styl';
+
+.section_contacts + .section_contacts
+  +width-lessthan(tablet)
+    margin-top rem(84, 17)
+
+.section_contacts + .section_contacts-hello
+  +width-lessthan(tablet)
+    margin-top rem(60, 17)
+
 .section_contacts
   position relative
   h1
@@ -6,6 +16,10 @@
     font-size rem(60, 17)
     font-weight 500
     margin-bottom rem(47, 17)
+    +width-lessthan(tablet)
+      font-size rem(36, 17)
+      margin-bottom rem(30, 17)
+
     span
       display block
 
@@ -14,23 +28,45 @@
       margin-top rem(-10, 17)
       position absolute
       top 50%
+      +width-lessthan(tablet)
+        position static
+        top auto
+        margin-top 0
+
+.section_contacts_1
+  +width-lessthan(tablet)
+    margin-top rem(172, 17)
 
 .section_contacts-hello
   position relative
+  +width-lessthan(tablet)
+    padding-bottom rem(106, 17)
   h1
     margin-bottom 0
     margin-right rem(50, 17)
+    +width-lessthan(tablet)
+      display none
 
   .section
     &__content
       display flex
       align-items center
+      +width-lessthan(tablet)
+        margin-right rem(40, 17)
+        width 100%
+
+.section_contacts
+  .contacts-info-links__separator + .contacts-info-links__item
+    +width-lessthan(tablet)
+      margin-top rem(24, 17)
 
 .address
   display block
   text-decoration none
   position relative
   margin-bottom rem(60, 17)
+  +width-lessthan(tablet)
+    margin-bottom rem(25, 17)
 
   &:hover
     .address__icon
@@ -46,6 +82,8 @@
     display inline-block
     vertical-align middle
     transition background-image 0.3s ease-in-out
+    +width-lessthan(tablet)
+      display none
 
   &__text
     margin-left rem(20, 17)
@@ -56,7 +94,16 @@
     vertical-align middle
     color #fff
     text-decoration none
-    
+    +width-lessthan(tablet)
+      margin-left 0
+      font-size rem(18, 17)
+      line-height rem(36, 17)
+
+    br
+      display none
+      +width-lessthan(tablet)
+        display block
+
     span
       position relative
       &:after
@@ -70,4 +117,8 @@
         transform scaleX(0)
         transform-origin 0 50%
         transition transform 0.5s ease-in-out
+        +width-lessthan(tablet)
+          transform scaleX(1)
+          height 1px
+          bottom rem(-8, 17)
 

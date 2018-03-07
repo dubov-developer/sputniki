@@ -5,7 +5,7 @@ import { ContactEnterAnimation } from './animation';
 import scrollbarObject from '../../scroll';
 import { scrollmagic } from '../../js/scrollmagic.js';
 import { willChange } from '../../js/gsap-helpers';
-
+import { adaptive } from '../../js/adaptive.js';
 import { TimelineLite, Power1, Power2 } from 'gsap';
 
 let scenes = [];
@@ -52,25 +52,27 @@ var Contactpage = Barba.BaseView.extend({
 
       let scene2 = scrollmagic.scene({
         triggerElement: '.section_contacts_2',
-        triggerHook: 0.5,
-        offset: '15%',
+        triggerHook: adaptive.currentState === 'desktop' ? 0.5 : 1,
+        offset: adaptive.currentState === 'desktop' ? '15%' : '0',
+        reverse: adaptive.currentState === 'desktop' ? true : false,
       }, tl2);
 
       scenes.push(scene2);
 
-      const tl3 = new TimelineLite();
-      const tlWch3 = willChange(tl3);
-      tlWch3.to(content2, 0.8, { opacity: 0, ease: Power1.easeOut }, 0);
+      if (adaptive.currentState === 'desktop') {
+        const tl3 = new TimelineLite();
+        const tlWch3 = willChange(tl3);
+        tlWch3.to(content2, 0.8, { opacity: 0, ease: Power1.easeOut }, 0);
+    
+        let scene3 = scrollmagic.scene({
+          triggerElement: '.section_contacts_2',
+          triggerHook: 0,
+          offset: '35%',
+          duration: '35%',
+        }, tl3);
   
-      let scene3 = scrollmagic.scene({
-        triggerElement: '.section_contacts_2',
-        triggerHook: 0,
-        offset: '35%',
-        duration: '35%',
-      }, tl3);
-
-      scenes.push(scene3);
-
+        scenes.push(scene3);
+      }
 
       const tl4 = new TimelineLite();
       const tlWch4 = willChange(tl4);
@@ -95,8 +97,9 @@ var Contactpage = Barba.BaseView.extend({
 
       let scene4 = scrollmagic.scene({
         triggerElement: '.section_contacts-hello',
-        triggerHook: 0.5,
-        offset: '15%',
+        triggerHook: adaptive.currentState === 'desktop' ? 0.5 : 1,
+        offset: adaptive.currentState === 'desktop' ? '15%' : '0',
+        reverse: adaptive.currentState === 'desktop' ? true : false,
       }, tl4);
 
       scenes.push(scene4);
@@ -109,7 +112,7 @@ var Contactpage = Barba.BaseView.extend({
   
       let sceneCopy = scrollmagic.scene({
         triggerElement: '.section_contacts-hello',
-        triggerHook: 0,
+        triggerHook: adaptive.currentState === 'desktop' ? 0 : 0.8,
       }, tlcopy);
 
       scenes.push(sceneCopy);
