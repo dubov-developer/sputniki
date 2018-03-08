@@ -138,36 +138,36 @@ function scrollMagicInit() {
     scenes.push(scene5);
   }
 
-  const tl7 = new TimelineLite();
-  const tlWch7 = willChange(tl7);
-  const content7 = $('.section_home-slogan .section__content');
-  const rows7 = $('.section_home-slogan p span');
-  tlWch7.staggerFrom(rows7, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.6, 0);
+  // const tl7 = new TimelineLite();
+  // const tlWch7 = willChange(tl7);
+  // const content7 = $('.section_home-slogan .section__content');
+  // const rows7 = $('.section_home-slogan p span');
+  // tlWch7.staggerFrom(rows7, 0.8, { yPercent: 100, autoAlpha: 0, ease: Power1.easeOut }, 0.6, 0);
 
-  let scene7 = scrollmagic.scene({
-    triggerElement: '.section_home-slogan',
-    triggerHook: 0.5,
-    offset: adaptive.currentState === 'desktop' ? '15%' : 0,
-    reverse: adaptive.currentState === 'desktop' ? true : false
-  }, tl7);
+  // let scene7 = scrollmagic.scene({
+  //   triggerElement: '.section_home-slogan',
+  //   triggerHook: 0.5,
+  //   offset: adaptive.currentState === 'desktop' ? '15%' : 0,
+  //   reverse: adaptive.currentState === 'desktop' ? true : false
+  // }, tl7);
 
-  scenes.push(scene7);
+  // scenes.push(scene7);
 
-  if (adaptive.currentState === 'desktop') {
-    const tl8 = new TimelineLite();
-    const tlWch8 = willChange(tl8);
-    tlWch8.to(content7, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
+  // if (adaptive.currentState === 'desktop') {
+  //   const tl8 = new TimelineLite();
+  //   const tlWch8 = willChange(tl8);
+  //   tlWch8.to(content7, 0.8, { opacity: 0, ease: Power2.easeInOut }, 0);
 
-    let scene8 = scrollmagic.scene({
-      triggerElement: '.section_home-slogan',
-      triggerHook: 0,
-      offset: '35%',
-      duration: '35%',
-      reverse: true
-    }, tl8);
+  //   let scene8 = scrollmagic.scene({
+  //     triggerElement: '.section_home-slogan',
+  //     triggerHook: 0,
+  //     offset: '35%',
+  //     duration: '35%',
+  //     reverse: true
+  //   }, tl8);
 
-    scenes.push(scene8);
-  }
+  //   scenes.push(scene8);
+  // }
 
   const tl6 = new TimelineLite();
   const tlWch6 = willChange(tl6);
